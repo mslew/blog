@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import Logo from '@/components/Logo'
+import Logo from '../components/Logo'
+import ThemeSwitch from '../components/ThemeSwitch'
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <h1 className="text-purple-500">this is a test hehe</h1>
       <Link href="/blog">This goes to da blog</Link>
       <Logo />
+      <ThemeSwitch />
     </main>
   )
 }
