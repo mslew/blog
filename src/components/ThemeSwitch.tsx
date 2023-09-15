@@ -15,14 +15,14 @@ const ThemeSwitch = () => {
             {dark ?
             //dark mode on
             <div className='flex justify-center items-center'>
-                <FontAwesomeIcon className='absolute w-4 text-black z-10 mr-6' icon={faMoon}/>
-                <FontAwesomeIcon className='absolute w-16' icon={faToggleOn}/>
+                <FontAwesomeIcon className='absolute text-black z-10 mr-8' icon={faMoon} size='2x'/>
+                <FontAwesomeIcon className='absolute' icon={faToggleOn} size='5x'/>
             </div>
             :
             //dark mode off
             <div className='flex justify-center items-center'>
-                <FontAwesomeIcon className='absolute w-3 text-white z-10 ml-6' icon={faSun}/>
-                <FontAwesomeIcon className='absolute w-16' icon={faToggleOff}/>
+                <FontAwesomeIcon className='absolute text-white z-10 ml-8' icon={faSun} size='xl'/>
+                <FontAwesomeIcon className='absolute' icon={faToggleOff} size='5x'/>
             </div>
             }
         </button>
