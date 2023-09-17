@@ -12,6 +12,7 @@ const NavBar = () => {
         <Link href="/">Projects</Link>
         <Link href="/">Contact</Link>
         <Link href="/blog">Blog</Link>
+        <button>Resume</button>
         <ThemeSwitch/>
     </nav>
   )
