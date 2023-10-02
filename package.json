@@ -1,5 +1,5 @@
 {
-  "name": "personal-website-v3",
+  "name": "blog",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,7 +10,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^4.0.2",
     "@astrojs/tailwind": "^5.0.0",
     "@astrojs/vercel": "^5.0.1",
     "astro": "^3.2.0",
