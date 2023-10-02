@@ -1,3 +1,3 @@
-# Personal Website v3
+# Personal Blog
 
 This is currently UNDER CONSTRUCTION. 
