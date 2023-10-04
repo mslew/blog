@@ -1,6 +1,6 @@
 ---
 import Nav from '../components/Nav.astro';
-import BlogCol from '../components/BlogCol.astro';
+import BlogDisplay from '../components/BlogDisplay.astro';
 interface Props {
 	title: string;
 }
@@ -19,17 +19,22 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class="layout-main grid h-screen w-screen grid-rows-layout grid-cols-6 border-b-2">
-			<div class="border-l-2 border-t-2 border-r-2 row-span-8 overflow-y-scroll">
-				<BlogCol></BlogCol>
+		<div class="w-screen h-screen grid grid-cols-10 grid-rows-10">
+			<div class="left-side row-span-10">
+
 			</div>
-			<div class="border-t-2 border-r-2 col-span-5">
-				<Nav></Nav>
+			<div class="nav border col-span-8 row-span-1">
 			</div>
-			<div class="border-t-2 border-r-2 col-span-5 row-span-7 overflow-y-scroll">
-				<slot />
+			<div class="right-side row-span-10 ">
+
 			</div>
-		</div> 
+			<div class="picture col-span-8 row-span-6">
+				<img class="w-full h-full" src="../../public/images/landing.jpeg">
+			</div>
+			<div class="flex col-span-8 row-span-3 justify-center">
+				<BlogDisplay></BlogDisplay>
+			</div>
+		</div>
 	</body>
 </html>
 <style is:global lang="postcss">
