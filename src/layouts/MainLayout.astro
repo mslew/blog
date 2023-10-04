@@ -19,15 +19,22 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<BlogCol></BlogCol>
-		<Nav></Nav>
-		<slot />
+		<div class="layout-main grid h-screen w-screen grid-rows-6 grid-cols-6">
+			<div class="border row-span-6 overflow-y-scroll">
+				<BlogCol></BlogCol>
+			</div>
+			<div class="border col-span-5 h-2/5">
+				<Nav></Nav>
+			</div>
+			<div class="border col-span-5 row-span-6 overflow-y-scroll">
+				<slot />
+			</div>
+		</div> 
 	</body>
 </html>
 <style is:global lang="postcss">
 	html {
 		font-family: system-ui, sans-serif;
 		background: #13151a;
-		background-size: 224px;
 	}
 </style>
