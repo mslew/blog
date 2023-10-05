@@ -1,8 +1,8 @@
 ---
-import Layout from "./MainLayout.astro";
+import MainLayout from "./MainLayout.astro";
 const { frontmatter } = Astro.props;
 ---
-<Layout title={frontmatter.title}>
+<MainLayout title={frontmatter.title}>
     <h1>{frontmatter.title}</h1>
     <p>{frontmatter.pubDate.slice(0,10)}</p>
     <p><em>{frontmatter.description}</em></p>
@@ -10,4 +10,4 @@ const { frontmatter } = Astro.props;
     <p>Written by: {frontmatter.author}</p>
     <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
     <slot />
-</Layout>
+</MainLayout>
