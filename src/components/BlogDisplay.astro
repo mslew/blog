@@ -14,7 +14,7 @@ import dateFormat from 'dateformat';
                     <p class="text-3xl">{post.frontmatter.title}</p>
                     <p>{post.frontmatter.description}</p>
                     <p>Author: {post.frontmatter.author}</p>
-                    <p>{dateFormat(post.frontmatter.pubDate, "mmmm dS, yyyy")}</p>
+                    <p>{dateFormat(post.frontmatter.pubDate, "UTC:mmmm dS, yyyy")}</p>
                     <p>{Math.round(readingTime(post.rawContent()).minutes)} minutes</p>
                 </div>
             </div>

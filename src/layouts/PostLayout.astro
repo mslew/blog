@@ -2,13 +2,21 @@
 import MainLayout from "./MainLayout.astro";
 const { frontmatter } = Astro.props;
 import dateFormat from "dateformat";
+import me from '../../public/images/me.jpg'
 ---
 <MainLayout title={frontmatter.title}>
-    <div class="prose prose-light flex flex-col items-center mb-10">
-        <h1 class="">{frontmatter.title}</h1>
-        <p class="text-lg">{dateFormat(frontmatter.pubDate, "mmmm dS, yyyy")}</p>
-        <p class="text-lg"><em>{frontmatter.description}</em></p>
-        <p class="text-lg">{frontmatter.author}</p>
+    <div class="flex flex-col gap-4">
+        <div class="prose prose-light"><h1>{frontmatter.title}</h1></div>
+        <div class="flex flex-row items-center">
+            <img src="./images/me.jpg" alt="me"/>
+            <div class="flex flex-col">
+                <p>{frontmatter.author}</p>
+                <p>{dateFormat(frontmatter.pubDate, "UTC:mmmm dS, yyyy")}</p>
+            </div>
+        </div>
+    </div>
+    <div class="prose prose-light mb-10">
+        <p><em>{frontmatter.description}</em></p>
         <img class="rounded-md w-[600px]" src={frontmatter.image.url} alt={frontmatter.image.alt} />
         <slot/>
     </div>
