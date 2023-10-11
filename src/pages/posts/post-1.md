@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/PostLayout.astro 
-title: "My first Blog Post"
-pubDate: 2023-10-02
-description: "This is the first post of my new Astro blog."
-author: "Max Lewis"
+title: My first Blog Post
+description: This is the first post of my new Astro blog.
+author: Max Lewis
 image:
-  url: 'https://cdn.britannica.com/13/234213-050-45F47984/dachshund-dog.jpg'
+  url: https://cdn.britannica.com/13/234213-050-45F47984/dachshund-dog.jpg
   alt: 'Daschund'
+pubDate: 2023-10-02
 tags: ["astro", "blogging", "learning"]
 ---
 # My First Blog Post
