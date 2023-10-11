@@ -2,24 +2,14 @@
 import MainLayout from "./MainLayout.astro";
 const { frontmatter } = Astro.props;
 import dateFormat from "dateformat";
-import readingTime from "reading-time";
 ---
 <MainLayout title={frontmatter.title}>
-    <div class="flex flex-col items-center gap-4">
-        <h1 class="text-5xl">{frontmatter.title}</h1>
+    <div class="prose prose-light flex flex-col items-center mb-10">
+        <h1 class="">{frontmatter.title}</h1>
         <p class="text-lg">{dateFormat(frontmatter.pubDate, "mmmm dS, yyyy")}</p>
         <p class="text-lg"><em>{frontmatter.description}</em></p>
         <p class="text-lg">{frontmatter.author}</p>
-        <img class="rounded-md" src={frontmatter.image.url} width="600" alt={frontmatter.image.alt} />
-        <slot />
+        <img class="rounded-md w-[600px]" src={frontmatter.image.url} alt={frontmatter.image.alt} />
+        <slot/>
     </div>
 </MainLayout>
-
-<style lang="postcss">
-    h1{
-        @apply text-5xl
-    }
-    h2{
-        @apply text-2xl 
-    }
-</style>
