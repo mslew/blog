@@ -3,11 +3,21 @@ import MainLayout from "./MainLayout.astro";
 const { frontmatter } = Astro.props;
 ---
 <MainLayout title={frontmatter.title}>
-    <h1>{frontmatter.title}</h1>
-    <p>{frontmatter.pubDate.slice(0,10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>{frontmatter.tags}</p>
-    <p>Written by: {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-    <slot />
+    <div class="flex flex-col items-center gap-4">
+        <h1 class="text-5xl">{frontmatter.title}</h1>
+        <p class="text-lg">{frontmatter.pubDate.slice(0,10)}</p>
+        <p class="text-lg"><em>{frontmatter.description}</em></p>
+        <p class="text-lg">Written by: {frontmatter.author}</p>
+        <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+        <slot />
+    </div>
 </MainLayout>
+
+<style lang="postcss">
+    h1{
+        @apply text-5xl
+    }
+    h2{
+        @apply text-2xl 
+    }
+</style>

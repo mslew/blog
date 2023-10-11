@@ -7,7 +7,6 @@ image:
   url: https://cdn.britannica.com/13/234213-050-45F47984/dachshund-dog.jpg
   alt: 'Daschund'
 pubDate: 2023-10-02
-tags: ["astro", "blogging", "learning"]
 ---
 # My First Blog Post
 
