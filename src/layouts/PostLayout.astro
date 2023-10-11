@@ -1,14 +1,16 @@
 ---
 import MainLayout from "./MainLayout.astro";
 const { frontmatter } = Astro.props;
+import dateFormat from "dateformat";
+import readingTime from "reading-time";
 ---
 <MainLayout title={frontmatter.title}>
     <div class="flex flex-col items-center gap-4">
         <h1 class="text-5xl">{frontmatter.title}</h1>
-        <p class="text-lg">{frontmatter.pubDate.slice(0,10)}</p>
+        <p class="text-lg">{dateFormat(frontmatter.pubDate, "mmmm dS, yyyy")}</p>
         <p class="text-lg"><em>{frontmatter.description}</em></p>
-        <p class="text-lg">Written by: {frontmatter.author}</p>
-        <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+        <p class="text-lg">{frontmatter.author}</p>
+        <img class="rounded-md" src={frontmatter.image.url} width="600" alt={frontmatter.image.alt} />
         <slot />
     </div>
 </MainLayout>
