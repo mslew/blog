@@ -1,7 +1,18 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/MainLayout.astro";
+import me from '../../public/images/me.jpg'
 ---
 
 <Layout title={"About"}>
-    <p class="text-white">About me... More here later!</p>
+    <div class="prose prose-light flex flex-col"> 
+        <h1 class="self-center" transition:name="about">About Me</h1>
+        <Image class="rounded-lg w-[400px] self-center" src={me} alt="me" transition:name="me"/>
+        <p transition:name="about-paragraph">
+            Hi, my name is Maximus Lewis. I am a recent computer science graduate from Lewis University.
+            This blog is my place to get my thoughts out, you will find many blogs about movies, music, 
+            history, or anything that piques my interest! Find out more about me at my website.
+            <a href="https://www.maximuslewis.com/">https://www.maximuslewis.com/</a> 
+        </p>
+    </div>
 </Layout>
