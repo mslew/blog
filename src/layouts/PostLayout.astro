@@ -1,0 +1,24 @@
+---
+import MainLayout from "./MainLayout.astro";
+const { frontmatter } = Astro.props;
+import { Image } from "astro:assets";
+import dateFormat from "dateformat";
+import me from '../../public/images/me-small.jpg'
+---
+<MainLayout title={frontmatter.title}>
+    <div class="flex flex-col gap-4">
+        <div class="prose prose-light"><h1 transition:name={frontmatter.title}>{frontmatter.title}</h1></div>
+        <div class="flex flex-row items-center self-center md:self-start border w-max p-4 mb-6 rounded-lg shadow-lg border-purple-900">
+            <Image class="rounded-full mr-4 w-20 h-20" src={me} alt="me" transition:name="me"/>
+            <div class="flex flex-col">
+                <p transition:name={frontmatter.author}>{frontmatter.author}</p>
+                <p transition:name={frontmatter.pubDate}>{dateFormat(frontmatter.pubDate, "UTC:mmmm dS, yyyy")}</p>
+            </div>
+        </div>
+    </div>
+    <div class="prose prose-light mb-10">
+        <p transition:name={frontmatter.description}><em>{frontmatter.description}</em></p>
+        <img class="rounded-md w-[600px]" src={frontmatter.image.url} alt={frontmatter.image.alt} transition:name={frontmatter.image.url}/>
+        <slot/>
+    </div>
+</MainLayout>
