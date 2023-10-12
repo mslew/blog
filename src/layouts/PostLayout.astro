@@ -16,7 +16,7 @@ import me from '../../public/images/me-small.jpg'
             </div>
         </div>
     </div>
-    <div class="prose prose-light pb-10">
+    <div class="prose prose-light pb-24">
         <p transition:name={frontmatter.description}><em>{frontmatter.description}</em></p>
         <img class="rounded-md w-[600px]" src={frontmatter.image.url} alt={frontmatter.image.alt} transition:name={frontmatter.image.url}/>
         <slot/>
