@@ -1,14 +1,15 @@
 ---
 import MainLayout from "./MainLayout.astro";
 const { frontmatter } = Astro.props;
+import { Image } from "astro:assets";
 import dateFormat from "dateformat";
-import me from '../../public/images/me.jpg'
+import me from '../../public/images/me-small.jpg'
 ---
 <MainLayout title={frontmatter.title}>
     <div class="flex flex-col gap-4">
         <div class="prose prose-light"><h1>{frontmatter.title}</h1></div>
-        <div class="flex flex-row items-center">
-            <img src="./images/me.jpg" alt="me"/>
+        <div class="flex flex-row items-center border w-max p-4 mb-6 rounded-lg border-purple-900">
+            <Image class="rounded-full mr-4 w-20 h-20" src={me} alt="me"/>
             <div class="flex flex-col">
                 <p>{frontmatter.author}</p>
                 <p>{dateFormat(frontmatter.pubDate, "UTC:mmmm dS, yyyy")}</p>
