@@ -1,10 +1,10 @@
 ---
 layout: ../../layouts/PostLayout.astro 
 title: My Second Blog Post
-author: Astro Learner
+author: Max Lewis 
 description: After learning some Astro, I couldn't stop!
 image:
-  url: https://docs.astro.build/assets/arc.webp
+  url: https://i.ytimg.com/vi/18WOkJnRIT0/maxresdefault.jpg
   alt: Thumbnail of Astro arcs.
 pubDate: 2022-07-08
 ---
