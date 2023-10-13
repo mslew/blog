@@ -1,3 +1,3 @@
 # Personal Blog
 
-This is currently UNDER CONSTRUCTION. 
+This is the repository for my personal blog. 
