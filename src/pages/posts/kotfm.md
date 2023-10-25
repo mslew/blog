@@ -19,7 +19,7 @@ Robert De Niro as William Hale is awesome. Leonardo DiCaprio as Ernest Burkhart 
 
 Probably most importantly, the film brings to light some truly heinous atrocities that many people may have not heard of before. I read the book *Killers of The Flower Moon* by David Grann, which the movie is based on, and I was truly shocked by the events that took place. 
 
-## The Shocking 
+## The Differences 
 
 The book is written to be a mystery. The movie is written to not be a mystery. This key distinction was shocking to me because I read the book and was expecting the former. Nevertheless, the movie is still great and a must-watch for any moviegoer.
 
