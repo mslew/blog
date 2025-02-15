@@ -1,7 +1,7 @@
 ---
 title: Movie Test
-slug: 'this-is-a-movie-test '
-description: 'Poggers '
+slug: this-is-a-movie-test
+description: Poggers
 tags:
   - movie
 author: Max Lewis

@@ -20,21 +20,23 @@ let {
 ---
 <MainLayout title={title}>
     <div class="flex flex-col gap-4">
-        <div class="prose prose-light"><h1 transition:name="blog-title">{title}</h1></div>  
+        <div class="prose prose-light"><h1>{title}</h1></div>  
         <div class="flex flex-row items-center self-center md:self-start border w-max p-4 mb-6 rounded-lg shadow-lg border-purple-900">
-            <Image transition:name="me" class="rounded-full mr-4 w-20 h-20" src={me} alt="me"/>
+            <Image class="rounded-full mr-4 w-20 h-20" src={me} alt="me"/>
             <div class="flex flex-col">
                 <p>{author}</p>
-                <p transition:name="blog-date">{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
+                <p>{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
             </div>
         </div>
     </div>
     <div class="body-text prose prose-light pb-24 flex flex-col items-center">
-        {tags.map((tag: string) => 
-            <a href={`/tag/${tag}`} class="text-purple-900 hover:underline">#{tag}</a>
-        )}
-        <p transition:name="blog-description"><em>{description}</em></p>
-        <img transition:name="blog-image" class="rounded-md w-[600px]" src={url} alt={alt}/>
+        <p>
+            {tags.map((tag: string) => 
+                <a href={`/tag/${tag}`} class="text-purple-900 hover:underline">#{tag}</a>
+            )}
+        </p>
+        <p><em>{description}</em></p>
+        <img class="rounded-md w-[600px]" src={url} alt={alt}/>
         <slot/>
     </div>
 </MainLayout>
