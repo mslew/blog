@@ -1,6 +1,6 @@
 ---
-layout: ../../layouts/PostLayout.astro 
 title: My Thoughts on Steely Dan's Gaucho
+slug: steely-dan-gaucho
 description: An underrated masterpiece.
 author: Max Lewis
 image:

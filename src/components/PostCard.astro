@@ -1,0 +1,39 @@
+---
+import readingTime from "reading-time";
+import dateFormat from "dateformat";
+import { fade } from "astro:transitions";
+
+const { slug, title, description, pubDate, image: { url, alt } } = Astro.props;
+
+const { body } = Astro.props;
+
+function getMinutes(body: string){
+    interface minute {
+        time: number
+        minute: string
+    }
+    const minutes = Math.round(readingTime(body).minutes)
+    let min:minute = {time: 0, minute: 'minutes'}
+    if (minutes === 1){
+        min = {time: minutes, minute: 'minute'}
+        return min
+    }
+    if (minutes > 1 || minutes === 0){
+        min = {time: minutes, minute: 'minutes'}
+        return min
+    }
+    return min
+}
+---
+
+<a class="text-slate-300 h-max col-span-4 md:col-span-2 2xl:col-span-1" href={`/post/${slug}`} transition:name="blog">
+    <div class="shadow-lg transfrom hover:-translate-y-2 delay-100 duration-300">
+        <img src={url} alt={alt} transition:name={url} transition:animate={fade({ duration: '0.3s' })}/>
+        <div class="flex flex-col bg-slate-800 text-center p-4">
+            <p class="text-3xl mb-1" transition:name={title}>{title}</p>
+            <p class="mb-3" transition:name={description}>{description}</p>
+            <p >{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
+            <p transition:name={title}>{getMinutes(body).time} · {getMinutes(body).minute}</p>
+        </div>
+    </div>
+</a>
