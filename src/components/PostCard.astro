@@ -28,12 +28,12 @@ function getMinutes(body: string){
 
 <a class="text-slate-300 h-max col-span-4 md:col-span-2 2xl:col-span-1" href={`/post/${slug}`} transition:name="blog">
     <div class="shadow-lg transfrom hover:-translate-y-2 delay-100 duration-300">
-        <img src={url} alt={alt} transition:name={url} transition:animate={fade({ duration: '0.3s' })}/>
+        <img transition:name="blog-image" src={url} alt={alt}/>
         <div class="flex flex-col bg-slate-800 text-center p-4">
-            <p class="text-3xl mb-1" transition:name={title}>{title}</p>
-            <p class="mb-3" transition:name={description}>{description}</p>
-            <p >{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
-            <p transition:name={title}>{getMinutes(body).time} · {getMinutes(body).minute}</p>
+            <p transition:name="blog-title" class="text-3xl mb-1">{title}</p>
+            <p transition:name="blog-description" class="mb-3">{description}</p>
+            <p transition:name="blog-date">{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
+            <p>{getMinutes(body).time} · {getMinutes(body).minute}</p>
         </div>
     </div>
 </a>

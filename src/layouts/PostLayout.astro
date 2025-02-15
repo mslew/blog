@@ -22,18 +22,18 @@ let {
 ---
 <MainLayout title={title}>
     <div class="flex flex-col gap-4">
-        <div class="prose prose-light"><h1 transition:name={title}>{title}</h1></div>
+        <div class="prose prose-light"><h1 transition:name="blog-title">{title}</h1></div>  
         <div class="flex flex-row items-center self-center md:self-start border w-max p-4 mb-6 rounded-lg shadow-lg border-purple-900">
-            <Image class="rounded-full mr-4 w-20 h-20" src={me} alt="me" transition:name="me"/>
+            <Image transition:name="me" class="rounded-full mr-4 w-20 h-20" src={me} alt="me"/>
             <div class="flex flex-col">
-                <p transition:name={author}>{author}</p>
-                <p>{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
+                <p>{author}</p>
+                <p transition:name="blog-date">{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
             </div>
         </div>
     </div>
     <div class="prose prose-light pb-24">
-        <p transition:name={description}><em>{description}</em></p>
-        <img class="rounded-md w-[600px]" src={url} alt={alt} transition:name={url}/>
+        <p transition:name="blog-description"><em>{description}</em></p>
+        <img transition:name="blog-image" class="rounded-md w-[600px]" src={url} alt={alt}/>
         <slot/>
     </div>
 </MainLayout>
