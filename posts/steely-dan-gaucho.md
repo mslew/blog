@@ -2,7 +2,9 @@
 title: My Thoughts on Steely Dan's Gaucho
 slug: steely-dan-gaucho
 description: An underrated masterpiece.
-tags: [music, personal]
+tags:
+  - music
+  - personal
 author: Max Lewis
 pubDate: 2023-10-12
 image:
@@ -29,5 +31,3 @@ The third and final lost track that I know about is [The Second Arrangement](htt
 ## Final Thoughts
 
 Steely Dan’s *Gaucho* is an underrated masterpiece of an album that just keeps on giving as you go through the tracklist. Songs that were not even put on the album and had to be released secretly or leaked anonymously are just as good as the tracks that were on the album. This album just keeps getting better the more I listen to it. Please give this a listen, you will not regret it!
-
-![poggers](https://steamuserimages-a.akamaihd.net/ugc/2431257546687696515/EF5AF6B59CDDBFEA8BBE156CB389220555476299/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false)

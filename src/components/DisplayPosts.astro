@@ -1,7 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import PostCard from '../components/PostCard.astro';
-const posts = await getCollection('posts');
+interface Props{
+    posts: CollectionEntry<'posts'>[]
+}
+let { posts } = Astro.props;
 ---
 
 <div class="w-full h-full grid grid-cols-4 gap-x-4 gap-y-4 justify-items-center">

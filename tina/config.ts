@@ -81,7 +81,7 @@ export default defineConfig({
             type: "object",
             name: "image",
             label: "Hero Image",
-            required: true,
+            required: false,
             fields: [
               {
                 type: "string",
@@ -105,6 +105,7 @@ export default defineConfig({
             name: "body",
             label: "Body",
             isBody: true,
+            required: true,
           },
         ],
       },

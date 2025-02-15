@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import DisplayPosts from "../../components/DisplayPosts.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection('posts');
+    const tags = posts.reduce<Record<string, typeof posts>>((allTags, post) => {
+        const postTags = post.data.tags;
+        if (postTags) {
+            postTags.forEach((tag) => {
+                if (!allTags[tag]){
+                    allTags[tag] = [];
+                }
+                allTags[tag].push(post);
+            });
+        }
+        return allTags;
+    }, {});
+
+    return Object.keys(tags).map((t) => {
+        return {
+            params: { tag: t.trim() },
+            props: { tag: tags[t]},
+        };
+    });
+}
+export const prerender = true;
+
+const { tag } = Astro.props;
+const { tag: currentTag } = Astro.params;
+console.log(tag);
+let sortedPosts = tag ? tag.sort(
+    (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+) : [];
+---
+
+<MainLayout title={`#${currentTag} Blogs`}>
+    <p>Posts Tagged with <span class="text-purple-900">#{currentTag}</span></p>
+    <DisplayPosts posts={sortedPosts} />
+</MainLayout>

@@ -1,6 +1,5 @@
 ---
 import MainLayout from "./MainLayout.astro";
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import dateFormat from "dateformat";
 import me from '../../public/images/me-small.jpg'
@@ -31,7 +30,9 @@ let {
         </div>
     </div>
     <div class="body-text prose prose-light pb-24 flex flex-col items-center">
-        <p class="">{tags.map((tag: string) => tag).join(' ')}</p>
+        {tags.map((tag: string) => 
+            <a href={`/tag/${tag}`} class="text-purple-900 hover:underline">#{tag}</a>
+        )}
         <p transition:name="blog-description"><em>{description}</em></p>
         <img transition:name="blog-image" class="rounded-md w-[600px]" src={url} alt={alt}/>
         <slot/>

@@ -1,7 +1,9 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro'
 import DisplayPosts from '../components/DisplayPosts.astro';
+import { getCollection } from 'astro:content';
+const posts = await getCollection('posts');
 ---
 <MainLayout title='Max Lewis Blog'> 
-    <DisplayPosts />
+    <DisplayPosts posts={posts} />
 </MainLayout>
