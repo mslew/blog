@@ -1,9 +1,8 @@
 ---
 import readingTime from "reading-time";
 import dateFormat from "dateformat";
-import { fade } from "astro:transitions";
 
-const { slug, title, description, pubDate, image: { url, alt } } = Astro.props;
+const { slug, title, description, tags, pubDate, image: { url, alt } } = Astro.props;
 
 const { body } = Astro.props;
 
@@ -34,6 +33,7 @@ function getMinutes(body: string){
             <p transition:name="blog-description" class="mb-3">{description}</p>
             <p transition:name="blog-date">{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
             <p>{getMinutes(body).time} · {getMinutes(body).minute}</p>
+            <p class="">{tags.map((tag: string) => tag).join(' ')}</p>
         </div>
     </div>
 </a>

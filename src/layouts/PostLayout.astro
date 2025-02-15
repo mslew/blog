@@ -5,12 +5,11 @@ import { Image } from "astro:assets";
 import dateFormat from "dateformat";
 import me from '../../public/images/me-small.jpg'
 
-const posts = await getCollection('posts');
-
 let {
     content: {
         title,
-        description,
+        description, 
+        tags,
         author,
         pubDate,
         image: {
@@ -32,6 +31,7 @@ let {
         </div>
     </div>
     <div class="body-text prose prose-light pb-24 flex flex-col items-center">
+        <p class="">{tags.map((tag: string) => tag).join(' ')}</p>
         <p transition:name="blog-description"><em>{description}</em></p>
         <img transition:name="blog-image" class="rounded-md w-[600px]" src={url} alt={alt}/>
         <slot/>
