@@ -16,15 +16,23 @@ let {
         image: {
             url,
             alt
-        }
+        },
+    },
+    nextPrevious:{
+        previousPost,
+        nextPost
     }
 } = Astro.props;
+
+console.log(previousPost)
+console.log(nextPost)
 ---
 <MainLayout title={title}>
     <div class="flex flex-col gap-4">
         <div class="flex flex-row w-full justify-center">
             <div class="flex flex-row w-2/3 justify-between">
-                <a class="group flex flex-col items-center border rounded-3xl hover:bg-slate-500 max-w-24">
+                {previousPost &&
+                <a href={`/post/${previousPost.data.slug}`} class="group flex flex-col items-center border rounded-3xl hover:bg-slate-500 max-w-24">
                     <LeftArrow class={"fill-white w-16 h-16 pt-4 pl-4 pr-4"}/>
                     <div x-data="{}"
                     x-init="$nextTick(() => {
@@ -33,16 +41,13 @@ let {
                         span.nextSibling.setAttribute('aria-hidden', 'true');
                     })" class="overflow-hidden whitespace-nowrap w-full pt-2 pl-2 pb-4">
                         <div x-ref="title" class="inline-block transform group-hover:animate-scroll pr-1">
-                            <span>My</span> 
-                            <span>Thoughts</span> 
-                            <span>On</span> 
-                            <span>Steely</span> 
-                            <span>Dan</span> 
+                            <span>{previousPost.data.title}</span>
                             <span>·</span>
                         </div>
                     </div>
-                </a>
-                <a class="group flex flex-col items-center border rounded-3xl hover:bg-slate-500 max-w-24">
+                </a>}
+                {nextPost &&
+                <a href={`/post/${nextPost.data.slug}`}class="group flex flex-col items-center border rounded-3xl hover:bg-slate-500 max-w-24">
                     <RightArrow class={"fill-white w-16 h-16 pt-4 pl-4 pr-4"} />
                     <div x-data="{}"
                     x-init="$nextTick(() => {
@@ -51,15 +56,11 @@ let {
                         span.nextSibling.setAttribute('aria-hidden', 'true');
                     })" class="overflow-hidden whitespace-nowrap w-full pt-2 pl-2 pb-4">
                         <div x-ref="title" class="inline-block transform group-hover:animate-scroll pr-1">
-                            <span>My</span> 
-                            <span>Thoughts</span> 
-                            <span>On</span> 
-                            <span>Steely</span> 
-                            <span>Dan</span> 
+                            {nextPost.data.title}
                             <span>·</span>
                         </div>
                     </div>
-                </a>
+                </a>}
             </div>
         </div>
         <div class="prose prose-light"><h1>{title}</h1></div>  
