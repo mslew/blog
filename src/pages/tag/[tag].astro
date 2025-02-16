@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import DisplayPosts from "../../components/DisplayPosts.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
-import BackArrow from "../../components/BackArrow.astro";
+import LeftArrow from "../../components/LeftArrow.astro";
 
 export async function getStaticPaths() {
     const posts = await getCollection('posts');
@@ -37,6 +37,6 @@ let sortedPosts = tag ? tag.sort(
 ---
 
 <MainLayout title={`#${currentTag} Blogs`}>
-    <a href="/" class="absolute right-4 bottom-4"><BackArrow class={"fill-white w-16 border p-4 rounded-3xl hover:bg-slate-500"}/></a>
+    <a href="/" class="absolute right-4 bottom-4"><LeftArrow class={"fill-white w-16 border p-4 rounded-3xl hover:bg-slate-500"}/></a>
     <DisplayPosts posts={sortedPosts} tags={currentTag}/>
 </MainLayout

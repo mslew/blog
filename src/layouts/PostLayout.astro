@@ -3,9 +3,9 @@ import MainLayout from "./MainLayout.astro";
 import { Image } from "astro:assets";
 import dateFormat from "dateformat";
 import me from '../../public/images/me-small.jpg'
-import BackArrow from "../components/BackArrow.astro";
+import LeftArrow from "../components/LeftArrow.astro";
 import UpArrow from "../components/UpArrow.astro";
-
+import RightArrow from "../components/RightArrow.astro";
 let {
     content: {
         title,
@@ -22,6 +22,46 @@ let {
 ---
 <MainLayout title={title}>
     <div class="flex flex-col gap-4">
+        <div class="flex flex-row w-full justify-center">
+            <div class="flex flex-row w-2/3 justify-between">
+                <a class="group flex flex-col items-center border rounded-3xl hover:bg-slate-500 max-w-24">
+                    <LeftArrow class={"fill-white w-16 h-16 pt-4 pl-4 pr-4"}/>
+                    <div x-data="{}"
+                    x-init="$nextTick(() => {
+                        let span = $refs.title;
+                        span.insertAdjacentHTML('afterend', span.outerHTML);
+                        span.nextSibling.setAttribute('aria-hidden', 'true');
+                    })" class="overflow-hidden whitespace-nowrap w-full pt-2 pl-2 pb-4">
+                        <div x-ref="title" class="inline-block transform group-hover:animate-scroll pr-1">
+                            <span>My</span> 
+                            <span>Thoughts</span> 
+                            <span>On</span> 
+                            <span>Steely</span> 
+                            <span>Dan</span> 
+                            <span>·</span>
+                        </div>
+                    </div>
+                </a>
+                <a class="group flex flex-col items-center border rounded-3xl hover:bg-slate-500 max-w-24">
+                    <RightArrow class={"fill-white w-16 h-16 pt-4 pl-4 pr-4"} />
+                    <div x-data="{}"
+                    x-init="$nextTick(() => {
+                        let span = $refs.title;
+                        span.insertAdjacentHTML('afterend', span.outerHTML);
+                        span.nextSibling.setAttribute('aria-hidden', 'true');
+                    })" class="overflow-hidden whitespace-nowrap w-full pt-2 pl-2 pb-4">
+                        <div x-ref="title" class="inline-block transform group-hover:animate-scroll pr-1">
+                            <span>My</span> 
+                            <span>Thoughts</span> 
+                            <span>On</span> 
+                            <span>Steely</span> 
+                            <span>Dan</span> 
+                            <span>·</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
         <div class="prose prose-light"><h1>{title}</h1></div>  
         <div class="flex flex-row items-center self-center md:self-start border w-max p-4 mb-6 rounded-lg shadow-lg border-purple-900">
             <Image class="rounded-full mr-4 w-20 h-20" src={me} alt="me"/>
@@ -42,9 +82,7 @@ let {
         <slot/>
     </div>
 </MainLayout>
-<button id="scrollTopBtn" class="fixed left-4 bottom-4" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<button id="scrollTopBtn" class="fixed right-4 bottom-4" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
     <UpArrow class={"fill-white w-16 h-16 border p-4 rounded-3xl hover:bg-slate-500"}/>
 </button>
-<a href="/" class="fixed right-4 bottom-4">
-    <BackArrow class={"fill-white w-16 h-16 border p-4 rounded-3xl hover:bg-slate-500"}/>
-</a>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

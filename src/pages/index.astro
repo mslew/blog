@@ -15,7 +15,10 @@ const tags = posts.reduce<Record<string, typeof posts>>((allTags, post) => {
     }
     return allTags;
 }, {});
+let sortedPosts = posts ? posts.sort(
+    (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+) : [];
 ---
 <MainLayout title='Max Lewis Blog'> 
-    <DisplayPosts posts={posts} tags={Object.keys(tags)} />
+    <DisplayPosts posts={sortedPosts} tags={Object.keys(tags)} />
 </MainLayout>
