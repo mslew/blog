@@ -36,6 +36,5 @@ let sortedPosts = tag ? tag.sort(
 ---
 
 <MainLayout title={`#${currentTag} Blogs`}>
-    <p>Posts Tagged with <span class="text-purple-900">#{currentTag}</span></p>
-    <DisplayPosts posts={sortedPosts} />
+    <DisplayPosts posts={sortedPosts} tags={currentTag}/>
 </MainLayout>

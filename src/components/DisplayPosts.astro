@@ -3,13 +3,17 @@ import type { CollectionEntry } from 'astro:content';
 import PostCard from '../components/PostCard.astro';
 interface Props{
     posts: CollectionEntry<'posts'>[]
+    tags: string[] | string
 }
-let { posts } = Astro.props;
+let { posts, tags } = Astro.props;
 ---
 
+<div>{Array.isArray(tags) ? tags.map((tag: string) => 
+    <a href={`/tag/${tag}`} class="text-purple-900 hover:underline">#{tag}</a>
+) : <p>Posts Tagged with <span class="text-purple-900">#{tags}</span></p>}
+</div>
 <div class="w-full h-full grid grid-cols-4 gap-x-4 gap-y-4 justify-items-center">
     {posts.map((post) => 
         <PostCard {...post.data} body={post.body} />
     )}
 </div>
-

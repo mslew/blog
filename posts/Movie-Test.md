@@ -12,4 +12,8 @@ image:
   alt: There Will Be Blood
 ---
 
-THERE WILL BE BLOOD
+THERE WILL BE BLOOD IS THE BEST MOVIE OF ALL TIME
+
+```python
+print("Hello World!")
+```
