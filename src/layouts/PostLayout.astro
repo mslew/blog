@@ -3,6 +3,8 @@ import MainLayout from "./MainLayout.astro";
 import { Image } from "astro:assets";
 import dateFormat from "dateformat";
 import me from '../../public/images/me-small.jpg'
+import BackArrow from "../components/BackArrow.astro";
+import UpArrow from "../components/UpArrow.astro";
 
 let {
     content: {
@@ -40,3 +42,9 @@ let {
         <slot/>
     </div>
 </MainLayout>
+<button id="scrollTopBtn" class="fixed left-4 bottom-4" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <UpArrow class={"fill-white w-16 h-16 border p-4 rounded-3xl hover:bg-slate-500"}/>
+</button>
+<a href="/" class="fixed right-4 bottom-4">
+    <BackArrow class={"fill-white w-16 h-16 border p-4 rounded-3xl hover:bg-slate-500"}/>
+</a>

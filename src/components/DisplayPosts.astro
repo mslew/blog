@@ -8,8 +8,8 @@ interface Props{
 let { posts, tags } = Astro.props;
 ---
 
-<div>{Array.isArray(tags) ? tags.map((tag: string) => 
-    <a href={`/tag/${tag}`} class="text-purple-900 hover:underline">#{tag}</a>
+<div class="flex flex-row w-full justify-between mb-12">{Array.isArray(tags) ? tags.map((tag: string) => 
+    <a href={`/tag/${tag}`} class="text-purple-900 hover:underline text-2xl">#{tag}</a>
 ) : <p>Posts Tagged with <span class="text-purple-900">#{tags}</span></p>}
 </div>
 <div class="w-full h-full grid grid-cols-4 gap-x-4 gap-y-4 justify-items-center">
