@@ -6,10 +6,11 @@ tags:
   - music
   - personal
 author: Max Lewis
-pubDate: 2023-10-12
+pubDate: 2023-10-12T00:00:00.000Z
+updatedDate: 2025-02-17T06:00:00.000Z
 image:
-  url: https://m.media-amazon.com/images/I/61qqgReklBL._UF1000,1000_QL80_.jpg
-  alt: 'Gaucho'
+  url: 'https://m.media-amazon.com/images/I/61qqgReklBL._UF1000,1000_QL80_.jpg'
+  alt: Gaucho
 ---
 
 *I want to make clear that I have no idea what I’m talking about with music. I am just a simple software engineer who loves Steely Dan.*

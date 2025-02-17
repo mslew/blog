@@ -77,11 +77,16 @@ export default defineConfig({
             label: "Publish Date",
             required: true,
           },
+          { type: "datetime", 
+            name: "updatedDate", 
+            label: "Updated Date", 
+            required: false, 
+          },
           {
             type: "object",
             name: "image",
             label: "Hero Image",
-            required: false,
+            required: true,
             fields: [
               {
                 type: "string",
