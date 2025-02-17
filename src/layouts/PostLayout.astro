@@ -26,8 +26,10 @@ let {
     },
     body,
 } = Astro.props;
-let previousDisabled = previousPost ? "pointer-events-auto" : "pointer-events-none text-slate-300";
-let nextDisabled = nextPost ? "pointer-events-auto" : "pointer-events-none";
+let previousDisabled = previousPost ? "pointer-events-auto" : "pointer-events-none text-slate-500 border-slate-500";
+let nextDisabled = nextPost ? "pointer-events-auto" : "pointer-events-none text-slate-500 border-slate-500";
+let previousArrowFill = previousPost ? "fill-white" : "fill-slate-500";
+let nextArrowFill = nextPost ? "fill-white" : "fill-slate-500";
 ---
 <MainLayout title={title}>
     <div class="flex flex-col gap-4 items-center text-center">
@@ -49,7 +51,7 @@ let nextDisabled = nextPost ? "pointer-events-auto" : "pointer-events-none";
             <div class="flex flex-row w-full justify-center">
                 <div class="flex flex-row w-2/3 gap-4 justify-center">
                     <a href={previousPost ? `/post/${previousPost.data.slug}` : ""} class={`group flex flex-row items-center border rounded-xl hover:bg-slate-500 w-1/2 h-full p-2 ${previousDisabled}`}>
-                        <LeftArrow class={"fill-white w-16 pl-4 pr-4"}/>
+                        <LeftArrow class={`fill-white w-16 pl-4 pr-4 ${previousArrowFill}`}/>
                         <div class="overflow-hidden whitespace-nowrap truncate w-full mr-2">
                             {previousPost && <div class="pt-1">Previous Post</div>}
                             <span>{previousPost ? previousPost.data.title : "Newest Post!"}</span>
@@ -60,7 +62,7 @@ let nextDisabled = nextPost ? "pointer-events-auto" : "pointer-events-none";
                             {nextPost && <div class="">Next Post</div>}
                             <span>{nextPost ? nextPost.data.title : "Oldest Post!"}</span>
                         </div>
-                        <RightArrow class={"fill-white w-16 pl-4 pr-4"} />
+                        <RightArrow class={`fill-white w-16 pl-4 pr-4 ${nextArrowFill}`} />
                     </a>
                 </div>
             </div>
