@@ -6,6 +6,7 @@ import me from '../../public/images/me-small.jpg'
 import LeftArrow from "../components/LeftArrow.astro";
 import UpArrow from "../components/UpArrow.astro";
 import RightArrow from "../components/RightArrow.astro";
+import getMinutes from "../utils/getMinutes";
 let {
     content: {
         title,
@@ -21,66 +22,58 @@ let {
     nextPrevious:{
         previousPost,
         nextPost
-    }
+    },
+    body
 } = Astro.props;
-let previousVisibility = previousPost ? "visible" : "invisible";
-let nextVisibility = nextPost ? "visible" : "invisible";
+let previousDisabled = previousPost ? "pointer-events-auto" : "pointer-events-none";
+let nextDisabled = nextPost ? "pointer-events-auto" : "pointer-events-none";
 ---
 <MainLayout title={title}>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-row w-full justify-center">
-            <div class="flex flex-row w-2/3 justify-between">
-                <a href={previousPost ? `/post/${previousPost.data.slug}` : ""} class={`group flex flex-col items-center border rounded-3xl hover:bg-slate-500 max-w-24 ${previousVisibility}`}>
-                    <LeftArrow class={"fill-white w-16 h-16 pt-4 pl-4 pr-4"}/>
-                    <div x-data="{}"
-                    x-init="$nextTick(() => {
-                        let span = $refs.title;
-                        span.insertAdjacentHTML('afterend', span.outerHTML);
-                        span.nextSibling.setAttribute('aria-hidden', 'true');
-                    })" class="overflow-hidden whitespace-nowrap w-full pt-2 pl-2 pb-4">
-                        <div x-ref="title" class="inline-block transform group-hover:animate-scroll pr-1">
-                            <span>{previousPost ? previousPost.data.title : ''}</span>
-                            <span>·</span>
-                        </div>
-                    </div>
-                </a>
-                <a href={nextPost ? `/post/${nextPost.data.slug}` : ""} class={`group flex flex-col items-center border rounded-3xl hover:bg-slate-500 max-w-24 ${nextVisibility}`}>
-                    <RightArrow class={"fill-white w-16 h-16 pt-4 pl-4 pr-4"} />
-                    <div x-data="{}"
-                    x-init="$nextTick(() => {
-                        let span = $refs.title;
-                        span.insertAdjacentHTML('afterend', span.outerHTML);
-                        span.nextSibling.setAttribute('aria-hidden', 'true');
-                    })" class="overflow-hidden whitespace-nowrap w-full pt-2 pl-2 pb-4">
-                        <div x-ref="title" class="inline-block transform group-hover:animate-scroll pr-1">
-                            {nextPost ? nextPost.data.title : ''}
-                            <span>·</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+    <div class="flex flex-col gap-4 items-center text-center">
+        <Image width={750} inferSize={true} src={url} alt={alt}/>
         <div class="prose prose-light"><h1>{title}</h1></div>  
-        <div class="flex flex-row items-center self-center md:self-start border w-max p-4 mb-6 rounded-lg shadow-lg border-purple-900">
-            <Image class="rounded-full mr-4 w-20 h-20" src={me} alt="me"/>
-            <div class="flex flex-col">
-                <p>{author}</p>
-                <p>{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
+        <p><em>{description}</em></p>
+        <div class="w-full flex flex-col items-center">
+            <div class="flex flex-row items-center">
+                <div class="flex flex-row items-center gap-2">
+                    <Image class="rounded-full w-8 h-8" src={me} alt="me"/>
+                    <p>{author}</p>
+                    <p>|</p>
+                    <p>{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
+                    <p>|</p>
+                    <p>{getMinutes(body).time} · {getMinutes(body).minute}</p>
+                </div>
             </div>
+            <p><em>Updated {dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</em></p>
+        </div>
+    <div class="flex flex-row w-full justify-center">
+        <div class="flex flex-row w-2/3 gap-4 justify-center">
+            <a href={previousPost ? `/post/${previousPost.data.slug}` : ""} class={`group flex flex-row items-center border rounded-xl hover:bg-slate-500 w-1/2 h-full p-2 ${previousDisabled}`}>
+                <LeftArrow class={"fill-white w-16 pl-4 pr-4"}/>
+                <div class="overflow-hidden whitespace-nowrap truncate w-full mr-2">
+                    <div class="pt-1">Previous Post</div>
+                    <span>{previousPost ? previousPost.data.title : "Newest Post!"}</span>
+                </div>
+            </a>
+            <a href={nextPost ? `/post/${nextPost.data.slug}` : ""} class={`group flex flex-row items-center border rounded-xl hover:bg-slate-500 w-1/2 h-full p-2 ${nextDisabled}`}>
+                <div class="truncate text-ellipsis w-full ml-2">
+                    <div class="">Next Post</div>
+                    <span>{nextPost ? nextPost.data.title : "Oldest Post!"}</span>
+                </div>
+                <RightArrow class={"fill-white w-16 pl-4 pr-4"} />
+            </a>
         </div>
     </div>
     <div class="body-text prose prose-light pb-24 flex flex-col items-center">
-        <p>
+        <span class="flex flex-row gap-4 w-full justify-center mt-4 mb-4">
             {tags.map((tag: string) => 
-                <a href={`/tag/${tag}`} class="text-purple-900 hover:underline">#{tag}</a>
+                    <a class="hover:text-purple-500 text-xl bg-gray-700 p-2 rounded-2xl" href={`/tag/${tag}`}>#{tag}</a>
             )}
-        </p>
-        <p><em>{description}</em></p>
-        <img class="rounded-md w-[600px]" src={url} alt={alt}/>
+        </span>
         <slot/>
     </div>
+</div>
 </MainLayout>
 <button id="scrollTopBtn" class="fixed right-4 bottom-4" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
     <UpArrow class={"fill-white w-16 h-16 border p-4 rounded-3xl hover:bg-slate-500"}/>
 </button>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

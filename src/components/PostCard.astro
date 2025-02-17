@@ -1,28 +1,10 @@
 ---
-import readingTime from "reading-time";
+import getMinutes from "../utils/getMinutes";
 import dateFormat from "dateformat";
 
 const { slug, title, description, tags, pubDate, image: { url, alt } } = Astro.props;
 
 const { body } = Astro.props;
-
-function getMinutes(body: string){
-    interface minute {
-        time: number
-        minute: string
-    }
-    const minutes = Math.round(readingTime(body).minutes)
-    let min:minute = {time: 0, minute: 'minutes'}
-    if (minutes === 1){
-        min = {time: minutes, minute: 'minute'}
-        return min
-    }
-    if (minutes > 1 || minutes === 0){
-        min = {time: minutes, minute: 'minutes'}
-        return min
-    }
-    return min
-}
 ---
 
 <a class="text-slate-300 h-max col-span-4 md:col-span-2 2xl:col-span-1" href={`/post/${slug}`}>

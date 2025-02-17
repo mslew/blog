@@ -31,6 +31,6 @@ sortedPosts.map((listPost, index) => {
 const { Content } = await render(post)
 ---
 
-<PostLayout content={post.data} nextPrevious={nextPrevious}>
+<PostLayout content={post.data} nextPrevious={nextPrevious} body={post.body}>
     <Content />
 </PostLayout>
