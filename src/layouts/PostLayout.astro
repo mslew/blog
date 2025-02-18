@@ -35,7 +35,7 @@ let nextArrowFill = nextPost ? "fill-white" : "fill-slate-500";
 ---
 <MainLayout title={title}>
     <div class="flex flex-col gap-4 items-center text-center">
-        <Image width={750} inferSize={true} src={url} alt={alt}/>
+        <Image layout="responsive" width={750} height={500} inferSize={true} src={url} alt={alt}/>
         <div class="prose prose-light"><h1>{title}</h1></div>  
         <p><em>{description}</em></p>
         <div class="w-full flex flex-col items-center gap-8">
