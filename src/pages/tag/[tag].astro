@@ -30,7 +30,6 @@ export const prerender = true;
 
 const { tag } = Astro.props;
 const { tag: currentTag } = Astro.params;
-console.log(tag);
 let sortedPosts = tag ? tag.sort(
     (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 ) : [];

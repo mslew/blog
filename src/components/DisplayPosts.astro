@@ -5,14 +5,15 @@ import Post from '../pages/post/[post].astro';
 import Tag from './Tag.astro';
 interface Props{
     posts: CollectionEntry<'posts'>[]
-    tags: string[] | string
+    tags: Record<string, CollectionEntry<'posts'>[]> | string
 }
 let { posts, tags } = Astro.props;
 ---
 
-<div class="flex flex-row flex-wrap w-1/2 gap-2 self-center justify-center pb-12">{Array.isArray(tags) ? tags.map((tag: string) => 
-    <Tag tag={tag}/>
-) : <p>Posts Tagged with <span class="text-purple-900">#{tags}</span></p>}
+<div class="flex flex-row flex-wrap w-1/2 gap-2 self-center justify-center pb-12">
+  {typeof tags === 'object' && !Array.isArray(tags) ? Object.keys(tags).map((tag: string) =>
+    <Tag tag={tag} count={tags[tag].length} disabled={"pointer-events-auto"} />
+  ) : <span>Posts Tagged with <Tag tag={tags} disabled={"pointer-events-none"}/></span>}
 </div>
 <div class="w-full h-full items-center flex flex-col gap-4">
     {posts.map((post) => 
