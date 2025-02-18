@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import PostCard from '../components/PostCard.astro';
+import Post from '../pages/post/[post].astro';
+import Tag from './Tag.astro';
 interface Props{
     posts: CollectionEntry<'posts'>[]
     tags: string[] | string
@@ -8,8 +10,8 @@ interface Props{
 let { posts, tags } = Astro.props;
 ---
 
-<div class="flex flex-row w-full justify-between pb-12">{Array.isArray(tags) ? tags.map((tag: string) => 
-    <a href={`/tag/${tag}`} class="text-purple-900 hover:underline text-2xl">#{tag}</a>
+<div class="flex flex-row flex-wrap w-1/2 gap-2 self-center justify-center pb-12">{Array.isArray(tags) ? tags.map((tag: string) => 
+    <Tag tag={tag}/>
 ) : <p>Posts Tagged with <span class="text-purple-900">#{tags}</span></p>}
 </div>
 <div class="w-full h-full items-center flex flex-col gap-4">

@@ -7,6 +7,8 @@ import LeftArrow from "../components/LeftArrow.astro";
 import UpArrow from "../components/UpArrow.astro";
 import RightArrow from "../components/RightArrow.astro";
 import readingTime from "reading-time";
+import Tag from "../components/Tag.astro";
+
 let {
     content: {
         title,
@@ -70,7 +72,7 @@ let nextArrowFill = nextPost ? "fill-white" : "fill-slate-500";
     <div class="body-text prose prose-light flex flex-col items-center">
         <span class="flex flex-row gap-4 w-full justify-center mt-4 mb-4">
             {tags.map((tag: string) => 
-                    <a class="hover:text-purple-500 text-xl bg-gray-700 p-2 rounded-2xl" href={`/tag/${tag}`}># {tag}</a>
+                <Tag tag={tag}/>
             )}
         </span>
         <slot/>
