@@ -10,4 +10,7 @@ export default defineConfig({
   experimental: {
     responsiveImages: true,
   },
+  redirects: {
+    "/": "/1",
+  },
 });

@@ -39,7 +39,7 @@ const { page, postsPerPage, numberOfPages } = Astro.props;
 
 <MainLayout title={`Blogs Page ${page}`}>
     <DisplayPosts posts={sortedPosts.slice((page-1) * postsPerPage, page * postsPerPage)} tags={tags} />
-    <div class="flex flex-row items-center justify-center gap-4 text-xl">
+    <div class="flex flex-row items-center justify-center gap-4 text-xl pt-12">
         {Array.from({length: numberOfPages}).map((_, i) => (
             <a href={`/${i + 1}`} class="text-slate-500 hover:text-slate-300 hover:underline">{i + 1}</a>
         ))}
