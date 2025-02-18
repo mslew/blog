@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../layouts/MainLayout.astro";
+import DisplayPosts from "../components/DisplayPosts.astro";
+const posts = await getCollection('posts');
+
+export async function getStaticPaths() {
+    const posts = await getCollection('posts');
+    const postsPerPage = 5;
+    const numberOfPages = Math.ceil(posts.length / postsPerPage);
+    const paths = Array.from({ length: numberOfPages }).map((_, i) => ({
+        params: { page: (i + 1).toString() },
+        props: { postsPerPage: postsPerPage, page: i + 1, numberOfPages: numberOfPages },
+    }));
+    return paths;
+}
+
+export const prerender = true
+
+const tags = posts.reduce<Record<string, typeof posts>>((allTags, post) => {
+    const postTags = post.data.tags;
+    if (postTags) {
+        postTags.forEach((tag) => {
+            if (!allTags[tag]){
+                allTags[tag] = [];
+            }
+            allTags[tag].push(post);
+        });
+    }
+    return allTags;
+}, {});
+
+let sortedPosts = posts ? posts.sort(
+    (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+) : [];
+
+const { page, postsPerPage, numberOfPages } = Astro.props;
+---
+
+<MainLayout title={`Blogs Page ${page}`}>
+    <DisplayPosts posts={sortedPosts.slice((page-1) * postsPerPage, page * postsPerPage)} tags={tags} />
+    <div class="flex flex-row items-center justify-center gap-4 text-xl">
+        {Array.from({length: numberOfPages}).map((_, i) => (
+            <a href={`/${i + 1}`} class="text-slate-500 hover:text-slate-300 hover:underline">{i + 1}</a>
+        ))}
+    </div>
+</MainLayout>

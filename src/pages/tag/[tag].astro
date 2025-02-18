@@ -36,6 +36,6 @@ let sortedPosts = tag ? tag.sort(
 ---
 
 <MainLayout title={`#${currentTag} Blogs`}>
-    <a href="/" class="absolute right-4 bottom-4"><LeftArrow class={"fill-white w-16 border p-4 rounded-3xl hover:bg-slate-500"}/></a>
+    <a href="/" class="fixed right-4 bottom-4"><LeftArrow class={"fill-white w-16 border p-4 rounded-3xl hover:bg-slate-500"}/></a>
     <DisplayPosts posts={sortedPosts} tags={currentTag}/>
 </MainLayout
