@@ -7,7 +7,21 @@ interface Props{
     posts: CollectionEntry<'posts'>[]
     tags: Record<string, CollectionEntry<'posts'>[]> | string
 }
+
 let { posts, tags } = Astro.props;
+
+type PostsByYear = Record<string, CollectionEntry<'posts'>[]>;
+
+const postsByYear = posts.reduce((acc: PostsByYear, post) => {
+  const year = new Date(post.data.pubDate).getFullYear(); // Assuming `post.data.date` holds the date
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+
+let sortedPostsByYear = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
 <div class="flex flex-row flex-wrap w-1/2 gap-2 self-center justify-center pb-12">
@@ -15,8 +29,12 @@ let { posts, tags } = Astro.props;
     <Tag tag={tag} count={tags[tag].length} disabled={"pointer-events-auto"} />
   ) : <span>Posts Tagged with <Tag tag={tags} disabled={"pointer-events-none"}/></span>}
 </div>
-<div class="w-full h-full items-center flex flex-col gap-4">
-    {posts.map((post) => 
+{Object.keys(sortedPostsByYear).length > 0 &&
+    sortedPostsByYear.map((year) => (
+    <h2 class="text-3xl text-left w-full">{year}</h2>
+    <div class="flex flex-col gap-4 items-center w-full h-full">
+    {postsByYear[year].map((post) => (
         <PostCard {...post.data} body={post.body} />
-    )}
-</div>
+    ))}
+    </div>
+))}
