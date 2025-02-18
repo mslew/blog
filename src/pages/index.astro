@@ -18,6 +18,14 @@ const tags = posts.reduce<Record<string, typeof posts>>((allTags, post) => {
 let sortedPosts = posts ? posts.sort(
     (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 ) : [];
+/**
+ * TODO:
+ * 1. Consider not cutting off images when viewing post.
+ * 2. Add years when viewing blogs. i.e. divide posts in years with year headers.
+ * 3. Create Social area
+ * 3. Consider adding different pages for the blog page. so its not an infinite scroll to look for blogs.
+ * 4. Consider adding a number to the side of the tags to count how many posts are in that tag.
+ */
 ---
 <MainLayout title='Max Lewis Blog'> 
     <DisplayPosts posts={sortedPosts} tags={Object.keys(tags)} />
