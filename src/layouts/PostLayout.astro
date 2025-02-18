@@ -6,7 +6,7 @@ import me from '../../public/images/me-small.jpg'
 import LeftArrow from "../components/LeftArrow.astro";
 import UpArrow from "../components/UpArrow.astro";
 import RightArrow from "../components/RightArrow.astro";
-import getMinutes from "../utils/getMinutes";
+import readingTime from "reading-time";
 let {
     content: {
         title,
@@ -44,7 +44,7 @@ let nextArrowFill = nextPost ? "fill-white" : "fill-slate-500";
                     <p>|</p>
                     <p>{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
                     <p>|</p>
-                    <p>{getMinutes(body).time} · {getMinutes(body).minute}</p>
+                    <p>{Math.round(readingTime(body).minutes)} min read</p>
                 </div>
             </div>
             {updatedDate && <p><em>Updated {dateFormat(updatedDate, "UTC:mmmm dS, yyyy")}</em></p>}

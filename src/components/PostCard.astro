@@ -1,6 +1,7 @@
 ---
 import getMinutes from "../utils/getMinutes";
 import dateFormat from "dateformat";
+import readingTime from "reading-time";
 
 const { slug, title, description, tags, pubDate, author } = Astro.props;
 
@@ -16,7 +17,7 @@ const { body } = Astro.props;
             <p>|</p>
             <p>{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
             <p>|</p>
-            <p>{getMinutes(body).time} · {getMinutes(body).minute}</div></p>
+            <p>{Math.round(readingTime(body).minutes)} min read</div></p>
         <div class="flex flex-row gap-2">
             {tags.map((tag: string) => 
                 <span class="text-purple-500"># {tag}</span>
