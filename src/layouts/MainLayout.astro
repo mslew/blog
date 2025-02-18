@@ -20,14 +20,15 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class="w-full h-screen grid grid-cols-10 grid-rows-10">
-			<div class="left-side row-span-10"></div>
-			<div class="nav col-span-8 row-span-1 flex flex-row justify-center">
+		<div class="w-full h-full">
+			<div class="flex flex-row justify-center">
 				<Nav/>
 			</div>
-			<div class="right-side row-span-10 "></div>
-			<div class="col-span-8 row-span-10 p-8 justify-self-center mt-12">
+			<div class="flex flex-col pt-12 justify-self-center w-1/2 h-full pb-24">
 				<slot/>
+			</div>
+			<div class="flex flex-row w-full justify-center border pb-6">
+				<div class="flex flex-row border ">Socials</div>
 			</div>
 		</div>
 	</body>
