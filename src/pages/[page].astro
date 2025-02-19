@@ -35,13 +35,20 @@ let sortedPosts = posts ? posts.sort(
 ) : [];
 
 const { page, postsPerPage, numberOfPages } = Astro.props;
+
+const prevPage = page - 1 > 0 ? page - 1 : null;
+const nextPage = page + 1 <= numberOfPages ? page + 1 : null;
+const prevDisabled = prevPage ? "pointer-events-auto text-slate-300" : "pointer-events-none text-slate-500 border-slate-500";
+const nextDisabled = nextPage ? "pointer-events-auto text-slate-300" : "pointer-events-none text-slate-500 border-slate-500";
 ---
 
 <MainLayout title={`Blogs Page ${page}`}>
     <DisplayPosts posts={sortedPosts.slice((page-1) * postsPerPage, page * postsPerPage)} tags={tags} />
     <div class="flex flex-row items-center justify-center gap-4 text-xl pt-12">
+        <a href={`/${prevPage}`} class={`border p-2 pr-4 pl-4 rounded-xl text-sm hover:bg-slate-500 ${prevDisabled}`} href={`/${prevPage}`}>&#60; Prev</a>
         {Array.from({length: numberOfPages}).map((_, i) => (
-            <a href={`/${i + 1}`} class="text-slate-500 hover:text-slate-300 hover:underline">{i + 1}</a>
+            <a href={`/${i + 1}`} class="text-slate-300 p-2 rounded-xl hover:bg-slate-500">{i + 1}</a>
         ))}
+        <a href={`/${nextPage}`} class={`border p-2 pr-4 pl-4  rounded-xl text-sm hover:bg-slate-500 ${nextDisabled}`}>Next &#62;</a>
     </div>
 </MainLayout>
