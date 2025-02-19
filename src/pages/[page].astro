@@ -47,8 +47,8 @@ const nextDisabled = nextPage ? "pointer-events-auto text-slate-300" : "pointer-
 let previousArrowFill = prevPage ? "fill-white" : "fill-slate-500";
 let nextArrowFill = nextPage ? "fill-white" : "fill-slate-500";
 
-const firstDisabled = prevPage ? "pointer-events-auto text-slate-300" : "pointer-events-none text-slate-500 border-slate-500";
-const lastDisabled = nextPage ? "pointer-events-auto text-slate-300" : "pointer-events-none text-slate-500 border-slate-500";
+const firstDisabled = page === 1 ? "pointer-events-none text-slate-500 border-slate-500" : "pointer-events-auto text-slate-300";
+const lastDisabled = page === numberOfPages ? "pointer-events-none text-slate-500 border-slate-500" : "pointer-events-auto text-slate-300";
 let firstArrowFill = page === 1 ? "fill-slate-500" : "fill-white";
 let lastArrowFill = page === numberOfPages ? "fill-slate-500" : "fill-white";
 ---
@@ -56,13 +56,13 @@ let lastArrowFill = page === numberOfPages ? "fill-slate-500" : "fill-white";
 <MainLayout title={`Blogs Page ${page}`}>
     <DisplayPosts posts={sortedPosts.slice((page-1) * postsPerPage, page * postsPerPage)} tags={tags} />
     <div class="flex flex-row items-center justify-center gap-4 text-xl pt-12">
-        <a href={`/${1}`} class={`button ${firstDisabled}`}><LeftAngles class={`w-6 ${firstArrowFill}`} /> First</a>
-        <a href={`/${prevPage}`} class={`button ${prevDisabled}`} href={`/${prevPage}`}><LeftAngle class={`w-6 ${previousArrowFill}`} /> Prev</a>
+        <a href={`/${1}`} class={`button ${firstDisabled}`}><LeftAngles class={`w-6 h-6 ${firstArrowFill}`} /> First</a>
+        <a href={`/${prevPage}`} class={`button ${prevDisabled}`} href={`/${prevPage}`}><LeftAngle class={`w-6 h-6 ${previousArrowFill}`} /> Prev</a>
         {Array.from({length: numberOfPages}).map((_, i) => (
             <a href={`/${i + 1}`} class="text-slate-300 p-2 rounded-xl hover:bg-slate-500">{i + 1}</a>
         ))}
-        <a href={`/${nextPage}`} class={`button ${nextDisabled}`}>Next <RightAngle class={`w-6 ${nextArrowFill}`} /></a>
-        <a href={`/${numberOfPages}`} class={`button ${lastDisabled}`}>Last <RightAngles class={`w-6 ${lastArrowFill}`} /></a>
+        <a href={`/${nextPage}`} class={`button ${nextDisabled}`}>Next <RightAngle class={`w-6 h-6 ${nextArrowFill}`} /></a>
+        <a href={`/${numberOfPages}`} class={`button ${lastDisabled}`}>Last <RightAngles class={`w-6 h-6 ${lastArrowFill}`} /></a>
     </div>
 </MainLayout>
 <style lang="postcss">
