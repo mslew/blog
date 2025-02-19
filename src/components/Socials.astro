@@ -1,0 +1,33 @@
+---
+import LinkedIn from "./icons/LinkedIn.astro";
+import Twitter from "./icons/X.astro";
+import Github from "./icons/Github.astro";
+import RSS from "./icons/RSS.astro";
+import Mail from "./icons/Mail.astro";
+---
+<div class="flex flex-row gap-4 items-center">
+    <a class="link" href="https://www.linkedin.com/in/maximuslewis/" target="_blank" rel="noopener noreferrer">
+        <LinkedIn class="w-8 h-8 fill-slate-700"/>
+    </a>
+    <a class="link" href="https://twitter.com/maxslewis" target="_blank" rel="noopener noreferrer">
+        <Twitter class="w-8 h-8 fill-slate-700"/>
+    </a>
+    <a class="link" href="https://github.com/mslew" target="_blank" rel="noopener noreferrer">
+        <Github class="w-8 h-8 fill-slate-700"/>
+    </a>
+    <a class="link" href="" target="_blank" rel="noopener noreferrer">
+        <RSS class="w-8 h-8 fill-slate-700"/>
+    </a>
+    <a class="link" href="mailto:mlew3223@gmail.com" target="_blank" rel="noopener noreferrer">
+        <Mail class="w-8 h-8 fill-slate-700"/>
+    </a>
+</div>
+
+<style lang="postcss">
+    .link {
+        @apply border border-slate-700 p-2 rounded-xl hover:bg-slate-500;
+    }
+    .icon {
+        @apply w-8 h-8 fill-slate-700;
+    }
+</style>

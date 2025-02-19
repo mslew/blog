@@ -1,23 +1,4 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro'
-import DisplayPosts from '../components/DisplayPosts.astro';
-import { getCollection } from 'astro:content';
-const posts = await getCollection('posts');
-const tags = posts.reduce<Record<string, typeof posts>>((allTags, post) => {
-    const postTags = post.data.tags;
-    if (postTags) {
-        postTags.forEach((tag) => {
-            if (!allTags[tag]){
-                allTags[tag] = [];
-            }
-            allTags[tag].push(post);
-        });
-    }
-    return allTags;
-}, {});
-let sortedPosts = posts ? posts.sort(
-    (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-) : [];
 /**
  * TODO:
  * 1. Consider not cutting off images when viewing post.
@@ -25,6 +6,3 @@ let sortedPosts = posts ? posts.sort(
  * 5. Consider adding a side bar to the blog page that shows the headings for each section.
  */
 ---
-<MainLayout title='Max Lewis Blog'> 
-    <DisplayPosts posts={sortedPosts} tags={tags} />
-</MainLayout>
