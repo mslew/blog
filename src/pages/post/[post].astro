@@ -28,9 +28,9 @@ sortedPosts.map((listPost, index) => {
     }
 })
 
-const { Content } = await render(post)
+const { Content, headings } = await render(post)
 ---
 
-<PostLayout content={post.data} nextPrevious={nextPrevious} body={post.body}>
+<PostLayout content={post.data} nextPrevious={nextPrevious} body={post.body} headings={headings}>
     <Content />
 </PostLayout>
