@@ -29,12 +29,14 @@ let sortedPostsByYear = Object.keys(postsByYear).sort((a, b) => parseInt(b) - pa
     <Tag tag={tag} count={tags[tag].length} disabled={"pointer-events-auto"} />
   ) : <span>Posts Tagged with <Tag tag={tags} disabled={"pointer-events-none"}/></span>}
 </div>
-{Object.keys(sortedPostsByYear).length > 0 &&
-    sortedPostsByYear.map((year) => (
-    <h2 class="text-3xl text-left w-3/4 self-center pb-4 pt-4">{year}</h2>
-    <div class="flex flex-col gap-4 items-center w-full h-full">
-    {postsByYear[year].map((post) => (
-        <PostCard {...post.data} body={post.body} />
-    ))}
-    </div>
-))}
+<div class="w-1/2 place-self-center">
+  {Object.keys(sortedPostsByYear).length > 0 &&
+      sortedPostsByYear.map((year) => (
+      <h2 class="text-3xl text-left w-3/4 self-center pb-4 pt-4 place-self-center">{year}</h2>
+      <div class="flex flex-col gap-4 items-center w-full h-full">
+      {postsByYear[year].map((post) => (
+          <PostCard {...post.data} body={post.body} />
+      ))}
+      </div>
+  ))}
+</div>
