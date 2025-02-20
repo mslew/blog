@@ -10,7 +10,13 @@ interface heading {
     <p>Table of Contents</p>
     {headings.map((heading: heading) => 
         <div class="flex flex-row items-start gap-2 w-full" style={`padding-left: ${heading.depth * 15}px`}>
-            <a href={`#${heading.text.toLowerCase().replaceAll(" ", "-")}`} class="text-slate-500 hover:text-white">{heading.text}</a>
+            <button onclick={`document.getElementById('${heading.slug}').scrollIntoView({ behavior: 'smooth' })`} class="text-slate-500 hover:text-white scroll-smooth">{heading.text}</button>
         </div>
     )}
 </div>
+
+<style>
+    a {
+        scroll-behavior: smooth;
+    }
+</style>
