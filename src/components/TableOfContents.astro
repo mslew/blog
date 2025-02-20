@@ -6,13 +6,11 @@ interface heading {
     text: string;
 }
 ---
-<div class="flex flex-col gap-4 w-full border">
+<div class="flex flex-col gap-4 w-full border border-red-500">
     <p>Table of Contents</p>
     {headings.map((heading: heading) => 
-        <div class="flex flex-row items-center gap-2 w-full">
-            <div class="w-full">
-                <a href={`#${heading.text.toLowerCase().replaceAll(" ", "-")}`} class="text-slate-500 hover:text-white">{heading.text}</a>
-            </div>
+        <div class="flex flex-row items-start gap-2 w-full" style={`padding-left: ${heading.depth * 15}px`}>
+            <a href={`#${heading.text.toLowerCase().replaceAll(" ", "-")}`} class="text-slate-500 hover:text-white">{heading.text}</a>
         </div>
     )}
 </div>

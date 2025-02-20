@@ -34,7 +34,6 @@ let previousDisabled = previousPost ? "pointer-events-auto" : "pointer-events-no
 let nextDisabled = nextPost ? "pointer-events-auto" : "pointer-events-none text-slate-500 border-slate-500";
 let previousArrowFill = previousPost ? "fill-white" : "fill-slate-500";
 let nextArrowFill = nextPost ? "fill-white" : "fill-slate-500";
-console.log(headings)
 ---
 <MainLayout title={title}>
     <div class="flex flex-col gap-4 items-center text-center w-1/2 place-self-center">
@@ -77,11 +76,11 @@ console.log(headings)
                 <Tag tag={tag} disabled={"pointer-events-auto"}/>
             )}
         </div>
-        <div class="flex flex-row gap-8 w-[150%] place-self-center border">
+        <div class="flex flex-row gap-8 w-[150%] place-self-center">
             <aside class="w-1/4 h-full flex flex-col">
                 <TableOfContents headings={headings}/>
             </aside>
-            <div class="body-text prose prose-light flex flex-col w-1/2 text-start border">
+            <div class="body-text prose prose-light flex flex-col w-1/2 text-start">
                 <slot/>
             </div>
         </div>
