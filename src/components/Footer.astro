@@ -1,0 +1,19 @@
+---
+import Socials from "./Socials.astro"
+const currentYear = new Date().getFullYear();
+---
+<footer class="flex flex-row w-full justify-center pt-12 pb-6">	
+    <div class="flex flex-col items-center gap-4 w-2/3">
+        <Socials />
+        <div class="flex flex-col gap-3 justify-center items-center">
+            <p>&copy; {currentYear} All rights reserved.</p> 
+            <p><a class="link" href="https://github.com/mslew/blog" target="_blank">Built by Max Lewis</a> with <a class="link" href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></p>
+        </div>
+    </div>
+</footer>
+
+<style lang="postcss">
+    .link{
+		@apply text-purple-500 hover:underline
+	}
+</style>

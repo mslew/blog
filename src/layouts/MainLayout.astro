@@ -1,13 +1,12 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav.astro';
-import Socials from '../components/Socials.astro';
+import Footer from '../components/Footer.astro';
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
-const currentYear = new Date().getFullYear();
 ---
 
 <!doctype html>
@@ -23,27 +22,14 @@ const currentYear = new Date().getFullYear();
 	</head>
 	<body>
 		<div class="flex flex-col justify-self-center justify-between w-full h-full">
-			<div class="flex flex-row w-1/2 place-self-center">
-				<Nav/>
-			</div>
-			<div class="flex flex-col pt-12 flex-grow w-full place-self-center"><slot/></div>
-			<div class="flex flex-row w-full justify-center pt-12 pb-6">	
-				<div class="flex flex-col items-center gap-4 w-2/3">
-					<Socials />
-					<div class="flex flex-col gap-3 justify-center items-center">
-						<p>&copy; {currentYear} All rights reserved.</p> 
-						<p><a class="link" href="https://github.com/mslew/blog" target="_blank">Built by Max Lewis</a> with <a class="link" href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a></p>
-					</div>
-				</div>
-			</div>
+			<Nav/>
+			<main class="flex flex-col pt-12 flex-grow w-full place-self-center"><slot/></main>
+			<Footer />
 		</div>
 	</body>
 </html>
-<style is:global lang="postcss">
+<style>
 	html {
 		@apply bg-slate-900 text-white;
-	}
-	.link{
-		@apply text-purple-500 hover:underline
 	}
 </style>

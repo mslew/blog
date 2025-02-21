@@ -3,12 +3,11 @@ import MainLayout from "./MainLayout.astro";
 import { Image } from "astro:assets";
 import dateFormat from "dateformat";
 import me from '../../public/images/me-small.jpg'
-import LeftArrow from "../components/icons/LeftArrow.astro";
 import UpArrow from "../components/UpArrow.astro";
-import RightArrow from "../components/icons/RightArrow.astro";
 import readingTime from "reading-time";
 import Tag from "../components/Tag.astro";
 import TableOfContents from "../components/TableOfContents.astro";
+import PostNavigation from "../components/PostNavigation.astro";
 
 let {
     content: {
@@ -30,10 +29,6 @@ let {
     body,
     headings
 } = Astro.props;
-let previousDisabled = previousPost ? "pointer-events-auto" : "pointer-events-none text-slate-500 border-slate-500";
-let nextDisabled = nextPost ? "pointer-events-auto" : "pointer-events-none text-slate-500 border-slate-500";
-let previousArrowFill = previousPost ? "fill-white" : "fill-slate-500";
-let nextArrowFill = nextPost ? "fill-white" : "fill-slate-500";
 ---
 <MainLayout title={title}>
     <div class="flex flex-col gap-4 items-center text-center w-1/2 place-self-center">
@@ -52,24 +47,7 @@ let nextArrowFill = nextPost ? "fill-white" : "fill-slate-500";
                 </div>
             </div>
             {updatedDate && <p><em>Updated {dateFormat(updatedDate, "UTC:mmmm dS, yyyy")}</em></p>}
-            <div class="flex flex-row w-full justify-center">
-                <div class="flex flex-row w-2/3 gap-4 justify-center">
-                    <a href={previousPost ? `/post/${previousPost.data.slug}` : ""} class={`group flex flex-row items-center border rounded-xl hover:bg-slate-500 w-1/2 h-full p-2 ${previousDisabled}`}>
-                        <LeftArrow class={`w-16 pl-4 pr-4 ${previousArrowFill}`}/>
-                        <div class="overflow-hidden whitespace-nowrap truncate w-full mr-2">
-                            {previousPost && <div class="pt-1">Previous Post</div>}
-                            <span>{previousPost ? previousPost.data.title : "Newest Post!"}</span>
-                        </div>
-                    </a>
-                    <a href={nextPost ? `/post/${nextPost.data.slug}` : ""} class={`group flex flex-row items-center border rounded-xl hover:bg-slate-500 w-1/2 h-full p-2 ${nextDisabled}`}>
-                        <div class="truncate text-ellipsis w-full ml-2">
-                            {nextPost && <div class="">Next Post</div>}
-                            <span>{nextPost ? nextPost.data.title : "Oldest Post!"}</span>
-                        </div>
-                        <RightArrow class={`w-16 pl-4 pr-4 ${nextArrowFill}`} />
-                    </a>
-                </div>
-            </div>
+            <PostNavigation previousPost={previousPost} nextPost={nextPost}/>
         </div>
         <div class="flex flex-row flex-wrap gap-4 w-3/4 justify-center pt-4 pb-4">
             {tags.map((tag: string) => 
@@ -77,12 +55,12 @@ let nextArrowFill = nextPost ? "fill-white" : "fill-slate-500";
             )}
         </div>
         <div class="flex flex-row gap-8 w-[150%] place-self-center">
-            <aside class="w-1/4 h-full flex flex-col">
+            <aside class="w-1/4 h-full flex flex-col sticky top-8">
                 <TableOfContents headings={headings}/>
             </aside>
-            <div class="body-text prose prose-light flex flex-col w-1/2 text-start">
-                <slot/>
-            </div>
+            <article class="prose prose-light flex flex-col w-1/2 text-start">
+                <slot />
+            </article>
         </div>
     </div>
 </MainLayout>

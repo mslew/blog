@@ -1,22 +1,75 @@
 ---
+import TableOfContentsHeading from "./TableOfContentsHeading.astro";
 const { headings } = Astro.props;
-interface heading {
+interface Heading {
     depth: number;
     slug: string;
     text: string;
+    subheadings: Heading[];
 }
+function buildToc(){
+        const toc: Heading[] = []
+        const stack: Heading[] = []
+
+        headings.forEach((h: Heading) => {
+            const heading = { ...h, subheadings: [] }
+
+            while (stack.length > 0 && stack[stack.length - 1].depth >= heading.depth) {
+                stack.pop()
+            }
+
+            if (stack.length === 0) {
+                toc.push(heading)
+            } else {
+                stack[stack.length - 1].subheadings.push(heading)
+            }
+            stack.push(heading)
+        })
+        return toc
+    }
+const toc = buildToc();
 ---
-<div class="flex flex-col gap-4 w-full border border-red-500">
+<div class="flex flex-col gap-4 w-full">
     <p>Table of Contents</p>
-    {headings.map((heading: heading) => 
-        <div class="flex flex-row items-start gap-2 w-full" style={`padding-left: ${heading.depth * 15}px`}>
-            <button onclick={`document.getElementById('${heading.slug}').scrollIntoView({ behavior: 'smooth' })`} class="text-slate-500 hover:text-white scroll-smooth">{heading.text}</button>
-        </div>
-    )}
+    <ul id="toc-container" class="flex flex-col gap-2">
+        {toc.map((heading: Heading) => 
+            <TableOfContentsHeading heading={heading} />
+        )}
+    </ul>
 </div>
 
-<style>
-    a {
-        scroll-behavior: smooth;
+<script define:vars={{ headings }}>
+    function setupToc(){
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
+
+        const observer = new IntersectionObserver(
+            (sections) => {
+                sections.forEach((section) => {
+                    const heading = section.target.querySelector('h2, h3, h4, h5, h6')
+                    if (!heading) return
+
+                    const id = heading.getAttribute('id')
+                    const link = document.querySelector(
+                    `#toc-container button[id="ToC${id}"]`,
+                    )
+                    if (!link) return
+                    const addRemove = section.isIntersecting ? 'add' : 'remove'
+                    section.isIntersection ? console.log("IM INTERSECTING") : ''
+                    link.classList[addRemove]('bg-slate-300')
+                    })
+                },
+            {
+                rootMargin: `-${headerHeight}px 0px 0px 0px`,
+            },
+    )
+
+        const sections = document.querySelectorAll('.heading')
+        sections.forEach((section) => {
+            observer.observe(section)
+        })
     }
-</style>
+
+    document.addEventListener('astro:page-load', setupToc)
+    document.addEventListener('astro:after-swap', setupToc)
+</script>
