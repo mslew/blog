@@ -1,14 +1,15 @@
 ---
+import { twMerge } from 'tailwind-merge'
 const { heading } = Astro.props;
 ---
-<li class="flex flex-row items-start gap-2 w-full" style={`padding-left: ${heading.depth * 15}px`}>
+<li class="flex flex-row items-start w-full" style={`padding-left: ${heading.depth * 10}px`}>
     <button id={`ToC${heading.slug}`} 
             onclick={`document.getElementById('${heading.slug}').scrollIntoView({ behavior: 'smooth' })`} 
-            class="text-slate-500 hover:text-white border-l pl-2">
+            class={twMerge("text-slate-500 hover:text-white")}>
             {heading.text}
     </button>
 </li>
-<ul class="flex flex-col gap-2">
+<ul class="flex flex-col gap-1">
     {heading.subheadings.map((subheading: any) => 
         <Astro.self heading={subheading} />
     )}

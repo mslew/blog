@@ -1,7 +1,7 @@
 ---
 import TableOfContentsHeading from "./TableOfContentsHeading.astro";
 const { headings } = Astro.props;
-interface Heading {
+export interface Heading {
     depth: number;
     slug: string;
     text: string;
@@ -29,9 +29,9 @@ function buildToc(){
     }
 const toc = buildToc();
 ---
-<div class="flex flex-col gap-4 w-full">
-    <p>Table of Contents</p>
-    <ul id="toc-container" class="flex flex-col gap-2">
+<div class="flex flex-col w-full">
+    <p class="text-slate-300">Table of Contents</p>
+    <ul id="toc-container" class="flex flex-col gap-1">
         {toc.map((heading: Heading) => 
             <TableOfContentsHeading heading={heading} />
         )}
@@ -55,8 +55,9 @@ const toc = buildToc();
                     )
                     if (!link) return
                     const addRemove = section.isIntersecting ? 'add' : 'remove'
-                    section.isIntersection ? console.log("IM INTERSECTING") : ''
-                    link.classList[addRemove]('bg-slate-300')
+                    const removeOpacity = !section.isIntersecting ? 'add' : 'remove'
+                    link.classList[removeOpacity]('text-opacity-25')
+                    link.classList[addRemove]('font-bold text-opacity-100')
                     })
                 },
             {
