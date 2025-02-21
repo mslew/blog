@@ -57,7 +57,7 @@ const toc = buildToc();
                     const addRemove = section.isIntersecting ? 'add' : 'remove'
                     const removeOpacity = !section.isIntersecting ? 'add' : 'remove'
                     link.classList[removeOpacity]('text-opacity-25')
-                    link.classList[addRemove]('font-bold text-opacity-100')
+                    link.classList[addRemove]('font-bold', 'text-opacity-100')
                     })
                 },
             {
