@@ -106,6 +106,18 @@ export default defineConfig({
             }
           },
           {
+            type: "boolean",
+            name: "draft",
+            label: "Draft",
+            required: false,
+          },
+          {
+            type: "boolean",
+            name: "hidden",
+            label: "Hidden",
+            required: false,
+          },
+          {
             type: "rich-text",
             name: "body",
             label: "Body",

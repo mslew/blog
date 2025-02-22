@@ -22,9 +22,9 @@ let {
         },
         updatedDate,
     },
-    nextPrevious:{
-        previousPost,
-        nextPost
+    adjacentPosts:{
+        prev,
+        next
     },
     body,
     headings
@@ -47,7 +47,7 @@ let {
                 </div>
             </div>
             {updatedDate && <p><em>Updated {dateFormat(updatedDate, "UTC:mmmm dS, yyyy")}</em></p>}
-            <PostNavigation previousPost={previousPost} nextPost={nextPost}/>
+            <PostNavigation prevPost={prev} nextPost={next}/>
         </div>
         <div class="flex flex-row flex-wrap gap-4 w-3/4 justify-center pt-4 pb-4">
             {tags.map((tag: string) => 

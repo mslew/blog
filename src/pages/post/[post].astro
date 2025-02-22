@@ -1,10 +1,28 @@
 ---
-import { getCollection, render} from "astro:content";
+import { getCollection, render, type CollectionEntry} from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
-const posts = await getCollection('posts');
+
+type Post = CollectionEntry<'posts'>;
+
+const allPosts = await getCollection('posts');
+const posts = allPosts
+    .filter((post) => !post.data.draft)
+    .sort(
+        (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
+    );
+const visiblePosts = posts.filter((post) => !post.data.hidden);
+
+function getAdjacentPosts(currId: string, posts: Post[]){
+    const index = posts.findIndex((post) => post.id === currId);
+    console.log(index);
+    return {
+        prev: index > 0 ? posts[index - 1] : null,
+        next: index >= 0 && index < posts.length - 1 ? posts[index + 1] : null
+    }
+}
 
 export async function getStaticPaths() {
-    const posts = await getCollection('posts');
+    const posts = await getCollection('posts', ({ data }) => !data.draft || !data.hidden);
     return posts.map((post) => {
         return {
             params: { post: post.data.slug.trim() },
@@ -14,23 +32,11 @@ export async function getStaticPaths() {
 }
 export const prerender = true
 
-let sortedPosts = posts ? posts.sort(
-    (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-) : [];
-
 const { post } = Astro.props;
-let nextPrevious = {}
-sortedPosts.map((listPost, index) => {
-    if (listPost.id === post.id){
-        const previousPost = index > 0 ? sortedPosts[sortedPosts.indexOf(listPost) - 1]: null;
-        const nextPost = index < sortedPosts.length - 1 ? sortedPosts[sortedPosts.indexOf(listPost) + 1]: null;
-        nextPrevious = {previousPost,nextPost}
-    }
-})
-
+const adjacentPosts = getAdjacentPosts(post.id, visiblePosts);
 const { Content, headings } = await render(post)
 ---
 
-<PostLayout content={post.data} nextPrevious={nextPrevious} body={post.body} headings={headings}>
+<PostLayout content={post.data} adjacentPosts={adjacentPosts} body={post.body} headings={headings}>
     <Content />
 </PostLayout>

@@ -18,4 +18,5 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [sectionize, rehypeHeadingIds]
   },
+  site: "https://blog.maxlewis.dev",
 });
