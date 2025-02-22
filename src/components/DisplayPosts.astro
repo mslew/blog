@@ -23,12 +23,12 @@ const postsByYear = posts.reduce((acc: PostsByYear, post) => {
 let sortedPostsByYear = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
-<div class="flex flex-row flex-wrap w-1/2 gap-2 self-center justify-center pb-12">
+<div class="w-1/2 -xl:w-3/4 -sm:w-[95%] flex flex-row flex-wrap gap-2 self-center justify-center pb-12 border">
   {typeof tags === 'object' && !Array.isArray(tags) ? Object.keys(tags).map((tag: string) =>
     <Tag tag={tag} count={tags[tag].length} disabled={"pointer-events-auto"} />
   ) : <span>Posts Tagged with <Tag tag={tags} disabled={"pointer-events-none"}/></span>}
 </div>
-<div class="w-1/2 place-self-center">
+<div class="w-1/2 -xl:w-3/4 -sm:w-[95%] place-self-center border">
   {Object.keys(sortedPostsByYear).length > 0 &&
       sortedPostsByYear.map((year) => (
       <h2 class="text-3xl text-left w-3/4 self-center pb-4 pt-4 place-self-center">{year}</h2>

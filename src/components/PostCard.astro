@@ -9,13 +9,13 @@ const { slug, title, description, tags, pubDate, author, image: { url, alt } } =
 const { body } = Astro.props;
 ---
 
-<a class="text-slate-300 bg-slate-800 rounded-xl shadow-lg transform hover:-translate-y-2 delay-100 duration-300 w-3/4" href={`/post/${slug}`}>
+<a class="text-slate-300 bg-slate-800 rounded-xl shadow-lg transform hover:-translate-y-2 delay-100 duration-300 w-2/3" href={`/post/${slug}`}>
     <div class="flex flex-row pt-4 pr-4 pb-4 pl-4 items-center">
         <Image layout="responsive" fit="cover" width={200} height={200} src={url} alt={alt} class="rounded-xl"/>
         <div class="text-left flex flex-col p-4 gap-2">
             <p class="text-3xl">{title}</p>
             <p class="">{description}</p>
-            <div class="flex flex-row gap-2 items-center">
+            <div class="flex flex-row gap-2">
                 <Image class="rounded-full w-8 h-8" src={me} alt="me"/>
                 <p>{author}</p>
                 <p>|</p>
