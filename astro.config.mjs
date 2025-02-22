@@ -13,10 +13,10 @@ export default defineConfig({
     responsiveImages: true,
   },
   redirects: {
-    "/": "/1",
+    "/": "/posts/1",
   },
   markdown: {
-    rehypePlugins: [sectionize, rehypeHeadingIds]
+    rehypePlugins: [sectionize, rehypeHeadingIds],
   },
   site: "https://blog.maxlewis.dev",
 });

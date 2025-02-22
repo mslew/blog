@@ -21,18 +21,20 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class="flex flex-col justify-self-center justify-between w-full h-full">
+		<div class="flex flex-col justify-self-center justify-between w-screen h-full">
 			<Nav/>
-			<main class="flex flex-col pt-12 flex-grow w-full place-self-center"><slot/></main>
+			<main class="flex flex-col pt-12 flex-grow w-full place-self-center border"><slot/></main>
 			<Footer />
 		</div>
 	</body>
 </html>
-<style>
+
+<style lang="postcss">
 	html {
 		@apply bg-slate-900 text-white;
 	}
 </style>
+
 <script>
 	function setupPadding() {
 		const header = document.querySelector('header');
