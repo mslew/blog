@@ -33,3 +33,15 @@ const { title } = Astro.props;
 		@apply bg-slate-900 text-white;
 	}
 </style>
+<script>
+	function setupPadding() {
+		const header = document.querySelector('header');
+		const main = document.querySelector('main');
+		if (main) {
+			const headerHeight = header ? header.offsetHeight : 0;
+			main.style.paddingTop = `${headerHeight + 48}px`;
+		}
+	}
+	document.addEventListener('astro:page-load', setupPadding)
+    document.addEventListener('astro:after-swap', setupPadding)
+</script>

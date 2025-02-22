@@ -67,3 +67,15 @@ let {
 <button id="scrollTopBtn" class="fixed right-4 bottom-4" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
     <UpArrow class={"fill-white w-16 h-16 border p-4 rounded-3xl hover:bg-slate-500"}/>
 </button>
+
+<script>
+    function setupTocOffset(){
+        const header = document.querySelector('header');
+		const main = document.querySelector('aside');
+		if (main) {
+			const headerHeight = header ? header.offsetHeight : 0;
+			main.style.paddingTop = `${headerHeight}px`;
+		}
+    }
+    document.addEventListener('astro:page-load', setupTocOffset)
+    document.addEventListener('astro:after-swap', setupTocOffset)
