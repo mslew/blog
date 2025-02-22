@@ -1,0 +1,87 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { PaginateFunction } from 'astro'
+import MainLayout from "../../layouts/MainLayout.astro";
+import DisplayPosts from "../../components/DisplayPosts.astro";
+import RightAngle from "../../components/icons/RightAngle.astro";
+import RightAngles from "../../components/icons/RightAngles.astro";
+import LeftAngle from "../../components/icons/LeftAngle.astro";
+import LeftAngles from "../../components/icons/LeftAngles.astro";
+
+type Post = CollectionEntry<'posts'>;
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+
+export async function getStaticPaths({ paginate }: {paginate: PaginateFunction}) {
+    const posts = await getCollection('posts', ({ data }) => !data.draft);
+    return paginate(
+        posts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()), 
+        { pageSize: 5 });
+}
+
+const { page } = Astro.props;
+
+const postsByYear = page.data.reduce(
+    (acc: Record<string, CollectionEntry<'posts'>[]>, post) => {
+        const year = post.data.pubDate.getFullYear().toString()
+        ;(acc[year] ??= []).push(post)
+        return acc
+    },
+    {},
+)
+
+const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a))
+
+export const prerender = true
+
+function getTags(posts: Post[]){
+    const tags = posts.reduce((allTags: { [key: string]: Post[] }, post) => {
+        const postTags = post.data.tags;
+        if (postTags) {
+            postTags.forEach((tag: string) => {
+                if (!allTags[tag]) {
+                    allTags[tag] = [];
+                }
+                allTags[tag].push(post);
+            });
+        }
+        return allTags;
+    }, {});
+    return tags;
+}
+
+const tags = getTags(posts);
+
+//const prevPage = page - 1 > 0 ? page - 1 : null;
+//const nextPage = page + 1 <= numberOfPages ? page + 1 : null;
+
+//const prevDisabled = prevPage ? "pointer-events-auto text-slate-300" : "pointer-events-none text-slate-500 border-slate-500";
+//const nextDisabled = nextPage ? "pointer-events-auto text-slate-300" : "pointer-events-none text-slate-500 border-slate-500";
+//let previousArrowFill = prevPage ? "fill-white" : "fill-slate-500";
+//let nextArrowFill = nextPage ? "fill-white" : "fill-slate-500";
+
+//const firstDisabled = page === 1 ? "pointer-events-none text-slate-500 border-slate-500" : "pointer-events-auto text-slate-300";
+//const lastDisabled = page === numberOfPages ? "pointer-events-none text-slate-500 border-slate-500" : "pointer-events-auto text-slate-300";
+//let firstArrowFill = page === 1 ? "fill-slate-500" : "fill-white";
+//let lastArrowFill = page === numberOfPages ? "fill-slate-500" : "fill-white";
+---
+
+<MainLayout title={`Blogs Page ${page}`}>
+    <DisplayPosts posts={page.data} tags={tags} />
+    <!--<DisplayPosts posts={sortedPosts.slice((page-1) * postsPerPage, page * postsPerPage)} tags={tags} />
+    <div class="flex flex-row items-center justify-center gap-4 text-xl pt-12">
+        <a href={`/${1}`} class={`button ${firstDisabled}`}><LeftAngles class={`w-6 h-6 ${firstArrowFill}`} /> First</a>
+        <a href={`/${prevPage}`} class={`button ${prevDisabled}`} href={`/${prevPage}`}><LeftAngle class={`w-6 h-6 ${previousArrowFill}`} /> Prev</a>
+        {Array.from({length: numberOfPages}).map((_, i) => (
+            <a href={`/${i + 1}`} class="text-slate-300 p-2 rounded-xl hover:bg-slate-500">{i + 1}</a>
+        ))}
+        <a href={`/${nextPage}`} class={`button ${nextDisabled}`}>Next <RightAngle class={`w-6 h-6 ${nextArrowFill}`} /></a>
+        <a href={`/${numberOfPages}`} class={`button ${lastDisabled}`}>Last <RightAngles class={`w-6 h-6 ${lastArrowFill}`} /></a>
+    </div> -->
+</MainLayout>
+
+<style lang="postcss">
+    .button{
+       @apply flex flex-row items-center gap-2 border p-2 pr-4 pl-4 rounded-xl text-sm hover:bg-slate-500 
+    }
+</style>
