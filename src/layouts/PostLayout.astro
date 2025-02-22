@@ -71,11 +71,15 @@ let {
 <script>
     function setupTocOffset(){
         const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
 		const main = document.querySelector('aside');
 		if (main) {
-			const headerHeight = header ? header.offsetHeight : 0;
 			main.style.paddingTop = `${headerHeight}px`;
 		}
+        const headers = document.querySelectorAll('h2, h3, h4, h5, h6');
+        if (!headers) return;
+        headers.forEach(header => (header as HTMLElement).style.scrollMarginTop = `${headerHeight}px`);
+
     }
     document.addEventListener('astro:page-load', setupTocOffset)
     document.addEventListener('astro:after-swap', setupTocOffset)
