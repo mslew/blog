@@ -7,7 +7,7 @@ type Post = CollectionEntry<'posts'>;
 export async function GET(context: APIContext){
     try {
         const blog = (await getCollection('posts')).filter(
-            (post: Post) => !post.data.draft || !post.data.hidden,
+            (post: Post) => !post.data.draft && !post.data.hidden,
         )
         const items = [...blog].sort(
             (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
@@ -16,7 +16,7 @@ export async function GET(context: APIContext){
         return rss({
             title: 'Max Lewis Blog',
             description: 'Blogs from Max Lewis',
-            site: context.site,
+            site: context.site ?? 'https://blog.maxlewis.dev',
             items: items.map((item) => ({
                 title: item.data.title,
                 description: item.data.description,

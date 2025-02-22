@@ -14,7 +14,6 @@ const visiblePosts = posts.filter((post) => !post.data.hidden);
 
 function getAdjacentPosts(currId: string, posts: Post[]){
     const index = posts.findIndex((post) => post.id === currId);
-    console.log(index);
     return {
         prev: index > 0 ? posts[index - 1] : null,
         next: index >= 0 && index < posts.length - 1 ? posts[index + 1] : null
@@ -22,7 +21,7 @@ function getAdjacentPosts(currId: string, posts: Post[]){
 }
 
 export async function getStaticPaths() {
-    const posts = await getCollection('posts', ({ data }) => !data.draft || !data.hidden);
+    const posts = await getCollection('posts', ({ data }) => !data.draft);
     return posts.map((post) => {
         return {
             params: { post: post.data.slug.trim() },
