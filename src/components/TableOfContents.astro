@@ -29,13 +29,13 @@ function buildToc(){
     }
 const toc = buildToc();
 ---
-<div class="flex flex-col w-full border rounded-xl border-slate-400 pb-2 pt-2">
+<div class="flex flex-col w-full h-full border rounded-xl border-slate-400 pb-2 pt-2">
     <div class="flex flex-row w-full justify-center items-center">
         <hr class="w-6 border-slate-400"/>
-        <p class="text-slate-400 pl-4 pr-4 text-lg ">Table of Contents</p>
+        <p class="text-slate-400 pl-4 pr-4 text-lg">Table of Contents</p>
         <hr class="w-6 border-slate-400"/>
     </div>
-    <ul id="toc-container" class="flex flex-col gap-[2px]">
+    <ul id="toc-container" class="flex flex-col gap-[2px] overflow-y-scroll">
         {toc.map((heading: Heading) => 
             <TableOfContentsHeading heading={heading} />
         )}
