@@ -55,12 +55,9 @@ let {
             )}
         </div>
         <div class="flex flex-row gap-8 xl:w-[150%] place-self-center -xl:flex-col -xl:w-full -xl:items-center">
-            <aside class="w-1/4 h-full sticky top-8 -xl:hidden">
+            <aside class="w-1/4 h-full xl:sticky xl:top-8 -xl:h-[25vh] -xl:w-1/2 -md:w-[95%]">
                 <TableOfContents headings={headings}/>
             </aside>
-            <div class="h-[25vh] xl:hidden -xl:w-1/2 -md:w-[95%]">
-                <TableOfContents headings={headings}/>
-            </div>
             <article class="prose prose-light flex flex-col w-1/2 -xl:w-3/4 -md:w-[95%] text-start">
                 <slot />
             </article>
@@ -68,7 +65,7 @@ let {
     </>
 </MainLayout>
 <button id="scrollTopBtn" class="fixed right-4 bottom-4" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-    <UpArrow class={"fill-white w-16 h-16 border p-4 rounded-3xl hover:bg-slate-500"}/>
+    <UpArrow class={"fill-white w-16 h-16 border p-4 rounded-3xl lg:hover:bg-slate-500"}/>
 </button>
 
 <script>
@@ -76,9 +73,13 @@ let {
         const header = document.querySelector('header');
         const headerHeight = header ? header.offsetHeight : 0;
 		const aside = document.querySelector('aside');
-		if (aside) {
+        if (!aside) return;
+        const windowWidth = window.innerWidth; //1280 xl screens
+		if (windowWidth > 1280) {
 			aside.style.paddingTop = `${headerHeight}px`;
-		}
+		}else{
+            aside.style.paddingTop = "0px";
+        }
         const headers = document.querySelectorAll('h2, h3, h4, h5, h6');
         if (!headers) return;
         headers.forEach(header => (header as HTMLElement).style.scrollMarginTop = `${headerHeight}px`);
@@ -86,4 +87,5 @@ let {
     }
     document.addEventListener('astro:page-load', setupTocOffset)
     document.addEventListener('astro:after-swap', setupTocOffset)
+    window.addEventListener('resize', setupTocOffset)
 </script>
