@@ -35,7 +35,7 @@ const toc = buildToc();
         <p class="text-slate-400 pl-4 pr-4 text-lg">Table of Contents</p>
         <hr class="w-6 border-slate-400"/>
     </div>
-    <ul id="toc-container" class="flex flex-col gap-[2px] overflow-y-scroll">
+    <ul id="toc-container" class="flex flex-col gap-[2px] -xl:overflow-y-scroll">
         {toc.map((heading: Heading) => 
             <TableOfContentsHeading heading={heading} />
         )}
@@ -60,8 +60,8 @@ const toc = buildToc();
                     if (!link) return
                     const addRemove = section.isIntersecting ? 'add' : 'remove'
                     const removeOpacity = !section.isIntersecting ? 'add' : 'remove'
-                    link.classList[removeOpacity]('text-opacity-75')
-                    link.classList[addRemove]('font-bold', 'text-opacity-100')
+                    link.classList[removeOpacity]('xl:text-opacity-75')
+                    link.classList[addRemove]('xl:font-bold', 'xl:text-opacity-100')
                     })
                 },
             {
