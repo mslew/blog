@@ -13,6 +13,9 @@ export default defineConfig({
   experimental: {
     responsiveImages: true,
   },
+  redirects: {
+    "/": "/posts/1",
+  },
   markdown: {
     rehypePlugins: [sectionize, rehypeHeadingIds],
   },
