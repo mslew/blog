@@ -23,21 +23,25 @@ let firstArrowFill = page.currentPage === 1 ? "fill-slate-500" : "fill-white";
 let lastArrowFill = page.currentPage === page.lastPage ? "fill-slate-500" : "fill-white";
 ---
 <div class="flex flex-row items-center justify-center gap-4 text-xl pt-12 w-1/2 flex-wrap place-self-center -lg:w-3/4 -sm:w-[95%]">
-    <a href={`/posts/${1}`} class={`button ${firstDisabled}`}>
-        <LeftAngles class={`w-6 h-6 ${firstArrowFill}`} />First
-    </a>
-    <a href={`/posts/${prevPage}`} class={`button ${prevDisabled}`} href={`/posts/${prevPage}`}>
-        <LeftAngle class={`w-6 h-6 ${previousArrowFill}`} />Prev
-    </a>
+    <div class="flex flex-row gap-4">
+        <a href={`/posts/${1}`} class={`button ${firstDisabled}`}>
+            <LeftAngles class={`w-6 h-6 ${firstArrowFill}`} />First
+        </a>
+        <a href={`/posts/${prevPage}`} class={`button ${prevDisabled}`} href={`/posts/${prevPage}`}>
+            <LeftAngle class={`w-6 h-6 ${previousArrowFill}`} />Prev
+        </a>
+    </div>
     {Array.from({length: page.lastPage}).map((_, i) => (
         <a href={`/posts/${i + 1}`} class={`text-slate-300 p-2 rounded-xl hover:bg-slate-500 ${i + 1 === page.currentPage ? "border pointer-events-none" : ""}`}>{i + 1}</a>
     ))}
-    <a href={`/posts/${nextPage}`} class={`button ${nextDisabled}`}>
-        Next <RightAngle class={`w-6 h-6 ${nextArrowFill}`} />
-    </a>
-    <a href={`/posts/${page.lastPage}`} class={`button ${lastDisabled}`}>
-        Last <RightAngles class={`w-6 h-6 ${lastArrowFill}`} />
-    </a>
+    <div class="flex flex-row gap-4">
+        <a href={`/posts/${nextPage}`} class={`button ${nextDisabled}`}>
+            Next <RightAngle class={`w-6 h-6 ${nextArrowFill}`} />
+        </a>
+        <a href={`/posts/${page.lastPage}`} class={`button ${lastDisabled}`}>
+            Last <RightAngles class={`w-6 h-6 ${lastArrowFill}`} />
+        </a>
+    </div>
 </div>
 
 <style lang="postcss">
