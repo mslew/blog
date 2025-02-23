@@ -54,10 +54,13 @@ let {
                 <Tag tag={tag} disabled={"pointer-events-auto"}/>
             )}
         </div>
-        <div class="flex flex-row gap-8 w-[150%] place-self-center -xl:flex-col -xl:w-full -xl:items-center">
-            <aside class="w-1/4 h-full flex flex-col xl:sticky -xl:w-1/2 -md:w-3/4 top-8">
+        <div class="flex flex-row gap-8 xl:w-[150%] place-self-center -xl:flex-col -xl:w-full -xl:items-center">
+            <aside class="w-1/4 h-full sticky top-8 -xl:hidden">
                 <TableOfContents headings={headings}/>
             </aside>
+            <div class="h-[25vh] xl:hidden -xl:w-1/2 -md:w-[95%]">
+                <TableOfContents headings={headings}/>
+            </div>
             <article class="prose prose-light flex flex-col w-1/2 -xl:w-3/4 -md:w-[95%] text-start">
                 <slot />
             </article>
@@ -72,9 +75,9 @@ let {
     function setupTocOffset(){
         const header = document.querySelector('header');
         const headerHeight = header ? header.offsetHeight : 0;
-		const main = document.querySelector('aside');
-		if (main) {
-			main.style.paddingTop = `${headerHeight}px`;
+		const aside = document.querySelector('aside');
+		if (aside) {
+			aside.style.paddingTop = `${headerHeight}px`;
 		}
         const headers = document.querySelectorAll('h2, h3, h4, h5, h6');
         if (!headers) return;
@@ -83,3 +86,4 @@ let {
     }
     document.addEventListener('astro:page-load', setupTocOffset)
     document.addEventListener('astro:after-swap', setupTocOffset)
+</script>
