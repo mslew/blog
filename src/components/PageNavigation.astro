@@ -22,7 +22,7 @@ const lastDisabled = page.currentPage === page.lastPage ? INACTIVE_STYLES : ACTI
 let firstArrowFill = page.currentPage === 1 ? "fill-slate-500" : "fill-white";
 let lastArrowFill = page.currentPage === page.lastPage ? "fill-slate-500" : "fill-white";
 ---
-<div class="flex flex-row items-center justify-center gap-4 text-xl pt-12 w-1/2 flex-wrap place-self-center">
+<div class="flex flex-row items-center justify-center gap-4 text-xl pt-12 w-1/2 flex-wrap place-self-center -lg:w-3/4 -sm:w-[95%]">
     <a href={`/posts/${1}`} class={`button ${firstDisabled}`}>
         <LeftAngles class={`w-6 h-6 ${firstArrowFill}`} />First
     </a>
