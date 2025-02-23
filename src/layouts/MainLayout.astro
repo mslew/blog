@@ -1,7 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav.astro';
-import { Code } from 'astro:components';
+import Footer from '../components/Footer.astro';
 interface Props {
 	title: string;
 }
@@ -21,20 +21,29 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<div class="w-full h-screen grid grid-cols-10 grid-rows-10">
-			<div class="left-side row-span-10"></div>
-			<div class="nav col-span-8 row-span-1 flex flex-row justify-center">
-				<Nav/>
-			</div>
-			<div class="right-side row-span-10 "></div>
-			<div class="col-span-8 row-span-10 p-8 justify-self-center mt-12">
-				<slot/>
-			</div>
+		<div class="flex flex-col justify-self-center justify-between w-screen h-full">
+			<Nav/>
+			<main class="flex flex-col pt-12 flex-grow h-full w-full place-self-center"><slot/></main>
+			<Footer />
 		</div>
 	</body>
 </html>
-<style is:global lang="postcss">
+
+<style lang="postcss">
 	html {
-		@apply bg-slate-900 text-white;
+		@apply bg-slate-900 text-white overflow-x-hidden;
 	}
 </style>
+
+<script>
+	function setupPadding() {
+		const header = document.querySelector('header');
+		const main = document.querySelector('main');
+		if (main) {
+			const headerHeight = header ? header.offsetHeight : 0;
+			main.style.paddingTop = `${headerHeight + 48}px`;
+		}
+	}
+	document.addEventListener('astro:page-load', setupPadding)
+    document.addEventListener('astro:after-swap', setupPadding)
+</script>

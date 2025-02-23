@@ -1,39 +1,91 @@
 ---
 import MainLayout from "./MainLayout.astro";
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import dateFormat from "dateformat";
 import me from '../../public/images/me-small.jpg'
-
-const posts = await getCollection('posts');
+import UpArrow from "../components/UpArrow.astro";
+import readingTime from "reading-time";
+import Tag from "../components/Tag.astro";
+import TableOfContents from "../components/TableOfContents.astro";
+import PostNavigation from "../components/PostNavigation.astro";
 
 let {
     content: {
         title,
-        description,
+        description, 
+        tags,
         author,
         pubDate,
         image: {
             url,
             alt
-        }
-    }
+        },
+        updatedDate,
+    },
+    adjacentPosts:{
+        prev,
+        next
+    },
+    body,
+    headings
 } = Astro.props;
 ---
 <MainLayout title={title}>
-    <div class="flex flex-col gap-4">
-        <div class="prose prose-light"><h1 transition:name="blog-title">{title}</h1></div>  
-        <div class="flex flex-row items-center self-center md:self-start border w-max p-4 mb-6 rounded-lg shadow-lg border-purple-900">
-            <Image transition:name="me" class="rounded-full mr-4 w-20 h-20" src={me} alt="me"/>
-            <div class="flex flex-col">
-                <p>{author}</p>
-                <p transition:name="blog-date">{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
+    <div class="flex flex-col gap-4 items-center text-center w-1/2 -xl:w-3/4 -md:w-[95%] place-self-center">
+        <Image layout="responsive" width={750} height={500} inferSize={true} src={url} alt={alt}/>
+        <div class="prose prose-light"><h1>{title}</h1></div>  
+        <p><em>{description}</em></p>
+        <div class="w-full flex flex-col items-center gap-8">
+            <div class="flex flex-row items-center">
+                <div class="flex flex-row items-center gap-2">
+                    <Image class="rounded-full w-8 h-8" src={me} alt="me"/>
+                    <p>{author}</p>
+                    <p>|</p>
+                    <p>{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
+                    <p>|</p>
+                    <p>{Math.round(readingTime(body).minutes)} min read</p>
+                </div>
             </div>
+            {updatedDate && <p><em>Updated {dateFormat(updatedDate, "UTC:mmmm dS, yyyy")}</em></p>}
+            <PostNavigation prevPost={prev} nextPost={next}/>
         </div>
-    </div>
-    <div class="prose prose-light pb-24">
-        <p transition:name="blog-description"><em>{description}</em></p>
-        <img transition:name="blog-image" class="rounded-md w-[600px]" src={url} alt={alt}/>
-        <slot/>
-    </div>
+        <div class="flex flex-row flex-wrap gap-4 w-3/4 justify-center pt-4 pb-4">
+            {tags.map((tag: string) => 
+                <Tag tag={tag} disabled={"pointer-events-auto"}/>
+            )}
+        </div>
+        <div class="flex flex-row gap-8 xl:w-[150%] place-self-center -xl:flex-col -xl:w-full -xl:items-center">
+            <aside class="w-1/4 h-full xl:sticky xl:top-8 -xl:h-[25vh] -xl:w-1/2 -md:w-[95%]">
+                <TableOfContents headings={headings}/>
+            </aside>
+            <article class="prose prose-light flex flex-col w-1/2 -xl:w-3/4 -md:w-[95%] text-start">
+                <slot />
+            </article>
+        </div>
+    </>
 </MainLayout>
+<button id="scrollTopBtn" class="fixed right-4 bottom-4" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <UpArrow class={"fill-white w-16 h-16 border p-4 rounded-3xl lg:hover:bg-slate-500"}/>
+</button>
+
+<script>
+    function setupTocOffset(){
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
+		const aside = document.querySelector('aside');
+        if (!aside) return;
+        const windowWidth = window.innerWidth; //1280 xl screens
+		if (windowWidth > 1280) {
+			aside.style.paddingTop = `${headerHeight}px`;
+		}else{
+            aside.style.paddingTop = "0px";
+        }
+        const headers = document.querySelectorAll('h2, h3, h4, h5, h6');
+        if (!headers) return;
+        headers.forEach(header => (header as HTMLElement).style.scrollMarginTop = `${headerHeight}px`);
+
+    }
+    document.addEventListener('astro:page-load', setupTocOffset)
+    document.addEventListener('astro:after-swap', setupTocOffset)
+    window.addEventListener('resize', setupTocOffset)
+</script>

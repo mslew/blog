@@ -1,0 +1,5 @@
+---
+const { tag, count, disabled } = Astro.props;
+---
+
+<a class={`hover:text-purple-500 text-sm bg-gray-700 text-gray-300 p-3 rounded-2xl ${disabled}`} href={`/tag/${tag}`}># {tag} {count ? `(${count})` : ""}</a>

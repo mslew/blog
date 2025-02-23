@@ -1,0 +1,80 @@
+---
+import TableOfContentsHeading from "./TableOfContentsHeading.astro";
+const { headings } = Astro.props;
+export interface Heading {
+    depth: number;
+    slug: string;
+    text: string;
+    subheadings: Heading[];
+}
+function buildToc(){
+        const toc: Heading[] = []
+        const stack: Heading[] = []
+
+        headings.forEach((h: Heading) => {
+            const heading = { ...h, subheadings: [] }
+
+            while (stack.length > 0 && stack[stack.length - 1].depth >= heading.depth) {
+                stack.pop()
+            }
+
+            if (stack.length === 0) {
+                toc.push(heading)
+            } else {
+                stack[stack.length - 1].subheadings.push(heading)
+            }
+            stack.push(heading)
+        })
+        return toc
+    }
+const toc = buildToc();
+---
+<div class="flex flex-col w-full h-full border rounded-xl border-slate-400 pb-2 pt-2">
+    <div class="flex flex-row w-full justify-center items-center">
+        <hr class="w-6 border-slate-400"/>
+        <p class="text-slate-400 pl-4 pr-4 text-lg">Table of Contents</p>
+        <hr class="w-6 border-slate-400"/>
+    </div>
+    <ul id="toc-container" class="flex flex-col gap-[2px] -xl:overflow-y-scroll">
+        {toc.map((heading: Heading) => 
+            <TableOfContentsHeading heading={heading} />
+        )}
+    </ul>
+</div>
+
+<script>
+    function setupToc(){
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
+
+        const observer = new IntersectionObserver(
+            (sections) => {
+                sections.forEach((section) => {
+                    const heading = section.target.querySelector('h2, h3, h4, h5, h6')
+                    if (!heading) return
+
+                    const id = heading.getAttribute('id')
+                    const link = document.querySelector(
+                    `#toc-container button[id="ToC${id}"]`,
+                    )
+                    if (!link) return
+                    const addRemove = section.isIntersecting ? 'add' : 'remove'
+                    const removeOpacity = !section.isIntersecting ? 'add' : 'remove'
+                    link.classList[removeOpacity]('xl:text-opacity-75')
+                    link.classList[addRemove]('xl:font-bold', 'xl:text-opacity-100')
+                    })
+                },
+            {
+                rootMargin: `-${headerHeight}px 0px 0px 0px`,
+            },
+    )
+
+        const sections = document.querySelectorAll('.heading')
+        sections.forEach((section) => {
+            observer.observe(section)
+        })
+    }
+
+    document.addEventListener('astro:page-load', setupToc)
+    document.addEventListener('astro:after-swap', setupToc)
+</script>

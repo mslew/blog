@@ -1,0 +1,15 @@
+---
+const { heading } = Astro.props;
+---
+<li class="flex flex-row items-start w-full" style={`padding-left: ${heading.depth * 10}px`}>
+    <button id={`ToC${heading.slug}`} 
+            onclick={`document.getElementById('${heading.slug}').scrollIntoView({ behavior: 'smooth' })`} 
+            class="text-slate-500 lg:hover:text-slate-300 lg:hover:border-b">
+            {heading.text}
+    </button>
+</li>
+<ul class="flex flex-col gap-[2px]">
+    {heading.subheadings.map((subheading: any) => 
+        <Astro.self heading={subheading} />
+    )}
+</ul>

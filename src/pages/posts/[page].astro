@@ -1,0 +1,54 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { PaginateFunction } from 'astro'
+import MainLayout from "../../layouts/MainLayout.astro";
+import DisplayPosts from "../../components/DisplayPosts.astro";
+import PageNavigation from "../../components/PageNavigation.astro";
+
+type Post = CollectionEntry<'posts'>;
+
+const posts = await getCollection('posts', ({ data }) => !data.draft);
+
+export async function getStaticPaths({ paginate }: {paginate: PaginateFunction}) {
+    const posts = await getCollection('posts', ({ data }) => !data.draft);
+    return paginate(
+        posts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()), 
+        { pageSize: 5 });
+}
+
+const { page } = Astro.props;
+
+const postsByYear = page.data.reduce(
+    (acc: Record<string, CollectionEntry<'posts'>[]>, post) => {
+        const year = post.data.pubDate.getFullYear().toString()
+        ;(acc[year] ??= []).push(post)
+        return acc
+    },
+    {},
+)
+
+export const prerender = true
+
+function getTags(posts: Post[]){
+    const tags = posts.reduce((allTags: { [key: string]: Post[] }, post) => {
+        const postTags = post.data.tags;
+        if (postTags) {
+            postTags.forEach((tag: string) => {
+                if (!allTags[tag]) {
+                    allTags[tag] = [];
+                }
+                allTags[tag].push(post);
+            });
+        }
+        return allTags;
+    }, {});
+    return tags;
+}
+
+const tags = getTags(posts);
+---
+
+<MainLayout title={`Blogs Page ${page.currentPage}`}>
+    <DisplayPosts posts={page.data} tags={tags} />
+    <PageNavigation page={page}/>
+</MainLayout>

@@ -2,11 +2,15 @@
 title: My Thoughts on Steely Dan's Gaucho
 slug: steely-dan-gaucho
 description: An underrated masterpiece.
+tags:
+  - music
+  - personal
 author: Max Lewis
+pubDate: 2023-10-12T00:00:00.000Z
+updatedDate: 2025-02-17T06:00:00.000Z
 image:
-  url: https://m.media-amazon.com/images/I/61qqgReklBL._UF1000,1000_QL80_.jpg
-  alt: 'Gaucho'
-pubDate: 2023-10-12
+  url: 'https://m.media-amazon.com/images/I/61qqgReklBL._UF1000,1000_QL80_.jpg'
+  alt: Gaucho
 ---
 
 *I want to make clear that I have no idea what I’m talking about with music. I am just a simple software engineer who loves Steely Dan.*
@@ -19,11 +23,11 @@ The next track, *Gaucho*, kinda stinks compared to its direct predecessor *Glamo
 
 The last two tracks, *My Rival* and *Third World Man* are good tracks. These are not absolute bangers like *Babylon Sisters* and *Glamour Profession*, but they do have a good sound that can be expected from this album.
 
-## The Juicy Stuff: Unreleased Scrapped Tracks
+## Unreleased Scrapped Tracks
 
 The creation of *Gaucho* was a crazy experience with Donald Fagen taking more of the creative reigns, while Walter Becker was in the hospital. There are many tracks that were never put on the album but were found and posted on YouTube. One of these tracks [Kulee Baba](https://www.youtube.com/watch?v=_EI3bPC4O8U) is an early recording of the track. If you listen to it, you can hear Fagen giving instructions to other session musicians or sound engineers behind the glass. Another track, [The Bear](https://www.youtube.com/watch?v=QPt_l28ralA) is another lost track that was never put on the album. This track sounds almost ready to be put on the album, it sounds crisp and completely awesome.
 
-The third and final lost track that I know about is [The Second Arrangement](https://www.youtube.com/watch?v=7sIs3VbXcS4). This track is probably the best-lost track off *Gaucho*. This track is a BANGER and should have been put on the album. As the story goes, this track was accidentally deleted by a studio assistant never to be seen again. There have been tracks that have leaked on YouTube, I don’t know how people get their hands on this stuff, but they do. The linked track sounds bad because it was an early recording and I don’t think was meant to be put on the album just yet. Long-time Steely Dan producer, Gary Katz, had a recording of this track stashed away in I think it was his attic, and his daughter found it and released the secret recording to the internet this year! Steely Dan fans were extremely excited to hear the secret recording. I have heard it myself, and it is such a great track, but I cannot find the secret recording anywhere; I think it keeps getting deleted by YouTube because of copyright claims.
+The third and final lost track that I know about is [The Second Arrangement](https://www.youtube.com/watch?v=7sIs3VbXcS4). This track is probably the best lost track off *Gaucho*. This track is a BANGER and should have been put on the album. As the story goes, this track was accidentally deleted by a studio assistant never to be seen again. There have been tracks that have leaked on YouTube, I don’t know how people get their hands on this stuff, but they do. The linked track sounds bad because it was an early recording and I don’t think was meant to be put on the album just yet. Long-time Steely Dan producer, Gary Katz, had a recording of this track stashed away in I think it was his attic, and his daughter found it and released the secret recording to the internet this year! Steely Dan fans were extremely excited to hear the secret recording. I have heard it myself, and it is such a great track, but I cannot find the secret recording anywhere; I think it keeps getting deleted by YouTube because of copyright claims.
 
 ## Final Thoughts
 

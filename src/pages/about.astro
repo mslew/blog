@@ -1,18 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import Layout from "../layouts/MainLayout.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 import me from '../../public/images/me.jpg'
 ---
 
-<Layout title={"About"}>
-    <div class="prose prose-light flex flex-col"> 
-        <h1 class="self-center" transition:name="about">About Me</h1>
-        <Image class="rounded-lg w-[400px] self-center" src={me} alt="me" transition:name="me"/>
-        <p class="pb-24" transition:name="about-paragraph">
-            Hi, my name is Maximus Lewis. I am a recent computer science graduate from Lewis University.
+<MainLayout title={"About"}>
+    <div class="flex flex-col self-center prose prose-light -sm:w-[95%]"> 
+        <h1 class="self-center">About Me</h1>
+        <Image class="rounded-lg w-[400px] self-center" src={me} alt="me"/>
+        <p class="">
+            Hi, my name is Max Lewis. I am a recent computer science graduate from Lewis University.
             This blog is my place to get my thoughts out, you will find many blogs about movies, music, 
-            history, or anything that piques my interest! Find out more about me at my website.
+            coding, or anything that piques my interest! Find out more about me at my website.
             <a href="https://www.maxlewis.dev/">https://www.maxlewis.dev/</a> 
         </p>
     </div>
-</Layout>
+</MainLayout>

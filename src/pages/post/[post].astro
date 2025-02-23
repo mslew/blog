@@ -1,12 +1,30 @@
 ---
-import { getCollection, render} from "astro:content";
+import { getCollection, render, type CollectionEntry} from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
 
+type Post = CollectionEntry<'posts'>;
+
+const allPosts = await getCollection('posts');
+const posts = allPosts
+    .filter((post) => !post.data.draft)
+    .sort(
+        (a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf(),
+    );
+const visiblePosts = posts.filter((post) => !post.data.hidden);
+
+function getAdjacentPosts(currId: string, posts: Post[]){
+    const index = posts.findIndex((post) => post.id === currId);
+    return {
+        prev: index > 0 ? posts[index - 1] : null,
+        next: index >= 0 && index < posts.length - 1 ? posts[index + 1] : null
+    }
+}
+
 export async function getStaticPaths() {
-    const posts = await getCollection('posts');
+    const posts = await getCollection('posts', ({ data }) => !data.draft);
     return posts.map((post) => {
         return {
-            params: { post: post.data.slug },
+            params: { post: post.data.slug.trim() },
             props: { post },
         };
     });
@@ -14,9 +32,10 @@ export async function getStaticPaths() {
 export const prerender = true
 
 const { post } = Astro.props;
-const { Content } = await render(post)
+const adjacentPosts = getAdjacentPosts(post.id, visiblePosts);
+const { Content, headings } = await render(post)
 ---
 
-<PostLayout content={post.data}>
+<PostLayout content={post.data} adjacentPosts={adjacentPosts} body={post.body} headings={headings}>
     <Content />
 </PostLayout>
