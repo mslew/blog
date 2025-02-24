@@ -3,6 +3,8 @@
 
 .vscode
 
+dist
+
 # generated types
 .astro/
 
