@@ -12,7 +12,7 @@ let { posts, tags } = Astro.props;
 type PostsByYear = Record<string, CollectionEntry<'posts'>[]>;
 
 const postsByYear = posts.reduce((acc: PostsByYear, post) => {
-  const year = new Date(post.data.pubDate).getFullYear(); // Assuming `post.data.date` holds the date
+  const year = new Date(post.data.pubDate).getFullYear();
   if (!acc[year]) {
     acc[year] = [];
   }
@@ -28,14 +28,14 @@ let sortedPostsByYear = Object.keys(postsByYear).sort((a, b) => parseInt(b) - pa
     <Tag tag={tag} count={tags[tag].length} disabled={"pointer-events-auto"} />
   ) : <span>Posts Tagged with <Tag tag={tags} disabled={"pointer-events-none"}/></span>}
 </div>
-<div class="2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] place-self-center">
+<div class="2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] place-self-center items-center">
   {Object.keys(sortedPostsByYear).length > 0 &&
       sortedPostsByYear.map((year) => (
-      <h2 class="text-3xl text-left w-2/3 -xl:w-3/4 -sm:w-[95%] self-center pb-4 pt-4 place-self-center">{year}</h2>
-      <div class="flex flex-col gap-4 items-center w-full h-full">
-      {postsByYear[year].map((post) => (
-          <PostCard {...post.data} body={post.body} />
-      ))}
-      </div>
+        <div class="flex flex-col gap-4 items-center w-full h-full pb-4">
+          <h2 class="text-3xl text-left w-2/3 -xl:w-3/4 -sm:w-[95%]">{year}</h2>
+          {postsByYear[year].map((post) => (
+              <PostCard {...post.data} body={post.body} />
+          ))}
+        </div>
   ))}
 </div>
