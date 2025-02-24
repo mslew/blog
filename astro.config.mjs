@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import vercel from "@astrojs/vercel";
-
+import tailwindcss from "@tailwindcss/vite";
 import rehypeKatex from "rehype-katex";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkEmoji from "remark-emoji";
@@ -21,7 +21,10 @@ import {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [sitemap()],
   output: "server",
   adapter: vercel(),
   experimental: {
