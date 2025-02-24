@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import vercel from "@astrojs/vercel";
-import tailwind from "@astrojs/tailwind";
+
 import rehypeKatex from "rehype-katex";
 import rehypeExternalLinks from "rehype-external-links";
 import remarkEmoji from "remark-emoji";
