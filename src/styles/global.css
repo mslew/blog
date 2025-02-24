@@ -10,6 +10,9 @@
 }
 
 .add{
-  @apply bg-green-400
+  @apply bg-green-300
 }
 
+.line{
+  @apply w-full
+}
