@@ -2,8 +2,11 @@
 import LeftArrow from "../components/icons/LeftArrow.astro";
 import RightArrow from "../components/icons/RightArrow.astro";
 const { prevPost, nextPost } = Astro.props;
-const previousDisabled = prevPost ? "pointer-events-auto" : "pointer-events-none text-slate-500 border-slate-500";
-const nextDisabled = nextPost ? "pointer-events-auto" : "pointer-events-none text-slate-500 border-slate-500";
+
+const INACTIVE_STYLES = "pointer-events-none text-slate-500 border-slate-500";
+
+const previousDisabled = prevPost ? "pointer-events-auto" : INACTIVE_STYLES;
+const nextDisabled = nextPost ? "pointer-events-auto" : INACTIVE_STYLES;
 const previousArrowFill = prevPost ? "fill-white" : "fill-slate-500";
 const nextArrowFill = nextPost ? "fill-white" : "fill-slate-500";
 ---
