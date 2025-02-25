@@ -8,16 +8,15 @@ import remarkMath from "remark-math";
 import sectionize from "@hbsnow/rehype-sectionize";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
-import { 
-  transformerNotationDiff, 
+import {
+  transformerNotationDiff,
   transformerNotationHighlight,
   transformerNotationWordHighlight,
   transformerNotationFocus,
   transformerNotationErrorLevel,
   transformerRenderWhitespace,
   transformerMetaWordHighlight,
-
- } from "@shikijs/transformers";
+} from "@shikijs/transformers";
 
 // https://astro.build/config
 export default defineConfig({
@@ -36,7 +35,7 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: "shiki",
     shikiConfig: {
-      theme: "synthwave-84",
+      theme: "vitesse-dark",
       transformers: [
         transformerNotationDiff(),
         transformerNotationHighlight(),
@@ -69,5 +68,5 @@ export default defineConfig({
   site: "https://blog.maxlewis.dev",
   devToolbar: {
     enabled: false,
-  }
+  },
 });
