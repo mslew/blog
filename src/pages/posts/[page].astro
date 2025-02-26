@@ -7,10 +7,10 @@ import PageNavigation from "../../components/PageNavigation.astro";
 
 type Post = CollectionEntry<'posts'>;
 
-const posts = await getCollection('posts', ({ data }) => !data.draft);
+const posts = await getCollection('posts', ({ data }) => !data.draft && !data.hiddenFromFeed);
 
 export async function getStaticPaths({ paginate }: {paginate: PaginateFunction}) {
-    const posts = await getCollection('posts', ({ data }) => !data.draft);
+    const posts = await getCollection('posts', ({ data }) => !data.draft && !data.hiddenFromFeed);
     return paginate(
         posts.sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()), 
         { pageSize: 5 });
@@ -18,16 +18,7 @@ export async function getStaticPaths({ paginate }: {paginate: PaginateFunction})
 
 const { page } = Astro.props;
 
-const postsByYear = page.data.reduce(
-    (acc: Record<string, CollectionEntry<'posts'>[]>, post) => {
-        const year = post.data.pubDate.getFullYear().toString()
-        ;(acc[year] ??= []).push(post)
-        return acc
-    },
-    {},
-)
-
-export const prerender = true
+export const prerender = true;
 
 function getTags(posts: Post[]){
     const tags = posts.reduce((allTags: { [key: string]: Post[] }, post) => {

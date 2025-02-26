@@ -113,8 +113,14 @@ export default defineConfig({
           },
           {
             type: "boolean",
-            name: "hidden",
-            label: "Hidden from RSS",
+            name: "hiddenFromFeed",
+            label: "Hidden from Feed",
+            required: false,
+          },
+          {
+            type: "boolean",
+            name: "hiddenFromRSS",
+            label: "Hidden from RSS Feed",
             required: false,
           },
           {

@@ -13,7 +13,8 @@ const posts = defineCollection({
     pubDate: z.date(),
     updatedDate: z.coerce.date().optional(),
     draft: z.boolean().optional(),
-    hidden: z.boolean().optional(),
+    hiddenFromFeed: z.boolean().optional(),
+    hiddenFromRSS: z.boolean().optional(),
     image: z.object({
       url: z.string(),
       alt: z.string(),

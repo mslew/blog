@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import PostCard from '../components/PostCard.astro';
-import Tag from './Tag.astro';
+import TagsDisplay from './TagsDisplay.astro';
 interface Props{
     posts: CollectionEntry<'posts'>[]
     tags: Record<string, CollectionEntry<'posts'>[]> | string
@@ -20,14 +20,10 @@ const postsByYear = posts.reduce((acc: PostsByYear, post) => {
   return acc;
 }, {});
 
-let sortedPostsByYear = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+const sortedPostsByYear = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
-<div class="2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] flex flex-row flex-wrap gap-2 self-center justify-center pb-12">
-  {typeof tags === 'object' && !Array.isArray(tags) ? Object.keys(tags).map((tag: string) =>
-    <Tag tag={tag} count={tags[tag].length} disabled={"pointer-events-auto"} />
-  ) : <span>Posts Tagged with <Tag tag={tags} disabled={"pointer-events-none"}/></span>}
-</div>
+<TagsDisplay tags={tags} />
 <div class="2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] place-self-center items-center">
   {Object.keys(sortedPostsByYear).length > 0 &&
       sortedPostsByYear.map((year) => (

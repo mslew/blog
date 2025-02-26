@@ -1,0 +1,10 @@
+---
+import Tag from "./Tag.astro";
+const { tags } = Astro.props;
+---
+
+<div class="2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] flex flex-row flex-wrap gap-2 self-center justify-center pb-12">
+    {typeof tags === 'object' && !Array.isArray(tags) ? Object.keys(tags).map((tag: string) =>
+      <Tag tag={tag} count={tags[tag].length} disabled={"pointer-events-auto"} />
+    ) : <span>Posts Tagged with <Tag tag={tags} disabled={"pointer-events-none"}/></span>}
+</div>

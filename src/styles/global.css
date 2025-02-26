@@ -25,11 +25,15 @@
   }
 
   pre {
-    @apply static max-h-[600px] overflow-auto rounded-xl border py-4 text-sm leading-loose;
+    @apply static max-h-[600px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose;
+
+    code {
+      @apply w-full;
+    }
 
     > code {
-      @apply whitespace-pre-wrap;
-      counter-reset: line;
+        @apply whitespace-pre-wrap;
+        counter-reset: line;
 
         >::before {
           counter-increment: line;
@@ -44,37 +48,35 @@
       .add::before{
         @apply text-emerald-400;
         content: '+';
-        margin-right: 0.5rem;
       }
       
       .remove{
-        @apply bg-rose-800 opacity-50 
+        @apply bg-rose-800 opacity-50 ;
       }
 
       .remove::before{
         @apply text-rose-400;
         content: '-';
-        margin-right: 0.5rem;
       }
       
       .line{
-        @apply w-full p-1
+        @apply w-full p-1;
       }
 
       .highlighted{
-        @apply bg-slate-800
+        @apply bg-slate-800;
       }
 
       .error{
-        @apply bg-red-800
+        @apply bg-red-800;
       }
 
       .warning{
-        @apply bg-amber-600
+        @apply bg-amber-600;
       }
 
       .highlighted-word{
-        @apply border rounded bg-gray-600 border-gray-600 p-[2px];
+        @apply border rounded bg-slate-800 border-slate-800 p-[1px];
       }
     }
   }
