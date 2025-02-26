@@ -31,9 +31,29 @@
       @apply duration-300 transform opacity-0;
     }
 
+    &:hover > .copy-button{
+      @apply duration-300 transform opacity-100;
+    }
+
     .code-language {
       @apply absolute top-0 right-0 px-2 py-1 text-sm text-slate-400 bg-slate-900 rounded-bl duration-300 transform opacity-100;
-  }
+    }
+
+    .copy-button {
+      @apply absolute top-0 right-0 px-2 py-1 text-sm text-slate-400 bg-slate-900 rounded-bl duration-300 transform opacity-0;
+
+      &:hover {
+        @apply duration-300 transform bg-slate-800;
+
+        svg {
+          @apply fill-slate-500 duration-300 transform;
+        }
+      }
+
+      svg {
+        @apply w-12 h-12 fill-slate-400 p-2;
+      }
+    }
 
     code {
       @apply w-full border grid;
