@@ -40,3 +40,11 @@ print("Hello World!")
 ```typescript
 console.log("Hello World!");
 ```
+
+```java
+class Poggers {
+  public static main(String[] args){
+    System.out.println("Beeshk"); // [!code ++]
+  }
+}
+```

@@ -25,7 +25,7 @@
   }
 
   pre {
-    @apply static max-h-[600px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose;
+    @apply static max-h-[600px] min-w-[56px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose;
 
     &:hover > .code-language{
       @apply duration-300 transform opacity-0;
