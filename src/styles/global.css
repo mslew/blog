@@ -56,7 +56,7 @@
     }
 
     code {
-      @apply w-full border grid;
+      @apply w-full grid;
     }
 
     > code {
