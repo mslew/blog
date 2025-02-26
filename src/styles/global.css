@@ -70,7 +70,7 @@
         }
 
       .add{
-        @apply bg-emerald-800;
+        @apply bg-[#16322c];
       }
 
       .add::before{
@@ -79,7 +79,7 @@
       }
       
       .remove{
-        @apply bg-rose-800 opacity-50 ;
+        @apply bg-[#311c22];
       }
 
       .remove::before{
@@ -92,19 +92,19 @@
       }
 
       .highlighted{
-        @apply bg-slate-800;
+        @apply bg-[#24272c];
       }
 
       .error{
-        @apply bg-red-800;
+        @apply bg-[#3c1e26];
       }
 
       .warning{
-        @apply bg-amber-600;
+        @apply bg-[#3a3118];
       }
 
       .highlighted-word{
-        @apply border rounded bg-slate-800 border-slate-800 p-[1px];
+        @apply rounded bg-[#24272c] p-[2px];
       }
     }
   }
