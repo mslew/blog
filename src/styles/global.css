@@ -27,8 +27,16 @@
   pre {
     @apply static max-h-[600px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose;
 
+    &:hover > .code-language{
+      @apply duration-300 transform opacity-0;
+    }
+
+    .code-language {
+      @apply absolute top-0 right-0 px-2 py-1 text-sm text-slate-400 bg-slate-900 rounded-bl duration-300 transform opacity-100;
+  }
+
     code {
-      @apply w-full;
+      @apply w-full border grid;
     }
 
     > code {

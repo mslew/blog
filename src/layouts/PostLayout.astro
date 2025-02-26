@@ -69,6 +69,25 @@ let {
 </button>
 
 <script>
+
+    function getCodeLang(){
+        const codeElements = document.querySelectorAll('pre');
+        if(!codeElements) return;
+        codeElements.forEach(codeElement => {
+            const lang = codeElement.getAttribute('data-language');
+            if (!lang) return;
+
+            const langIndicator = document.createElement('div');
+            langIndicator.className = 'code-language';
+            langIndicator.textContent = lang;
+            
+            // Add the indicator to the pre element
+            codeElement.classList.add('relative');
+            codeElement.appendChild(langIndicator);
+        })
+        
+    }
+
     function setupTocOffset(){
         const header = document.querySelector('header');
         const headerHeight = header ? header.offsetHeight : 0;
@@ -87,5 +106,7 @@ let {
     }
     document.addEventListener('astro:page-load', setupTocOffset)
     document.addEventListener('astro:after-swap', setupTocOffset)
+    document.addEventListener('astro:page-load', getCodeLang)
+    document.addEventListener('astro:after-swap', getCodeLang)
     window.addEventListener('resize', setupTocOffset)
 </script>

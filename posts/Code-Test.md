@@ -1,4 +1,5 @@
 ---
+hidden: false
 title: Code Test
 slug: code-test
 description: This is the code test
@@ -11,7 +12,6 @@ image:
     https://images.squarespace-cdn.com/content/v1/59885afbf9a61e3bd6987ecb/1503497537332-RJMVB8WJRY0KP33IUV0T/1489721061795-there-will-be-blood-opening.jpeg
   alt: There Will Be Blood
 draft: false
-hidden: false
 ---
 
 ```python
@@ -35,4 +35,8 @@ print("Hello World!")
 print("Hello World!") # [!code focus]
 print("Hello World!")
 print("Hello World!") 
+```
+
+```typescript
+console.log("Hello World!");
 ```
