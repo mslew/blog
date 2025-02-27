@@ -54,16 +54,25 @@ export default defineConfig({
             required: true,
           },
           {
-            type: "string",
+            type: "object",
             name: "tags",
             label: "Tags",
             required: true,
             list: true,
-            options: [
-              { value: "movie", label: "Movie" },
-              { value: "music", label: "Music" },
-              { value: "technical", label: "Technical" },
-              { value: "personal", label: "Personal" },
+            ui: {
+              itemProps: (item) => {
+                return {
+                  label: item?.tag,
+                };
+              },
+            },
+            fields: [
+              {
+                type: "string",
+                name: "tag",
+                label: "Tag",
+                required: true,
+              },
             ],
           },
           {
@@ -78,10 +87,11 @@ export default defineConfig({
             label: "Publish Date",
             required: true,
           },
-          { type: "datetime", 
-            name: "updatedDate", 
-            label: "Updated Date", 
-            required: false, 
+          {
+            type: "datetime",
+            name: "updatedDate",
+            label: "Updated Date",
+            required: false,
           },
           {
             type: "object",
@@ -103,8 +113,8 @@ export default defineConfig({
               },
             ],
             ui: {
-              component: "group"
-            }
+              component: "group",
+            },
           },
           {
             type: "boolean",
@@ -138,7 +148,7 @@ export default defineConfig({
   search: {
     tina: {
       indexerToken: process.env.TINA_SEARCH,
-      stopwordLanguages: ['eng'],
+      stopwordLanguages: ["eng"],
     },
     indexBatchSize: 100,
     maxSearchIndexFieldLength: 100,
