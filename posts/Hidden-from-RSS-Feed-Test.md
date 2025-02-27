@@ -4,8 +4,8 @@ title: Hidden from RSS Feed Test
 slug: hidden-rss
 description: Hidden from RSS feed test
 tags:
-  - technical
-  - personal
+  - tag: technical
+  - tag: personal
 author: Max Lewis
 pubDate: 2025-02-22T06:00:00.000Z
 image:

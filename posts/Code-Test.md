@@ -4,8 +4,8 @@ title: Code Test
 slug: code-test
 description: This is the code test
 tags:
-  - technical
-author: 'Max Lewis '
+  - tag: technical
+author: 'Max Lewis'
 pubDate: 2025-02-24T06:00:00.000Z
 image:
   url: >-

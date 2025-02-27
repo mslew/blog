@@ -3,7 +3,7 @@ title: Heading Test
 slug: heading-test
 description: This is the heading text.
 tags:
-  - movie
+  - tag: movie
 author: 'Max Lewis '
 pubDate: 2025-02-19T06:00:00.000Z
 image:
