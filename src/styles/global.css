@@ -1,25 +1,43 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @config '../../tailwind.config.cjs';
 
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("/fonts/Roboto_Condensed/RobotoCondensed-VariableFont_wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("/fonts/Roboto_Condensed/RobotoCondensed-Italic-VariableFont_wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 800;
+  font-style: italic;
+  font-display: swap;
+}
 
 @layer utilities {
   html {
     @apply bg-slate-900 text-white overflow-x-hidden;
+    font-family: "Roboto Condensed", sans-serif;
   }
 }
 
 @layer components {
   article {
-    .has-focused > code > span{
+    .has-focused > code > span {
       @apply duration-300 transform blur-xs;
     }
 
-    .has-focused > code > .focused{
+    .has-focused > code > .focused {
       @apply blur-none;
     }
 
-    .has-focused:hover > code > span{
+    .has-focused:hover > code > span {
       @apply duration-300 transform blur-none;
     }
   }
@@ -27,11 +45,11 @@
   pre {
     @apply static max-h-[600px] min-w-[56px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose;
 
-    &:hover > .code-language{
+    &:hover > .code-language {
       @apply duration-300 transform opacity-0;
     }
 
-    &:hover > .copy-button{
+    &:hover > .copy-button {
       @apply duration-300 transform opacity-100;
     }
 
@@ -60,50 +78,50 @@
     }
 
     > code {
-        @apply whitespace-pre-wrap;
-        counter-reset: line;
+      @apply whitespace-pre-wrap;
+      counter-reset: line;
 
-        >::before {
-          counter-increment: line;
-          content: counter(line);
-          @apply mr-4 inline-block w-4 text-right;
-        }
+      > ::before {
+        counter-increment: line;
+        content: counter(line);
+        @apply mr-4 inline-block w-4 text-right;
+      }
 
-      .add{
+      .add {
         @apply bg-[#16322c];
       }
 
-      .add::before{
+      .add::before {
         @apply text-emerald-400;
-        content: '+';
+        content: "+";
       }
-      
-      .remove{
+
+      .remove {
         @apply bg-[#311c22];
       }
 
-      .remove::before{
+      .remove::before {
         @apply text-rose-400;
-        content: '-';
+        content: "-";
       }
-      
-      .line{
+
+      .line {
         @apply w-full p-1;
       }
 
-      .highlighted{
+      .highlighted {
         @apply bg-[#24272c];
       }
 
-      .error{
+      .error {
         @apply bg-[#3c1e26];
       }
 
-      .warning{
+      .warning {
         @apply bg-[#3a3118];
       }
 
-      .highlighted-word{
+      .highlighted-word {
         @apply rounded bg-[#24272c] p-[2px];
       }
     }

@@ -50,8 +50,8 @@ let {
             <PostNavigation prevPost={prev} nextPost={next}/>
         </div>
         <div class="flex flex-row flex-wrap gap-4 w-3/4 justify-center pt-4 pb-4">
-            {tags.map((tag: string) => 
-                <Tag tag={tag} disabled={"pointer-events-auto"}/>
+            {tags.map((tag: {tag: string}) => 
+                <Tag tag={tag} disabled="pointer-events-auto"/>
             )}
         </div>
         <div class="flex flex-row gap-8 xl:w-[150%] place-self-center -xl:flex-col -xl:w-full -xl:items-center">

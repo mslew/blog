@@ -26,7 +26,7 @@ const { body } = Astro.props;
                 <p>{Math.round(readingTime(body).minutes)} min read</div></p>
             <div class="flex flex-row gap-2">
                 {tags.map((tag: { tag: string }) => 
-                    <span class="text-purple-500"># {tag.tag}</span>
+                    <span class="text-purple-500">#{tag.tag}</span>
                 )}
             </div>
         </div>

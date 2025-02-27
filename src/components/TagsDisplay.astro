@@ -4,28 +4,12 @@ type Tag = { tag: string };
 const { tags } = Astro.props;
 ---
 
-<div class="tags-container flex flex-col text-center gap-4 2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] self-center">
+<div class="tags-container flex flex-col text-center gap-4 2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] self-center grow h-full">
   <h1 class="text-3xl font-bold text-slate-400">Tags</h1>
   <div class="flex flex-row flex-wrap gap-2 justify-center">
       {Object.keys(tags).map((tag: string) =>
           <Tag tag={{ tag: tag }} count={tags[tag].length} disabled={"pointer-events-auto"} />
       )}
+     
   </div>
 </div>
-
-<script>
-  function setHeight() {
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-    const tagsDisplay = document.querySelector('.tags-container');
-    
-  if (header && tagsDisplay && footer) {
-    const headerHeight = header.offsetHeight;
-    const footerHeight = footer.offsetHeight;
-    (tagsDisplay as HTMLElement).style.height = `calc(100vh - ${headerHeight + 48 + footerHeight}px)`;
-  }
-}
-
-document.addEventListener('astro:page-load', setHeight);
-document.addEventListener('astro:after-swap', setHeight);
-</script>

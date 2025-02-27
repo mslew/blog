@@ -7,7 +7,7 @@ type Post = CollectionEntry<'posts'>;
 export async function GET(context: APIContext){
     try {
         const blog = (await getCollection('posts')).filter(
-            (post: Post) => !post.data.draft && (!post.data.hiddenFromFeed || !post.data.hiddenFromRSS),
+            (post: Post) => !post.data.draft && !post.data.hiddenFromFeed && !post.data.hiddenFromRSS,
         )
         const items = [...blog].sort(
             (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
