@@ -7,8 +7,6 @@ import PageNavigation from "../../components/PageNavigation.astro";
 
 type Post = CollectionEntry<'posts'>;
 
-const posts = await getCollection('posts', ({ data }) => !data.draft && !data.hiddenFromFeed);
-
 export async function getStaticPaths({ paginate }: {paginate: PaginateFunction}) {
     const posts = await getCollection('posts', ({ data }) => !data.draft && !data.hiddenFromFeed);
     return paginate(
@@ -19,27 +17,9 @@ export async function getStaticPaths({ paginate }: {paginate: PaginateFunction})
 const { page } = Astro.props;
 
 export const prerender = true;
-
-function getTags(posts: Post[]){
-    const tags = posts.reduce((allTags: { [key: string]: Post[] }, post) => {
-        const postTags = post.data.tags;
-        if (postTags) {
-            postTags.forEach((tag: string) => {
-                if (!allTags[tag]) {
-                    allTags[tag] = [];
-                }
-                allTags[tag].push(post);
-            });
-        }
-        return allTags;
-    }, {});
-    return tags;
-}
-
-const tags = getTags(posts);
 ---
 
 <MainLayout title={`Blogs Page ${page.currentPage}`}>
-    <DisplayPosts posts={page.data} tags={tags} />
+    <DisplayPosts posts={page.data} />
     <PageNavigation page={page}/>
 </MainLayout>

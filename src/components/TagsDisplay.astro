@@ -3,8 +3,28 @@ import Tag from "./Tag.astro";
 const { tags } = Astro.props;
 ---
 
-<div class="2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] flex flex-row flex-wrap gap-2 self-center justify-center pb-12">
-    {typeof tags === 'object' && !Array.isArray(tags) ? Object.keys(tags).map((tag: string) =>
-      <Tag tag={tag} count={tags[tag].length} disabled={"pointer-events-auto"} />
-    ) : <span>Posts Tagged with <Tag tag={tags} disabled={"pointer-events-none"}/></span>}
+<div class="tags-container flex flex-col text-center gap-4 2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] self-center">
+  <h1 class="text-3xl font-bold text-slate-400">Tags</h1>
+  <div class="flex flex-row flex-wrap gap-2 justify-center">
+      {Object.keys(tags).map((tag: string) =>
+        <Tag tag={tag} count={tags[tag].length} disabled={"pointer-events-auto"} />
+      )}
+  </div>
 </div>
+
+<script>
+  function setHeight() {
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+    const tagsDisplay = document.querySelector('.tags-container');
+    
+  if (header && tagsDisplay && footer) {
+    const headerHeight = header.offsetHeight;
+    const footerHeight = footer.offsetHeight;
+    (tagsDisplay as HTMLElement).style.height = `calc(100vh - ${headerHeight + 48 + footerHeight}px)`;
+  }
+}
+
+document.addEventListener('astro:page-load', setHeight);
+document.addEventListener('astro:after-swap', setHeight);
+</script>

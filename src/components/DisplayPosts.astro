@@ -1,13 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import PostCard from '../components/PostCard.astro';
-import TagsDisplay from './TagsDisplay.astro';
+import Tag from '../components/Tag.astro';
 interface Props{
     posts: CollectionEntry<'posts'>[]
-    tags: Record<string, CollectionEntry<'posts'>[]> | string
+    tagView?: string
 }
 
-let { posts, tags } = Astro.props;
+let { posts, tagView } = Astro.props;
 
 type PostsByYear = Record<string, CollectionEntry<'posts'>[]>;
 
@@ -22,13 +22,12 @@ const postsByYear = posts.reduce((acc: PostsByYear, post) => {
 
 const sortedPostsByYear = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
 ---
-
-<TagsDisplay tags={tags} />
 <div class="2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] place-self-center items-center">
+  {tagView && <span class="text-xl w-full text-slate-400 flex justify-center items-center">Posts Tagged with <Tag tag={tagView} disabled={"pointer-events-none"}/></span>}
   {Object.keys(sortedPostsByYear).length > 0 &&
       sortedPostsByYear.map((year) => (
         <div class="flex flex-col gap-4 items-center w-full h-full pb-4">
-          <h2 class="text-3xl text-left w-2/3 -xl:w-3/4 -sm:w-[95%]">{year}</h2>
+          <h2 class="text-3xl text-slate-400 text-left w-2/3 -xl:w-3/4 -sm:w-[95%]">{year}</h2>
           {postsByYear[year].map((post) => (
               <PostCard {...post.data} body={post.body} />
           ))}
