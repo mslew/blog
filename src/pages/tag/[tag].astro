@@ -8,11 +8,11 @@ export async function getStaticPaths() {
     const tags = posts.reduce<Record<string, typeof posts>>((allTags, post) => {
         const postTags = post.data.tags;
         if (postTags) {
-            postTags.forEach((tag) => {
-                if (!allTags[tag]){
-                    allTags[tag] = [];
+            postTags.forEach((tag: { tag: string }) => {
+                if (!allTags[tag.tag]){
+                    allTags[tag.tag] = [];
                 }
-                allTags[tag].push(post);
+                allTags[tag.tag].push(post);
             });
         }
         return allTags;
