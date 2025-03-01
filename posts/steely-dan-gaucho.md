@@ -6,8 +6,7 @@ tags:
   - tag: music
   - tag: personal
 author: Max Lewis
-pubDate: 2023-10-12T00:00:00.000Z
-updatedDate: 2025-02-17T06:00:00.000Z
+pubDate: 2023-10-11T20:00:00.000Z
 image:
   url: 'https://m.media-amazon.com/images/I/61qqgReklBL._UF1000,1000_QL80_.jpg'
   alt: Gaucho
