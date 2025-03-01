@@ -29,6 +29,7 @@ let {
     body,
     headings
 } = Astro.props;
+const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointer-events-none'; //hidden blog posts
 ---
 <MainLayout title={title}>
     <div class="flex flex-col gap-4 items-center text-center w-1/2 -xl:w-3/4 -md:w-[95%] place-self-center">
@@ -47,16 +48,18 @@ let {
                 </div>
             </div>
             {updatedDate && <p><em>Updated {dateFormat(updatedDate, "UTC:mmmm dS, yyyy")}</em></p>}
-            <PostNavigation prevPost={prev} nextPost={next}/>
+            {(prev || next) && <PostNavigation prevPost={prev} nextPost={next}/>}
         </div>
         <div class="flex flex-row flex-wrap gap-4 w-3/4 justify-center pt-4 pb-4">
             {tags.map((tag: {tag: string}) => 
-                <Tag tag={tag} disabled="pointer-events-auto"/>
+                <Tag tag={tag} disabled={tagDisabledForHiddenPosts}/>
             )}
         </div>
         <div class="flex flex-row gap-8 xl:w-[150%] place-self-center -xl:flex-col -xl:w-full -xl:items-center">
             <aside class="w-1/4 h-full xl:sticky xl:top-8 -xl:max-h-[25vh] -xl:w-1/2 -md:w-[95%]">
-                <TableOfContents headings={headings}/>
+                {headings && headings.length > 0 && (
+                    <TableOfContents headings={headings}/>
+                )}
             </aside>
             <article class="prose prose-light flex flex-col w-1/2 -xl:w-3/4 -md:w-[95%] text-start">
                 <slot />
