@@ -4,7 +4,7 @@ const { heading } = Astro.props;
 <li class="flex flex-row items-start w-full" style={`padding-left: ${heading.depth * 10}px`}>
     <button id={`ToC${heading.slug}`} 
             onclick={`document.getElementById('${heading.slug}').scrollIntoView({ behavior: 'smooth' })`} 
-            class="text-slate-500 hover:text-slate-300 hover:underline text-start pl-1">
+            class="text-slate-300 hover:text-slate-300 hover:underline text-start pl-1">
             {heading.text}
     </button>
 </li>
