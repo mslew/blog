@@ -33,23 +33,6 @@ export default defineConfig({
         label: "Posts",
         path: "posts",
         format: "md",
-        ui: {
-          beforeSubmit: async ({ values }: { values: any }) => {
-            if (values.pubDate) {
-              const date = new Date(values.pubDate);
-              const offset = date.getTimezoneOffset() * 60000;
-              values.pubDate = new Date(date.getTime() - offset).toISOString();
-            }
-            if (values.updatedDate) {
-              const date = new Date(values.updatedDate);
-              const offset = date.getTimezoneOffset() * 60000;
-              values.updatedDate = new Date(
-                date.getTime() - offset
-              ).toISOString();
-            }
-            return values;
-          },
-        },
         fields: [
           {
             type: "string",
@@ -106,10 +89,6 @@ export default defineConfig({
             ui: {
               dateFormat: "MM/DD/YYYY",
               timeFormat: "HH:mm A",
-              parse: (value) => {
-                if (!value) return "";
-                return new Date(value).toISOString();
-              },
             },
           },
           {
@@ -120,10 +99,6 @@ export default defineConfig({
             ui: {
               dateFormat: "MM/DD/YYYY",
               timeFormat: "HH:mm A",
-              parse: (value) => {
-                if (!value) return "";
-                return new Date(value).toISOString();
-              },
             },
           },
           {
