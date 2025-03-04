@@ -11,16 +11,6 @@ interface Props{
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const{ title, description } = Astro.props;
-
-/**
- * TODO:
- * 1. webmanifest
- * 2. image cards
- * 3. apple touch icon 
- * 4. sitemap 
- * 5. mask icon 
- * 6. msapplication-tilecolor
- */
 ---
 <head>
     <ClientRouter />
@@ -30,6 +20,7 @@ const{ title, description } = Astro.props;
     <meta name="author" content="Max Lewis" />
     <meta name="keywords" content="blog, astro, software, movies, music, programming, technology" />
     <meta name="google" content="notranslate"/>
+    <meta name="msapplication-TileColor" content="#121212" />
     <meta name="generator" content={Astro.generator} />
 
     <meta property="og:type" content="website" />
@@ -37,11 +28,14 @@ const{ title, description } = Astro.props;
     <meta property="og:title" content={title} />
     <meta property="og:site_name" content="Max Lewis's Blog" />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/logonb.ico" />   
 
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href="/site.webmanifest" />
     <link rel="icon" type="image/svg" href="favicon.ico" />
     <link rel="icon" type="image/svg" href="/favicon.ico" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="mask-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
 
 
     <title>{title}</title>

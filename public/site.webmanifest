@@ -1,0 +1,19 @@
+{
+  "name": "Max Lewis Blog",
+  "short_name": "Max Lewis Blog",
+  "icons": [
+    {
+      "src": "/images/logonb.ico",
+      "sizes": "238x241",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0f172b",
+  "background_color": "#0f172b",
+  "display": "standalone"
+}
