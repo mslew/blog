@@ -3,8 +3,8 @@ title: My Thoughts on Steely Dan's Gaucho
 slug: steely-dan-gaucho
 description: An underrated masterpiece.
 tags:
+  - tag: steelydan
   - tag: music
-  - tag: personal
 author: Max Lewis
 pubDate: 2023-10-11T20:00:00.000Z
 image:
