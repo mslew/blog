@@ -43,8 +43,8 @@ Shiki [transformers](https://shiki.matsu.io/guide/transformers#transformer-hooks
 An example of a code block with a transformer applied looks like this: 
 
 ```javascript
-console.log("Delete this line!") // [!code error]
-console.log("Add this line!") // [!code add]
+console.log("Delete this line!") // [!code --]
+console.log("Add this line!") // [!code ++]
 ```
 
 This block has an error line and an add line transformer is applied. 
