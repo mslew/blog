@@ -38,7 +38,7 @@ console.log("Hello World!")
 
 ## What is a Shiki Transformer?
 
-Shiki [transformers](https://shiki.matsu.io/guide/transformers#transformer-hooks) allow you to manipulate the view of the code block Shiki renders to have nicely formatted highlights, added lines, deleted lines, lines with warnings, etc. 
+Shiki [transformers](https://shiki.matsu.io/guide/transformers) allow you to manipulate the view of the code block Shiki renders to have nicely formatted highlights, added lines, deleted lines, lines with warnings, etc. 
 
 An example of a code block with a transformer applied looks like this: 
 
