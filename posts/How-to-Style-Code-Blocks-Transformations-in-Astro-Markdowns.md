@@ -8,7 +8,7 @@ tags:
   - tag: tailwind
   - tag: css
 author: Max Lewis
-pubDate: 2025-03-17T05:00:00.000Z
+pubDate: 2025-03-17T20:04:00.000Z
 image:
   url: 'https://shiki.matsu.io/logo.svg'
   alt: Shiki
