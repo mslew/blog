@@ -12,8 +12,8 @@ pubDate: 2025-03-17T05:00:00.000Z
 image:
   url: 'https://shiki.matsu.io/logo.svg'
   alt: Shiki
-draft: true
-hiddenFromFeed: false
+draft: false
+hiddenFromFeed: true
 ---
 
 This blog assumes that you have a blog set up already. You should also understand Astro [Content Collections](https://docs.astro.build/en/guides/content-collections/) and how to render markdowns in your markup. 
