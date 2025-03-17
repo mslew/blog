@@ -47,12 +47,12 @@ console.log("Delete this line!") // [!code --]
 console.log("Add this line!") // [!code ++]
 ```
 
-This block has an error line and an add line transformer is applied. 
+This block has a delete line and an add line transformer is applied. 
 
 This is simply done by adding a comment at the end of the line that Shiki can read and apply the HTML. 
 
 ```javascript
-console.log("It looks like this: // [!code add]")
+console.log("It looks like this: // [!code ++]")
 ```
 
-## How to add Shiki Transformers to Astro
+## How to Add Shiki Transformers to Astro
