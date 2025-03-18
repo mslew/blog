@@ -43,14 +43,14 @@
   }
 
   pre {
-    @apply static max-h-[600px] min-w-[56px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose;
+    @apply relative max-h-[600px] min-w-[56px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose;
 
     &:hover > .code-language {
       @apply duration-300 transform opacity-0;
     }
 
     &:hover > .copy-button {
-      @apply duration-300 transform opacity-100;
+      @apply duration-300 transform opacity-75;
     }
 
     .code-language {
@@ -78,7 +78,7 @@
     }
 
     > code {
-      @apply whitespace-pre-wrap;
+      @apply whitespace-pre-wrap mt-6 mb-6;
       counter-reset: line;
 
       > ::before {
