@@ -77,7 +77,7 @@ export default defineConfig({
       ],  // [!code ++]
     } // [!code ++]
   } // [!code ++]
-}) // [!code ++]
+})
 ```
 
 You can add more or delete any transformer you may want/need, the documentation for these can be found [here](https://shiki.style/packages/transformers). 
@@ -87,3 +87,14 @@ You will also need to npm install [@shikijs/transformers](https://www.npmjs.com/
 ## How Can We See the Cool Highlights? 
 
 If you're like me, you might add these transformers to your code and wonder why none of the cool effects are appearing. This is because we need to style these HTML elements ourselves.  
+
+### Let's Examine a Shiki Code Block from the Markdown to HTML
+
+The following code block: 
+
+```javascript
+console.log("Hello World!")
+console.log("This is so cool!") // [!code ++]
+console.log("Is this working?") // [!code --]
+console.log("I think it is!") // [!code warning]
+```
