@@ -51,8 +51,9 @@ This block has a delete line and an add line transformer is applied.
 
 This is simply done by adding a comment at the end of the line that Shiki can read and apply the HTML. 
 
-```javascript
-console.log("It looks like this: // [!code ++]")
+```
+// [!code --] comments add red highlighting and a minus. 
+// [!code ++] comments adds green highlighting and a plus.
 ```
 
 ## How to Add Shiki Transformers to Astro
