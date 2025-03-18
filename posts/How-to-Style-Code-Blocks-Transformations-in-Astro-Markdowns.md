@@ -1,5 +1,7 @@
 ---
-title: How to Style Code Blocks and Transformers in Astro Markdowns Using Shiki
+title: >-
+  How to Style Code Blocks and Transformers in Astro Markdowns Using Shiki and
+  CSS
 slug: style-code-blocks
 description: 'Tutorial on how to give yourself cool styles on Shiki codeblocks. '
 tags:
@@ -103,4 +105,15 @@ console.log("This ia an error") // [!code error]
 Gets rendered into the following HTML:
 
 ```html
+<pre class="astro-code vitesse-dark has-diff has-highlighted relative"
+  style="background-color:#121212;color:#dbd7caee; overflow-x: auto;" tabindex="0"
+  data-language="javascript">
+  <code>
+  <span class="line"><span style="color:#BD976A">console</span><span style="color:#666666">.</span><span style="color:#80A665">log</span><span style="color:#666666">(</span><span style="color:#C98A7D77">"</span><span style="color:#C98A7D">Hello</span><span class="space"> </span><span style="color:#C98A7D">World!</span><span style="color:#C98A7D77">"</span><span style="color:#666666">)</span></span>
+  <span class="line diff add"><span style="color:#BD976A">console</span><span style="color:#666666">.</span><span style="color:#80A665">log</span><span style="color:#666666">(</span><span style="color:#C98A7D77">"</span><span style="color:#C98A7D">This</span><span class="space"> </span><span style="color:#C98A7D">is</span><span class="space"> </span><span style="color:#C98A7D">so</span><span class="space"> </span><span style="color:#C98A7D">cool!</span><span style="color:#C98A7D77">"</span><span style="color:#666666">)</span></span>
+<span class="line diff remove"><span style="color:#BD976A">console</span><span style="color:#666666">.</span><span style="color:#80A665">log</span><span style="color:#666666">(</span><span style="color:#C98A7D77">"</span><span style="color:#C98A7D">Is</span><span class="space"> </span><span style="color:#C98A7D">this</span><span class="space"> </span><span style="color:#C98A7D">working?</span><span style="color:#C98A7D77">"</span><span style="color:#666666">)</span></span>
+<span class="line highlighted warning"><span style="color:#BD976A">console</span><span style="color:#666666">.</span><span style="color:#80A665">log</span><span style="color:#666666">(</span><span style="color:#C98A7D77">"</span><span style="color:#C98A7D">I</span><span class="space"> </span><span style="color:#C98A7D">think</span><span class="space"> </span><span style="color:#C98A7D">it</span><span class="space"> </span><span style="color:#C98A7D">is!</span><span style="color:#C98A7D77">"</span><span style="color:#666666">)</span></span>
+<span class="line highlighted error"><span style="color:#BD976A">console</span><span style="color:#666666">.</span><span style="color:#80A665">log</span><span style="color:#666666">(</span><span style="color:#C98A7D77">"</span><span style="color:#C98A7D">This</span><span class="space"> </span><span style="color:#C98A7D">ia</span><span class="space"> </span><span style="color:#C98A7D">an</span><span class="space"> </span><span style="color:#C98A7D">error</span><span style="color:#C98A7D77">"</span><span style="color:#666666">)</span></span>
+  </code>
+</pre>
 ```
