@@ -24,11 +24,11 @@ This blog assumes that you have a blog set up already. You should also understan
 
 Something like this.
 
-````markdown
-```js
+\`\`\`js
+
 console.log("Hello World!")
-```
-````
+
+\`\`\`
 
 Can turn into this!
 
@@ -51,9 +51,31 @@ This block has a delete line and an add line transformer is applied.
 
 This is simply done by adding a comment at the end of the line that Shiki can read and apply the HTML. 
 
-```
-// [!code --] comments add red highlighting and a minus. 
-// [!code ++] comments adds green highlighting and a plus.
-```
+// \[!code --] comments add red highlighting and a minus. 
+// \[!code ++] comments adds green highlighting and a plus.
 
 ## How to Add Shiki Transformers to Astro
+
+Astro has built-in support for Shiki, which is super nice. All we have to do is add this to our Astro config. '
+
+1. In astro.config.js we add the following:
+
+```javascript
+export default defineConfig({
+  markdown: { // [!code ++]
+    syntaxHighlight: "shiki", // [!code ++]
+    shikiConfig: { //[!code ++]
+      theme: "any-theme-you-want", // [!code ++]
+      transformers: [
+        transformerNotationDiff(), // [!code ++]
+        transformerNotationHighlight(), // [!code ++]
+        transformerNotationWordHighlight(), // [!code ++]
+        transformerNotationFocus(), // [!code ++]
+        transformerNotationErrorLevel(), // [!code ++]
+        transformerRenderWhitespace(), // [!code ++]
+        transformerMetaWordHighlight(), // [!code ++]
+      ],  
+    }
+  } // [!code ++]
+})
+```
