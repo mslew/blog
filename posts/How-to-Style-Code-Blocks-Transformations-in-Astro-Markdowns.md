@@ -97,4 +97,10 @@ console.log("Hello World!")
 console.log("This is so cool!") // [!code ++]
 console.log("Is this working?") // [!code --]
 console.log("I think it is!") // [!code warning]
+console.log("This ia an error") // [!code error]
+```
+
+Gets rendered into the following HTML:
+
+```html
 ```
