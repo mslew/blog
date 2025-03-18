@@ -24,13 +24,13 @@ This blog assumes that you have a blog set up already. You should also understan
 
 Something like this.
 
-\`\`\`js
+\`\`\` js
 
 console.log("Hello World!")
 
 \`\`\`
 
-Can turn into this!
+It can turn into this!
 
 ```javascript
 console.log("Hello World!")
@@ -49,16 +49,16 @@ console.log("Add this line!") // [!code ++]
 
 This block has a delete line and an add line transformer is applied. 
 
-This is simply done by adding a comment at the end of the line that Shiki can read and apply the HTML. 
+This is done by adding a comment at the end of the line that Shiki can read and apply the HTML. 
 
 // \[!code --] comments add red highlighting and a minus. 
-// \[!code ++] comments adds green highlighting and a plus.
+// \[!code ++] comments add green highlighting and a plus.
 
 ## How to Add Shiki Transformers to Astro
 
 Astro has built-in support for Shiki, which is super nice. All we have to do is add this to our Astro config. '
 
-1. In astro.config.js we add the following:
+In astro.config.js we add the following:
 
 ```javascript
 export default defineConfig({
@@ -66,7 +66,7 @@ export default defineConfig({
     syntaxHighlight: "shiki", // [!code ++]
     shikiConfig: { //[!code ++]
       theme: "any-theme-you-want", // [!code ++]
-      transformers: [
+      transformers: [ // [!code ++]
         transformerNotationDiff(), // [!code ++]
         transformerNotationHighlight(), // [!code ++]
         transformerNotationWordHighlight(), // [!code ++]
@@ -74,8 +74,16 @@ export default defineConfig({
         transformerNotationErrorLevel(), // [!code ++]
         transformerRenderWhitespace(), // [!code ++]
         transformerMetaWordHighlight(), // [!code ++]
-      ],  
-    }
+      ],  // [!code ++]
+    } // [!code ++]
   } // [!code ++]
-})
+}) // [!code ++]
 ```
+
+You can add more or delete any transformer you may want/need, the documentation for these can be found [here](https://shiki.style/packages/transformers). 
+
+You will also need to npm install [@shikijs/transformers](https://www.npmjs.com/package/@shikijs/transformers). 
+
+## How Can We See the Cool Highlights? 
+
+If you're like me, you might add these transformers to your code and wonder why none of the cool effects are appearing. This is because we need to style these HTML elements ourselves.  
