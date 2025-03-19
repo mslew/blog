@@ -125,7 +125,7 @@ We can style the code block by adding some rules to our CSS. Remember we need to
 ```css
 @layer components { /* [!code ++] */
   pre { /* [!code ++] */
-    @apply relative max-h-[600px] min-w-[56px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose; // [!code ++]
+    @apply relative max-h-[600px] min-w-[56px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose; /* [!code ++] */
   } /* [!code ++] */
   code { /* [!code ++] */
       @apply w-full grid; /* [!code ++] */
