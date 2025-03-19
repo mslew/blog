@@ -105,9 +105,7 @@ console.log("This ia an error") // [!code error]
 Gets rendered into the following HTML:
 
 ```html
-<pre class="astro-code vitesse-dark has-diff has-highlighted relative"
-  style="background-color:#121212;color:#dbd7caee; overflow-x: auto;" tabindex="0"
-  data-language="javascript">
+<pre class="astro-code vitesse-dark has-diff has-highlighted relative" style="background-color:#121212;color:#dbd7caee; overflow-x: auto;" tabindex="0" data-language="javascript">
   <code>
   <span class="line"><span style="color:#BD976A">console</span><span style="color:#666666">.</span><span style="color:#80A665">log</span><span style="color:#666666">(</span><span style="color:#C98A7D77">"</span><span style="color:#C98A7D">Hello</span><span class="space"> </span><span style="color:#C98A7D">World!</span><span style="color:#C98A7D77">"</span><span style="color:#666666">)</span></span>
   <span class="line diff add"><span style="color:#BD976A">console</span><span style="color:#666666">.</span><span style="color:#80A665">log</span><span style="color:#666666">(</span><span style="color:#C98A7D77">"</span><span style="color:#C98A7D">This</span><span class="space"> </span><span style="color:#C98A7D">is</span><span class="space"> </span><span style="color:#C98A7D">so</span><span class="space"> </span><span style="color:#C98A7D">cool!</span><span style="color:#C98A7D77">"</span><span style="color:#666666">)</span></span>
