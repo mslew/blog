@@ -185,3 +185,5 @@ Next, we can add styles for the highlights.
       } /* [!code ++] */
     } /* [!code ++] */
 ```
+
+Now we have green backgrounds on lines for additions, red backgrounds for deletions, warning lines, focused lines, etc. You can add, remove, or change these styles based on what you want your code blocks and transformers to look like. 
