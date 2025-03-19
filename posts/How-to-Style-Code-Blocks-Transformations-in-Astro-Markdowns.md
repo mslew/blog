@@ -116,7 +116,7 @@ Gets rendered into the following HTML:
 </pre>
 ```
 
-As you can see, Shiki adds nice class names to our lines of code. This is going to enable us to style each line to our desired look. Furthermore, we can also style the code block itself.
+As you can see, Shiki adds nice class names to our lines of code. This enables us to style each line to our desired look. Furthermore, we can also style the code block itself.
 
 ## Styling the Code Block
 
@@ -131,4 +131,57 @@ We can style the code block by adding some rules to our CSS. Remember we need to
       @apply w-full grid; /* [!code ++] */
     } /* [!code ++] */
 } /* [!code ++] */
+```
+
+Next, we can add styles for the highlights.
+
+```css
+> code { /* [!code ++] */
+      @apply whitespace-pre-wrap mt-6 mb-6; /* [!code ++] */
+      counter-reset: line; /* [!code ++] */
+
+      > ::before { /* [!code ++] */
+        counter-increment: line; /* [!code ++] */
+        content: counter(line); /* [!code ++] */
+        @apply mr-4 inline-block w-4 text-right; /* [!code ++] */
+      } /* [!code ++] */
+
+      .add { /* [!code ++] */
+        @apply bg-[#16322c]; /* [!code ++] */
+      } /* [!code ++] */
+
+      .add::before { /* [!code ++] */
+        @apply text-emerald-400; /* [!code ++] */
+        content: "+"; /* [!code ++] */
+      } /* [!code ++] */
+
+      .remove { /* [!code ++] */
+        @apply bg-[#311c22]; /* [!code ++] */
+      } /* [!code ++] */
+
+      .remove::before { /* [!code ++] */
+        @apply text-rose-400; /* [!code ++] */
+        content: "-"; /* [!code ++] */
+      } /* [!code ++] */
+
+      .line { /* [!code ++] */
+        @apply w-full p-1; /* [!code ++] */
+      } /* [!code ++] */
+
+      .highlighted { /* [!code ++] */
+        @apply bg-[#24272c]; /* [!code ++] */
+      } /* [!code ++] */
+
+      .error { /* [!code ++] */
+        @apply bg-[#3c1e26]; /* [!code ++] */
+      } /* [!code ++] */
+
+      .warning { /* [!code ++] */
+        @apply bg-[#3a3118]; /* [!code ++] */
+      } /* [!code ++] */
+
+      .highlighted-word { /* [!code ++] */
+        @apply rounded bg-[#24272c] p-[2px]; /* [!code ++] */
+      } /* [!code ++] */
+    } /* [!code ++] */
 ```
