@@ -123,12 +123,12 @@ As you can see, Shiki adds nice class names to our lines of code. This is going 
 We can style the code block by adding some rules to our CSS. Remember we need to import the CSS file into our Astro!
 
 ```css
-@layer components { // [!code ++]
-  pre { // [!code ++]
+@layer components { /* [!code ++] */
+  pre { /* [!code ++] */
     @apply relative max-h-[600px] min-w-[56px] overflow-auto rounded-xl border border-slate-400 py-4 text-sm leading-loose; // [!code ++]
-  } // [!code ++]
-  code { // [!code ++]
-      @apply w-full grid; // [!code ++]
-    } // [!code ++]
-} // [!code ++]
+  } /* [!code ++] */
+  code { /* [!code ++] */
+      @apply w-full grid; /* [!code ++] */
+    } /* [!code ++] */
+} /* [!code ++] */
 ```
