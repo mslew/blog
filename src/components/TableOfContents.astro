@@ -73,7 +73,7 @@ const toc = buildToc();
             {
                 rootMargin: `-${headerHeight}px 0px 0px 0px`,
             },
-    )
+        )
 
         const sections = document.querySelectorAll('.heading')
         sections.forEach((section) => {
@@ -81,6 +81,24 @@ const toc = buildToc();
         })
     }
 
-    document.addEventListener('astro:page-load', setupToc)
-    document.addEventListener('astro:after-swap', setupToc)
+    // Use both Astro events and standard browser events for better compatibility
+    function initializeEvents() {
+        // Run immediately for the current page
+        setupToc();
+        
+        // Register for Astro events
+        document.addEventListener('astro:page-load', setupToc);
+        document.addEventListener('astro:after-swap', setupToc);
+        
+        // Add fallback standard browser events
+        window.addEventListener('DOMContentLoaded', setupToc);
+        window.addEventListener('load', setupToc);
+    }
+    
+    // Initialize on both initial page load and when the document is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeEvents);
+    } else {
+        initializeEvents();
+    }
 </script>

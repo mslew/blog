@@ -29,6 +29,28 @@ const { title } = Astro.props;
 			main.style.paddingTop = `${headerHeight + 48}px`;
 		}
 	}
-	document.addEventListener('astro:page-load', setupPadding)
-    document.addEventListener('astro:after-swap', setupPadding)
+	
+	// Use both Astro events and standard browser events for better compatibility
+    function initializeEvents() {
+        // Run immediately for the current page
+        setupPadding();
+        
+        // Register for Astro events
+        document.addEventListener('astro:page-load', setupPadding);
+        document.addEventListener('astro:after-swap', setupPadding);
+        
+        // Add fallback standard browser events
+        window.addEventListener('DOMContentLoaded', setupPadding);
+        window.addEventListener('load', setupPadding);
+        
+        // Add resize listener if needed
+        window.addEventListener('resize', setupPadding);
+    }
+    
+    // Initialize on both initial page load and when the document is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeEvents);
+    } else {
+        initializeEvents();
+    }
 </script>
