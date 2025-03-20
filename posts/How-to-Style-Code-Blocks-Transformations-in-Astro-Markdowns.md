@@ -54,8 +54,8 @@ This block has a delete line and an add line transformer is applied.
 This is done by adding a comment at the end of the line that Shiki can read and apply the HTML.
 
 ```
-// "[!code --]" [!code --] comments add red highlighting and a minus.
-// "[!code ++]" [!code ++] comments add green highlighting and a plus.
+[!code --] comments add red highlighting and a minus.
+[!code ++] comments add green highlighting and a plus.
 ```
 
 More comments can be seen on [Shiki Transformers](https://shiki.style/packages/transformers) that can be applied to our lines of code.  
