@@ -62,7 +62,7 @@ More comments can be seen on [Shiki Transformers](https://shiki.style/packages/t
 
 ## How to Add Shiki Transformers to Astro
 
-Astro has built-in support for Shiki, which is super nice. All we have to do is add this to our Astro config. '
+Astro has built-in support for Shiki, which is super nice. All we have to do is add this to our Astro config.
 
 In astro.config.js we add the following:
 
