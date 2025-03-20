@@ -1,7 +1,7 @@
 ---
 title: >-
-  How to Style Code Blocks and Transformers in Astro Markdowns Using Shiki and
-  CSS
+  How to Style Code Blocks and Transformers in Markdowns Using Shiki and CSS in
+  Astro
 slug: style-code-blocks
 description: 'Tutorial on how to give yourself cool styles on Shiki codeblocks. '
 tags:
@@ -15,7 +15,7 @@ image:
   url: 'https://shiki.matsu.io/logo.svg'
   alt: Shiki
 draft: false
-hiddenFromFeed: true
+hiddenFromFeed: false
 ---
 
 This blog assumes that you have a blog set up already. You should also understand Astro [Content Collections](https://docs.astro.build/en/guides/content-collections/) and how to render markdowns in your markup.
@@ -103,7 +103,7 @@ console.log("Hello World!")
 console.log("This is so cool!") // [!code ++]
 console.log("Is this working?") // [!code --]
 console.log("I think it is!") // [!code warning]
-console.log("This ia an error") // [!code error]
+console.log("This is an error") // [!code error]
 ```
 
 Gets rendered into the following HTML:
@@ -124,7 +124,7 @@ As you can see, Shiki adds nice class names to our lines of code. This enables u
 
 ## Styling the Code Block
 
-We can style the code block by adding some rules to our CSS. Remember we need to import the CSS file into our Astro!
+We can style the code block by adding some rules to our CSS. Remember we must import the CSS file into our Astro layout or components!
 
 ```css
 @layer components { /* [!code ++] */
@@ -192,4 +192,4 @@ Next, we can add styles for the highlights.
 
 Now we have green backgrounds on lines for additions, red backgrounds for deletions, warning lines, focused lines, etc. You can add, remove, or change these styles based on what you want your code blocks and transformers to look like. 
 
-Now your styles should look like mine! 
+Now your code blocks should look like mine! 
