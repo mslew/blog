@@ -132,10 +132,14 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
 
     }
     document.addEventListener('astro:page-load', setupTocOffset)
+    document.addEventListener('astro:before-swap', setupTocOffset)
     document.addEventListener('astro:after-swap', setupTocOffset)
+
     document.addEventListener('astro:page-load', getCodeLang)
     document.addEventListener('astro:after-swap', getCodeLang)
+
     document.addEventListener('astro:page-load', addCopyButton)
     document.addEventListener('astro:after-swap', addCopyButton)
+    
     window.addEventListener('resize', setupTocOffset)
 </script>
