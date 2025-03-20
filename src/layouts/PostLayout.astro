@@ -116,6 +116,7 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
     }
 
     function setupTocOffset(){
+        console.log('setupTocOffset is being called');
         const header = document.querySelector('header');
         const headerHeight = header ? header.offsetHeight : 0;
 		const aside = document.querySelector('aside');
@@ -132,7 +133,6 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
 
     }
     document.addEventListener('astro:page-load', setupTocOffset)
-    document.addEventListener('astro:before-swap', setupTocOffset)
     document.addEventListener('astro:after-swap', setupTocOffset)
 
     document.addEventListener('astro:page-load', getCodeLang)
@@ -140,6 +140,6 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
 
     document.addEventListener('astro:page-load', addCopyButton)
     document.addEventListener('astro:after-swap', addCopyButton)
-    
+
     window.addEventListener('resize', setupTocOffset)
 </script>
