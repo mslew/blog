@@ -53,8 +53,12 @@ This block has a delete line and an add line transformer is applied.
 
 This is done by adding a comment at the end of the line that Shiki can read and apply the HTML.
 
-// \[!code --] comments add red highlighting and a minus.
-// \[!code ++] comments add green highlighting and a plus.
+```
+// [!code --] [!code --] comments add red highlighting and a minus.
+// [!code ++] [!code ++] comments add green highlighting and a plus.
+```
+
+More comments can be seen on [Shiki Transformers](https://shiki.style/packages/transformers) that can be applied to our lines of code.  
 
 ## How to Add Shiki Transformers to Astro
 
@@ -187,3 +191,5 @@ Next, we can add styles for the highlights.
 ```
 
 Now we have green backgrounds on lines for additions, red backgrounds for deletions, warning lines, focused lines, etc. You can add, remove, or change these styles based on what you want your code blocks and transformers to look like. 
+
+Now your styles should look like mine! 
