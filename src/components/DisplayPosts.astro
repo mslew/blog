@@ -2,12 +2,14 @@
 import type { CollectionEntry } from 'astro:content';
 import PostCard from '../components/PostCard.astro';
 import Tag from '../components/Tag.astro';
+import { trimProps } from '../utils/trimProps';
 interface Props{
     posts: CollectionEntry<'posts'>[]
     tagView?: string
 }
 
-let { posts, tagView } = Astro.props;
+const props = trimProps(Astro.props);
+const { posts, tagView } = props;
 
 type PostsByYear = Record<string, CollectionEntry<'posts'>[]>;
 

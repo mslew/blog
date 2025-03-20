@@ -3,8 +3,10 @@ import dateFormat from "dateformat";
 import readingTime from "reading-time";
 import me from '../../public/images/me-small.jpg'
 import Image from "astro/components/Image.astro";
+import { trimProps } from "../utils/trimProps";
 
-const { slug, title, description, tags, pubDate, author, image: { url, alt } } = Astro.props;
+const props = trimProps(Astro.props);
+const { slug, title, description, tags, pubDate, author, image: { url, alt } } = props;
 
 const { body } = Astro.props;
 ---

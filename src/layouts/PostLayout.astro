@@ -8,6 +8,7 @@ import readingTime from "reading-time";
 import Tag from "../components/Tag.astro";
 import TableOfContents from "../components/TableOfContents.astro";
 import PostNavigation from "../components/PostNavigation.astro";
+import { trimProps } from "../utils/trimProps";
 
 let {
     content: {
@@ -28,7 +29,7 @@ let {
     },
     body,
     headings
-} = Astro.props;
+} = trimProps(Astro.props);
 const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointer-events-none'; //hidden blog posts
 ---
 <MainLayout title={title}>
