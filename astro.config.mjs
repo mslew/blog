@@ -26,9 +26,6 @@ export default defineConfig({
   integrations: [sitemap()],
   output: "server",
   adapter: vercel(),
-  experimental: {
-    responsiveImages: true,
-  },
   redirects: {
     "/": "/posts/1",
   },
