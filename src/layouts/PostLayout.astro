@@ -33,8 +33,14 @@ let {
 const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointer-events-none'; //hidden blog posts
 ---
 <MainLayout title={title}>
-    <div class="flex flex-col gap-4 items-center text-center w-1/2 -xl:w-3/4 -md:w-[95%] place-self-center">
-        <Image layout="responsive" width={750} height={500} inferSize={true} src={url} alt={alt}/>
+    <div class="flex flex-col gap-4 items-center text-center w-1/2 max-xl:w-3/4 max-md:w-[95%] place-self-center">
+        <img 
+            src={url}
+            alt={alt}
+            class="w-[750px] h-[500px] max-xl:w-[500px] max-xl:h-[333px] object-cover object-center"
+            loading="lazy"
+            decoding="async"
+        />
         <div class="prose prose-light"><h1>{title}</h1></div>  
         <p><em>{description}</em></p>
         <div class="w-full flex flex-col items-center gap-8">
@@ -56,13 +62,13 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
                 <Tag tag={tag} disabled={tagDisabledForHiddenPosts}/>
             )}
         </div>
-        <div class="flex flex-row gap-8 xl:w-[150%] place-self-center -xl:flex-col -xl:w-full -xl:items-center">
-            <aside class="w-1/4 h-full xl:sticky xl:top-8 -xl:max-h-[25vh] -xl:w-1/2 -md:w-[95%]">
+        <div class="flex flex-row gap-8 xl:w-[150%] place-self-center max-xl:flex-col max-xl:w-full max-xl:items-center">
+            <aside class="w-1/4 h-full xl:sticky xl:top-8 max-xl:max-h-[25vh] max-xl:w-1/2 max-md:w-[95%]">
                 {headings && headings.length > 0 && (
                     <TableOfContents headings={headings}/>
                 )}
             </aside>
-            <article class="prose prose-light flex flex-col w-1/2 -xl:w-3/4 -md:w-[95%] text-start">
+            <article class="prose prose-light flex flex-col w-1/2 max-xl:w-3/4 max-md:w-[95%] text-start">
                 <slot />
             </article>
         </div>

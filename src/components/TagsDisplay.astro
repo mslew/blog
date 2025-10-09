@@ -6,7 +6,7 @@ const props = trimProps(Astro.props);
 const { tags } = props;
 ---
 
-<div class="tags-container flex flex-col text-center gap-4 2xl:w-2/3 -2xl:w-3/4 -lg:w-[95%] self-center grow h-full">
+<div class="tags-container flex flex-col text-center gap-4 2xl:w-2/3 max-2xl:w-3/4 max-lg:w-[95%] self-center grow h-full">
   <h1 class="text-3xl font-bold text-slate-400">Tags</h1>
   <div class="flex flex-row flex-wrap gap-2 justify-center">
       {Object.keys(tags).map((tag: string) =>

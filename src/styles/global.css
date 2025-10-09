@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @config '../../tailwind.config.cjs';
 
@@ -54,11 +54,11 @@
     }
 
     .code-language {
-      @apply absolute top-0 right-0 px-2 py-1 text-sm text-slate-400 bg-slate-900 rounded-bl duration-300 transform opacity-100;
+      @apply absolute top-0 right-0 px-2 py-1 text-sm text-slate-400 bg-slate-900 rounded-bl-sm duration-300 transform opacity-100;
     }
 
     .copy-button {
-      @apply absolute top-0 right-0 px-2 py-1 text-sm text-slate-400 bg-slate-900 rounded-bl duration-300 transform opacity-0;
+      @apply absolute top-0 right-0 px-2 py-1 text-sm text-slate-400 bg-slate-900 rounded-bl-sm duration-300 transform opacity-0;
 
       &:hover {
         @apply duration-300 transform bg-slate-800;

@@ -35,7 +35,7 @@ const toc = buildToc();
         <p class="text-slate-300 pl-4 pr-4 text-lg">Table of Contents</p>
         <hr class="w-6 border-slate-300"/>
     </div>
-    <ul id="toc-container" class="flex flex-col gap-[2px] -xl:overflow-y-auto">
+    <ul id="toc-container" class="flex flex-col gap-[2px] max-xl:overflow-y-auto">
         {toc.map((heading: Heading) => 
             <TableOfContentsHeading heading={heading} />
         )}
@@ -64,9 +64,9 @@ const toc = buildToc();
                     link.classList[addRemove](
                         'xl:font-bold', 
                         'xl:text-opacity-100',
-                        'xl:border-l-1',
+                        'xl:border-l',
                         'xl:border-slate-300',
-                        '-xl:text-bold',
+                        'max-xl:text-bold',
                     )
                     })
                 },
