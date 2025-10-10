@@ -35,13 +35,9 @@ const { title } = Astro.props;
         // Run immediately for the current page
         setupPadding();
         
-        // Register for Astro events
+        // Register for Astro events (only for page navigation)
         document.addEventListener('astro:page-load', setupPadding);
         document.addEventListener('astro:after-swap', setupPadding);
-        
-        // Add fallback standard browser events
-        window.addEventListener('DOMContentLoaded', setupPadding);
-        window.addEventListener('load', setupPadding);
         
         // Add resize listener if needed
         window.addEventListener('resize', setupPadding);

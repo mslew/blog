@@ -35,7 +35,7 @@ const toc = buildToc();
         <p class="text-slate-300 pl-4 pr-4 text-lg">Table of Contents</p>
         <hr class="w-6 border-slate-300"/>
     </div>
-    <ul id="toc-container" class="flex flex-col gap-[2px] max-xl:overflow-y-auto">
+    <ul id="toc-container" class="flex flex-col gap-[2px] -xl:overflow-y-auto">
         {toc.map((heading: Heading) => 
             <TableOfContentsHeading heading={heading} />
         )}
@@ -66,7 +66,7 @@ const toc = buildToc();
                         'xl:text-opacity-100',
                         'xl:border-l',
                         'xl:border-slate-300',
-                        'max-xl:text-bold',
+                        '-xl:text-bold',
                     )
                     })
                 },
@@ -86,13 +86,9 @@ const toc = buildToc();
         // Run immediately for the current page
         setupToc();
         
-        // Register for Astro events
+        // Register for Astro events (only for page navigation)
         document.addEventListener('astro:page-load', setupToc);
         document.addEventListener('astro:after-swap', setupToc);
-        
-        // Add fallback standard browser events
-        window.addEventListener('DOMContentLoaded', setupToc);
-        window.addEventListener('load', setupToc);
     }
     
     // Initialize on both initial page load and when the document is ready

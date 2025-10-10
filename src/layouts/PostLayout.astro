@@ -63,12 +63,12 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
             )}
         </div>
         <div class="flex flex-row gap-8 xl:w-[150%] place-self-center max-xl:flex-col max-xl:w-full max-xl:items-center">
-            <aside class="w-1/4 h-full xl:sticky xl:top-8 max-xl:max-h-[25vh] max-xl:w-1/2 max-md:w-[95%]">
+            <aside class="w-1/3 h-full xl:sticky xl:top-8 max-xl:max-h-[25vh] max-xl:w-1/2 max-md:w-[95%] xl:pr-6">
                 {headings && headings.length > 0 && (
                     <TableOfContents headings={headings}/>
                 )}
             </aside>
-            <article class="prose prose-light flex flex-col w-1/2 max-xl:w-3/4 max-md:w-[95%] text-start">
+            <article class="prose prose-light max-w-none flex flex-col w-1/2 max-xl:w-3/4 max-md:w-[95%] text-start">
                 <slot />
             </article>
         </div>
@@ -104,6 +104,9 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
         const codeElements = document.querySelectorAll('pre');
         if(!codeElements) return;
         codeElements.forEach(codeElement => {
+            // Check if copy button already exists
+            if (codeElement.querySelector('.copy-button')) return;
+            
             const copyButton = document.createElement('button');
             copyButton.className = 'copy-button';
             copyButton.innerHTML = copyButtonSVG;
@@ -143,22 +146,13 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
         getCodeLang();
         addCopyButton();
         
-        // Register for Astro events
-        document.addEventListener('astro:page-load', setupTocOffset);
-        document.addEventListener('astro:after-swap', setupTocOffset);
-        document.addEventListener('astro:page-load', getCodeLang);
-        document.addEventListener('astro:after-swap', getCodeLang);
-        document.addEventListener('astro:page-load', addCopyButton);
-        document.addEventListener('astro:after-swap', addCopyButton);
-        
-        // Add fallback standard browser events
-        window.addEventListener('DOMContentLoaded', () => {
+        // Register for Astro events (only for page navigation)
+        document.addEventListener('astro:page-load', () => {
             setupTocOffset();
             getCodeLang();
             addCopyButton();
         });
-        
-        window.addEventListener('load', () => {
+        document.addEventListener('astro:after-swap', () => {
             setupTocOffset();
             getCodeLang();
             addCopyButton();
