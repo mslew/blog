@@ -37,3 +37,13 @@ Optimizes data security by ensuring effective tools, systems, and processes are 
 ## Communications and Network Security
 
 Manage and secure physical networks and wireless communications. Security analysts may be tasked to analyze user behavior within the organization. For example, connecting to an unsecured wireless hotspot, the analyst would create a network policy to prevent and mitigate exposure.  
+
+## Identity and Access Management
+
+Keeps data secure by ensuring users follow established policies to control and manage physical assets, like office spaces, and logical assets, such as networks and applications. A security analyst may need to validate the identities of employees and document access roles, or employee keycard access. 
+
+## Security Assessment and Testing 
+
+Conducting security control testing, collecting and analyzing data, and conducting security audits to monitor for risks, threats, and vulnerabilities. Security analysts conduct regular audits of user permissions to make sure that users have the correct level of access, such as payroll information access is often limited to certain employees. 
+
+## &#x20;
