@@ -43,4 +43,4 @@ The sunk cost fallacy is as follows: the tendency to continue an endeavor due to
 
 Recently, I finally decided it was time to pursue cybersecurity. My first thought was to obtain a master's degree in cybersecurity, but master's degrees aren't cheap. I know I have IT skills and definitely have the coding chops. That's when I decided to research cybersecurity certificate programs, and I discovered the [Google Cybersecurity Certificate](https://www.coursera.org/professional-certificates/google-cybersecurity) program on Coursera. 
 
-I thought to myself that I can do this certifcate program and afterwards take the CompTIA Security+           
+I thought to myself that I could do this certificate program and afterwards take the [CompTIA Security+](https://www.comptia.org/en-us/certifications/security/) exam to bolster my resume. Another big element that I was excited about was doing write-ups about my time learning cybersecurity. I built this fancy blog website for this exact reason. Not only that, I plan on posting these blogs on my LinkedIn to let people know about my progress, and hopefully get noticed by some companies.            
