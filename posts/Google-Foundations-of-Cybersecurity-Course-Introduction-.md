@@ -43,4 +43,12 @@ The sunk cost fallacy is as follows: the tendency to continue an endeavor due to
 
 Recently, I finally decided it was time to pursue cybersecurity. My first thought was to obtain a master's degree in cybersecurity, but master's degrees aren't cheap. I know I have IT skills and definitely have the coding chops. That's when I decided to research cybersecurity certificate programs, and I discovered the [Google Cybersecurity Certificate](https://www.coursera.org/professional-certificates/google-cybersecurity) program on Coursera. 
 
-I thought to myself that I could do this certificate program and afterwards take the [CompTIA Security+](https://www.comptia.org/en-us/certifications/security/) exam to bolster my resume. Another big element that I was excited about was doing write-ups about my time learning cybersecurity. I built this fancy blog website for this exact reason. Not only that, I plan on posting these blogs on my LinkedIn to let people know about my progress, and hopefully get noticed by some companies.            
+I thought to myself that I could do this certificate program and afterwards take the [CompTIA Security+](https://www.comptia.org/en-us/certifications/security/) exam to bolster my resume. Another big element that I was excited about was doing write-ups about my time learning cybersecurity. I built this fancy blog website for this exact reason. Not only that, I plan on posting these blogs on my LinkedIn to let people know about my progress, and hopefully get noticed by some companies. 
+
+# Renewed Vigor
+
+After I decided to finally overcome my thoughts about wasted time. By the way, the computer science/software engineering degree was not wasted time, and the skills I used to obtain that degree, the non-technical skills like time management, collaboration, communication, and leadership, alongside technical skills like coding, understanding CLIs, and IT skills, will be extremely useful for pursuing this field and jobs within this field. I now have renewed vigor for the IT field of jobs and am very excited to pursue a cybersecurity career. 
+
+# Subsequent Blogs 
+
+From here on out, I will be posting blogs about the things I learn in the Google Cybersecurity program on Coursera. I anticipate the first couple of blogs to be non-technical, because the course is built for anyone with any background, and they need to cover elements such as what a cybersecurity analyst does, and various domains one can work in. As I get more into the meat and potatoes of the course the blogs will become more technical.     
