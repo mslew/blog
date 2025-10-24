@@ -1,5 +1,5 @@
 ---
-title: 'Google Foundations of Cybersecurity Course Introduction '
+title: Google Foundations of Cybersecurity Course Introduction
 slug: 'google-cs-introduction '
 description: >-
   This is an introduction to a series of blogs that I am writing about what I am
