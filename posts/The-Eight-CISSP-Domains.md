@@ -36,4 +36,4 @@ Optimizes data security by ensuring effective tools, systems, and processes are 
 
 ## Communications and Network Security
 
-Manage and secure physical networks and wireless communications. Security analysts may be tasked to analyze user behavior within the organization, an example could be connecting to unsecured wireless 
+Manage and secure physical networks and wireless communications. Security analysts may be tasked to analyze user behavior within the organization. For example, connecting to an unsecured wireless hotspot, the analyst would create a network policy to prevent and mitigate exposure.  
