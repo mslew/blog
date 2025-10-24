@@ -1,7 +1,9 @@
 ---
 title: The Eight CISSP Domains
 slug: cissp-domains
-description: Here is my breakdown of the eight CISSP domains
+description: >-
+  Here is my breakdown of the eight CISSP domains presented in Module 2 of
+  Google's Foundations of Cybersecurity course
 tags:
   - tag: cissp
   - tag: cybersecurity
