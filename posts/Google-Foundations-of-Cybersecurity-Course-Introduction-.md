@@ -51,4 +51,6 @@ After I decided to finally overcome my thoughts about wasted time. By the way, t
 
 # Subsequent Blogs 
 
-From here on out, I will be posting blogs about the things I learn in the Google Cybersecurity program on Coursera. I anticipate the first couple of blogs to be non-technical, because the course is built for anyone with any background, and they need to cover elements such as what a cybersecurity analyst does, and various domains one can work in. As I get more into the meat and potatoes of the course the blogs will become more technical.     
+From here on out, I will be posting blogs about the things I learn in the Google Cybersecurity program on Coursera. I anticipate the first couple of blogs to be non-technical, because the course is built for anyone with any background, and they need to cover elements such as what a cybersecurity analyst does, and various domains one can work in. As I get more into the meat and potatoes of the course, the blogs will become more technical.
+
+Follow along with me on my journey!      
