@@ -46,4 +46,12 @@ Keeps data secure by ensuring users follow established policies to control and m
 
 Conducting security control testing, collecting and analyzing data, and conducting security audits to monitor for risks, threats, and vulnerabilities. Security analysts conduct regular audits of user permissions to make sure that users have the correct level of access, such as payroll information access is often limited to certain employees. 
 
+## Security Operations
+
+Conducting investigations and implementing preventative measures. A security analyst would need to follow the procedures outlined by the organization if an unknown device is connected to the network.
+
+## Software Development Security
+
+Uses secure coding practices, which are a set of recommended guidelines that are used to create secure applications and services. A security analyst would work with software development teams to ensure practices are incorporated into the software development lifecycle, such as advising on. password policies and any user data are properly managed. 
+
 ## &#x20;
