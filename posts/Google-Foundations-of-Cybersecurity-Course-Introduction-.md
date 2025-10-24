@@ -33,4 +33,8 @@ When you major in Computer Science at Lewis, which is probably the case for othe
 
 ## The Sunk Cost Fallacy
 
-I have spent a lot of time between graduation and the current day thinking about what my plans should be       
+I have spent a lot of time between graduation and the current day thinking about what I should try to pursue. Whether it's strictly software engineering, pursuing a master's degree,  getting certified in AWS or something similar, or pursuing cybersecurity, my first degree choice. 
+
+When thinking about doing any of these strategies, I kept thinking about all the time that I spent during my undergraduate years investing in computer science/software engineering. I was concerned about the wasted time that would occur. This is a classic example of the sunk cost fallacy. 
+
+The sunk cost fallacy is as follows: the tendency to continue an endeavor due to previously invested resources like time, money, or effort, even when it's not in your best interest. For me, I was definitely trying to continue software engineering despite knowing that it's probably not the best course of action currently. I was afraid to abandon, not completely, software engineering and pursue something different.          
