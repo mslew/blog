@@ -1,13 +1,11 @@
 ---
-title: Google Foundations of Cybersecurity Course Introduction
-slug: 'google-cs-introduction '
+title: My Thoughts on Switching My Focus to Cybersecurity
+slug: 'cs-introduction '
 description: >-
-  This is an introduction to a series of blogs that I am writing about what I am
-  learning on the Google Foundations of Cybersecurity course. 
+  These are my thoughts on switching from software engineering to
+  cybersecurity. 
 tags:
   - tag: cybersecurity
-  - tag: google
-  - tag: intro
 author: 'Max Lewis '
 pubDate: 2025-10-24T00:00:00.000Z
 image:
@@ -19,3 +17,12 @@ hiddenFromFeed: true
 hiddenFromRSS: true
 ---
 
+# Introduction
+
+Recently, I have been pondering this tough job market. I graduated with a degree in Computer Science from Lewis University in 2023. I received high honors and loved my time in school. During my time at Lewis, there was a major talk about how good a degree in Computer Science was. Talk about six-figure salaries and laid-back work culture buzzed around my noggin constantly. The best part about the degree? I legitimately loved doing it. I saw this as an absolute win, a field I genuinely enjoy, with a promising career outlook made me extremely excited.    
+
+In the Fall of 2022, a cascade of unfortunate events occurred. We had major tech layoffs and a major release of a new type of technology that shook the industry and the world to its core: ChatGPT. This coupling effect killed the entry-level job market for students and other would-be engineers at my skill level. 
+
+From my graduation in May of 2023 to the current day, I've been keeping my skills sharp and biding my time for the supposed AI bubble to pop, all while working a job as a janitor. Two and a half years of waiting for something to work out for us, entry-levelers.
+
+## Cybersecurity
