@@ -37,4 +37,10 @@ I have spent a lot of time between graduation and the current day thinking about
 
 When thinking about doing any of these strategies, I kept thinking about all the time that I spent during my undergraduate years investing in computer science/software engineering. I was concerned about the wasted time that would occur. This is a classic example of the sunk cost fallacy. 
 
-The sunk cost fallacy is as follows: the tendency to continue an endeavor due to previously invested resources like time, money, or effort, even when it's not in your best interest. For me, I was definitely trying to continue software engineering despite knowing that it's probably not the best course of action currently. I was afraid to abandon, not completely, software engineering and pursue something different.          
+The sunk cost fallacy is as follows: the tendency to continue an endeavor due to previously invested resources like time, money, or effort, even when it's not in your best interest. For me, I was definitely trying to continue software engineering despite knowing that it's probably not the best course of action currently. I was afraid to abandon, not completely, software engineering and pursue something different.  
+
+## The Decision to Pursue Cybersecurity
+
+Recently, I finally decided it was time to pursue cybersecurity. My first thought was to obtain a master's degree in cybersecurity, but master's degrees aren't cheap. I know I have IT skills and definitely have the coding chops. That's when I decided to research cybersecurity certificate programs, and I discovered the [Google Cybersecurity Certificate](https://www.coursera.org/professional-certificates/google-cybersecurity) program on Coursera. 
+
+I thought to myself that I can do this certifcate program and afterwards take the CompTIA Security+           
