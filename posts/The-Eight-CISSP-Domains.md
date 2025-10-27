@@ -13,14 +13,14 @@ image:
   url: >-
     https://ik.imagekit.io/upgrad1/abroad-images/imageCompo/images/1666020363744_cissp_domains8GN3S5.webp?pr-true
   alt: cissp domains
-draft: true
-hiddenFromFeed: true
-hiddenFromRSS: true
+draft: false
+hiddenFromFeed: false
+hiddenFromRSS: false
 ---
 
 # CISSP
 
-CISSP stands for Certified Information Systems Security Professional. It is a globally recognized certification for experienced cybersecurity professionals. There are eight domains that are covered for this exam.
+CISSP stands for Certified Information Systems Security Professional. It is a globally recognized certification for experienced cybersecurity professionals. Eight domains are covered for this exam.
 
 ## Security and Risk Management
 
