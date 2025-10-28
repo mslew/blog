@@ -33,7 +33,7 @@ let {
 const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointer-events-none'; //hidden blog posts
 ---
 <MainLayout title={title}>
-    <div class="flex flex-col gap-4 items-center text-center place-self-center max-xl:w-3/4 max-md:w-[95%]  w-1/2">
+    <div class="flex flex-col gap-4 items-center text-center place-self-center max-xl:w-3/4 max-md:w-[90%]  w-1/2">
         <img 
             src={url}
             alt={alt}
@@ -63,13 +63,13 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
             )}
         </div>
     </div>
-    <div class="flex flex-row xl:w-full place-self-center max-xl:flex-col max-xl:w-full max-xl:items-center ">
-        <aside class="w-1/4 h-full xl:sticky xl:top-8 max-xl:max-h-[25vh] max-xl:w-1/2 max-md:w-3/4 xl:pl-6 xl:pr-6">
+    <div class="flex flex-row xl:w-full place-self-center max-xl:flex-col max-xl:w-full max-xl:items-center max-xl:gap-8">
+        <aside class="w-1/4 h-full xl:sticky xl:top-8 max-xl:w-1/2 max-md:w-3/4 xl:pl-6 xl:pr-6">
             {headings && headings.length > 0 && (
                 <TableOfContents headings={headings}/>
             )}
         </aside>
-        <div class="flex justify-center w-1/2 max-xl:w-3/4 max-md:w-[95%] pt-12 max-xl:pt-24">
+        <div class="flex justify-center w-1/2 max-xl:w-3/4 max-md:w-[95%] pt-4 max-xl:pt-4">
             <article class="prose prose-light max-w-none flex flex-col w-10/12 max-md:w-full  text-start ">
                 <slot />
             </article>
