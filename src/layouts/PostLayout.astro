@@ -136,7 +136,7 @@ const tagDisabledForHiddenPosts = prev || next ? 'pointer-events-auto' : 'pointe
 		}else{
             aside.style.paddingTop = "0px";
         }
-        const headers = document.querySelectorAll('h2, h3, h4, h5, h6');
+        const headers = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
         if (!headers) return;
         headers.forEach(header => (header as HTMLElement).style.scrollMarginTop = `${headerHeight}px`);
     }

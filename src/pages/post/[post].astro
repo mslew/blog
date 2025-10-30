@@ -24,7 +24,7 @@ export async function getStaticPaths() {
     const posts = await getCollection('posts', ({ data }) => !data.draft);
     return posts.map((post) => {
         return {
-            params: { post: post.data.slug.trim() },
+            params: { post: post.data.slug },
             props: { post },
         };
     });

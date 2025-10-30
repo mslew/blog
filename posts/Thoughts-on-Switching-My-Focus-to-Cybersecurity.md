@@ -1,12 +1,12 @@
 ---
 title: Thoughts on Switching My Focus to Cybersecurity
-slug: 'cs-introduction '
+slug: "cs-introduction"
 description: >-
   These are my thoughts on switching from software engineering to
-  cybersecurity. 
+  cybersecurity.
 tags:
   - tag: cybersecurity
-author: 'Max Lewis '
+author: "Max Lewis "
 pubDate: 2025-10-24T00:00:00.000Z
 image:
   url: >-
@@ -33,7 +33,7 @@ When you major in Computer Science at Lewis, which is probably the case for othe
 
 ## The Sunk Cost Fallacy
 
-I have spent a lot of time between graduation and the current day thinking about what I should try to pursue. Whether it's strictly software engineering, pursuing a master's degree,  getting certified in AWS or something similar, or pursuing cybersecurity, my first degree choice.
+I have spent a lot of time between graduation and the current day thinking about what I should try to pursue. Whether it's strictly software engineering, pursuing a master's degree, getting certified in AWS or something similar, or pursuing cybersecurity, my first degree choice.
 
 When thinking about doing any of these strategies, I kept thinking about all the time that I spent during my undergraduate years investing in computer science/software engineering. I was concerned about the wasted time that would occur. This is a classic example of the sunk cost fallacy.
 
