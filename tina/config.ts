@@ -40,10 +40,6 @@ export default defineConfig({
             label: "Title",
             isTitle: true,
             required: true,
-            ui: {
-              parse: (value) =>
-                typeof value === "string" ? value.trim() : value,
-            },
           },
           {
             type: "string",
@@ -62,10 +58,6 @@ export default defineConfig({
             name: "description",
             label: "Description",
             required: true,
-            ui: {
-              parse: (value) =>
-                typeof value === "string" ? value.trim() : value,
-            },
           },
           {
             type: "object",
@@ -86,10 +78,6 @@ export default defineConfig({
                 name: "tag",
                 label: "Tag",
                 required: true,
-                ui: {
-                  parse: (value) =>
-                    typeof value === "string" ? value.trim() : value,
-                },
               },
             ],
           },
@@ -98,10 +86,6 @@ export default defineConfig({
             name: "author",
             label: "Author",
             required: true,
-            ui: {
-              parse: (value) =>
-                typeof value === "string" ? value.trim() : value,
-            },
           },
           {
             type: "datetime",
@@ -134,20 +118,12 @@ export default defineConfig({
                 name: "url",
                 label: "URL",
                 required: true,
-                ui: {
-                  parse: (value) =>
-                    typeof value === "string" ? value.trim() : value,
-                },
               },
               {
                 type: "string",
                 name: "alt",
                 label: "Alt Text",
                 required: true,
-                ui: {
-                  parse: (value) =>
-                    typeof value === "string" ? value.trim() : value,
-                },
               },
             ],
             ui: {
