@@ -1,20 +1,17 @@
 ---
 title: Thoughts on Switching My Focus to Cybersecurity
-slug: "cs-introduction"
-description: >-
-  These are my thoughts on switching from software engineering to
-  cybersecurity.
+slug: cs-introduction
+description: These are my thoughts on switching from software engineering to cybersecurity.
 tags:
   - tag: cybersecurity
-author: "Max Lewis "
+author: 'Max Lewis '
 pubDate: 2025-10-24T00:00:00.000Z
 image:
-  url: >-
-    https://eu-images.contentstack.com/v3/assets/blt69509c9116440be8/blt8ffb90a2f64bacfa/6776f4544b281ca5e2bc465a/cybersecurity_NicoElNino-AlamyStockPhoto.jpg
+  url: 'https://eu-images.contentstack.com/v3/assets/blt69509c9116440be8/blt8ffb90a2f64bacfa/6776f4544b281ca5e2bc465a/cybersecurity_NicoElNino-AlamyStockPhoto.jpg'
   alt: basic cybersecurity image
 draft: false
-hiddenFromFeed: false
-hiddenFromRSS: false
+hiddenFromFeed: true
+hiddenFromRSS: true
 ---
 
 # Struggles After Graduation
