@@ -36,7 +36,7 @@ Also, during this time, I was losing a ton of weight. I think I was losing like 
 
 During this time of running, I came to understand the great gift of running, that is, what it does for your brain. For me, it is an outlet to completely unplug from the stresses of life. I leave my front door, throw on some music, a podcast, or my favorite audiobook, and completely disconnect from what is troubling me. I can see the world around me in a way I never have before. I get to experience nature in its purest form. 
 
-The act of going out for a run and forcing myself to run is sometimes a tough decision. There are times when I don't want to run, but force myself to do it anyway. This conditions my brain to do things that it doesn't want, and to enjoy the hard thing.    
+The act of going out for a run and forcing myself to run is sometimes a tough decision. There are times when I don't want to run, but force myself to do it anyway. This conditions my brain to do things that it doesn't want, and to enjoy the hard thing. I am always so glad I ran, right after I completed it, because it was difficult, and I knew it was for the better.      
 
   
  
