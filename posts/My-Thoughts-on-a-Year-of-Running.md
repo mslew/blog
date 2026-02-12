@@ -30,7 +30,9 @@ I was so excited and proud of myself when I completed the last run and ran my fi
 
 ## The Weight was Falling Off
 
-Also during this time, I was losing a ton of weight. I think I was losing like 10 pounds a month. It was extremely gratifying and motivated me to run even more, and continue on this journey.  
+Also, during this time, I was losing a ton of weight. I think I was losing like 10 pounds a month. It was extremely gratifying and motivated me to run even more and continue on this journey. By May of 2025, I had lost 40 pounds. 
+
+  
  
 
 # &#x20;   
