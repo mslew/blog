@@ -11,8 +11,8 @@ updatedDate: 2025-12-12T06:00:00.000Z
 image:
   url: 'https://injurymap.com/wp-content/uploads/2024/01/running_picture_1.png'
   alt: running cartoon
-draft: true
-hiddenFromFeed: true
+draft: false
+hiddenFromFeed: false
 hiddenFromRSS: true
 ---
 
