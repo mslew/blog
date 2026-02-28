@@ -22,7 +22,7 @@
     "rehype-katex": "^7.0.1",
     "remark-emoji": "^5.0.1",
     "remark-math": "^6.0.0",
-    "svelte": "^4.2.19",
+    "svelte": "^5.53.6",
     "tailwindcss": "^4.1.14",
     "tinacms": "^3.1.1"
   },
