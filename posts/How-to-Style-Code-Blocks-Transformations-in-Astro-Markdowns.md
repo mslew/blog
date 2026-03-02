@@ -10,7 +10,7 @@ tags:
 author: Max Lewis
 pubDate: 2025-03-20T19:16:00.000Z
 image:
-  url: 'https://shiki.matsu.io/logo.svg'
+  url: 'https://shiki.style/logo.svg'
   alt: Shiki
 draft: false
 hiddenFromFeed: false
