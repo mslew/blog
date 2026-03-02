@@ -24,12 +24,12 @@
     "remark-math": "^6.0.0",
     "svelte": "^5.53.6",
     "tailwindcss": "^4.1.14",
-    "tinacms": "^3.1.1"
+    "tinacms": "^3.5.1"
   },
   "devDependencies": {
     "@hbsnow/rehype-sectionize": "^1.0.7",
     "@tailwindcss/typography": "^0.5.10",
-    "@tinacms/cli": "^2.0.4",
+    "@tinacms/cli": "^2.1.7",
     "@types/dateformat": "^5.0.0",
     "@types/node": "^20.17.19"
   }
