@@ -1,3 +1,3 @@
 # Personal Blog
 
-This is the repository for my personal blog. 
+This is the repository for my personal blog built with Astro. 
