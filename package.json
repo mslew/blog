@@ -15,7 +15,7 @@
     "@astrojs/vercel": "^10.0.4",
     "@shikijs/transformers": "^3.0.0",
     "@tailwindcss/vite": "^4.1.14",
-    "astro": "^6.1.7",
+    "astro": "^6.3.2",
     "dateformat": "^5.0.3",
     "reading-time": "^1.5.0",
     "rehype-external-links": "^1.0.1",
