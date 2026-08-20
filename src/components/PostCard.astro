@@ -34,7 +34,7 @@ const { body } = Astro.props;
                 <p class="max-xl:hidden">|</p>
                 <p>{dateFormat(pubDate, "UTC:mmmm dS, yyyy")}</p>
                 <p class="max-xl:hidden">|</p>
-                <p>{Math.round(readingTime(body).minutes)} min read</div></p>
+                <p>{Math.round(readingTime(body).minutes)} min read</p>
             <div class="flex flex-row gap-2">
                 {tags.map((tag: { tag: string }) => 
                     <span class="text-purple-500">#{tag.tag}</span>
