@@ -31,7 +31,7 @@
     "@astrojs/check": "^0.9.10",
     "@hbsnow/rehype-sectionize": "^1.0.7",
     "@tailwindcss/typography": "^0.5.10",
-    "@tinacms/cli": "^2.5.2",
+    "@tinacms/cli": "^2.6.1",
     "@types/dateformat": "^5.0.0",
     "@types/node": "^26.4.0",
     "typescript": "^6.0.3"
