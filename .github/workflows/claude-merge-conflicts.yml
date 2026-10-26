@@ -1,0 +1,161 @@
+name: Claude Merge Conflict Resolver
+
+# Runs whenever the base branch changes (which is when open PRs become conflicted),
+# on a daily safety-net schedule, and on demand from the Actions tab.
+on:
+  push:
+    branches: [main]          # change to your default branch
+  schedule:
+    - cron: "17 13 * * *"     # daily safety net (UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: claude-merge-conflicts
+  cancel-in-progress: false
+
+env:
+  # Command used to verify each resolution before pushing. Leave empty to skip.
+  # Examples: "npm ci && npm test", "pytest -q", "go test ./..."
+  TEST_COMMAND: ""
+
+jobs:
+  find-conflicts:
+    runs-on: ubuntu-latest
+    outputs:
+      prs: ${{ steps.find.outputs.prs }}
+    steps:
+      - id: find
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # GitHub computes "mergeable" lazily, so wait and retry while it is UNKNOWN.
+          sleep 30
+          json='[]'
+          for i in 1 2 3 4; do
+            json=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --limit 100 \
+              --json number,mergeable,headRefName,baseRefName,isCrossRepository,isDraft,labels)
+            if echo "$json" | jq -e 'any(.[]; .mergeable == "UNKNOWN")' >/dev/null; then
+              sleep 20
+              continue
+            fi
+            break
+          done
+
+          # Skip forks, drafts, and any PR labeled "no-auto-resolve".
+          prs=$(echo "$json" | jq -c '[.[]
+            | select(.mergeable == "CONFLICTING"
+                     and .isCrossRepository == false
+                     and .isDraft == false
+                     and ((.labels | map(.name) | index("no-auto-resolve")) | not))
+            | {number: .number, head: .headRefName, base: .baseRefName}]')
+
+          echo "Conflicting PRs: $prs"
+          echo "prs=$prs" >> "$GITHUB_OUTPUT"
+
+  resolve:
+    needs: find-conflicts
+    if: needs.find-conflicts.outputs.prs != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        pr: ${{ fromJson(needs.find-conflicts.outputs.prs) }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR_NUMBER: ${{ matrix.pr.number }}
+      HEAD_BRANCH: ${{ matrix.pr.head }}
+      BASE_BRANCH: ${{ matrix.pr.base }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.pr.head }}
+          fetch-depth: 0
+
+      - name: Start merge of base into PR branch
+        id: merge
+        run: |
+          git config user.name "claude[bot]"
+          git config user.email "claude[bot]@users.noreply.github.com"
+          git fetch origin "$BASE_BRANCH"
+
+          # A non-zero exit here just means there are conflicts to resolve.
+          git merge --no-ff --no-commit "origin/$BASE_BRANCH" || true
+
+          conflicted=$(git diff --name-only --diff-filter=U)
+          if [ -z "$conflicted" ]; then
+            echo "has_conflicts=false" >> "$GITHUB_OUTPUT"
+            echo "No textual conflicts (PR may have been fixed already)."
+          else
+            echo "has_conflicts=true" >> "$GITHUB_OUTPUT"
+            echo "Conflicted files:"
+            echo "$conflicted"
+          fi
+
+      - name: Resolve conflicts with Claude
+        if: steps.merge.outputs.has_conflicts == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            A merge of origin/${{ matrix.pr.base }} into this branch
+            (PR #${{ matrix.pr.number }}) is in progress and has conflicts.
+
+            Your job:
+            1. Run `git diff --name-only --diff-filter=U` to list conflicted files.
+            2. For each file, read the conflict markers and understand the intent of BOTH
+               sides (use `git log` and `git diff` against the merge base if needed).
+               Combine the changes so that both intents are preserved. Never simply
+               drop one side unless the other side's change is clearly obsolete.
+            3. Remove every conflict marker (<<<<<<<, =======, >>>>>>>) and `git add` each
+               resolved file.
+            4. Do NOT run `git commit` or `git push`; the workflow does that after checks.
+            5. If any conflict is ambiguous or risky (semantic conflicts, lockfiles,
+               generated files, migrations), leave that file unresolved and say why.
+            Finish with a short summary of what you resolved and any judgment calls.
+          claude_args: >-
+            --max-turns 30
+            --allowedTools "Read,Edit,Grep,Glob,Bash(git status:*),Bash(git diff:*),Bash(git log:*),Bash(git show:*),Bash(git add:*)"
+
+      - name: Verify resolution
+        id: verify
+        if: steps.merge.outputs.has_conflicts == 'true'
+        run: |
+          if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "reason=Some files were left unresolved." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if git grep -nE '^(<<<<<<<|>>>>>>>) ' -- . >/dev/null 2>&1; then
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "reason=Conflict markers remain in the working tree." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ -n "$TEST_COMMAND" ]; then
+            if ! bash -c "$TEST_COMMAND"; then
+              echo "ok=false" >> "$GITHUB_OUTPUT"
+              echo "reason=Tests failed after resolution." >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push to the PR branch
+        if: steps.verify.outputs.ok == 'true'
+        run: |
+          git commit -m "Merge $BASE_BRANCH into $HEAD_BRANCH (conflicts resolved by Claude)"
+          git push origin "HEAD:$HEAD_BRANCH"
+          gh pr comment "$PR_NUMBER" --body "Resolved merge conflicts with \`$BASE_BRANCH\` automatically and pushed to this branch. Please review the merge commit before merging."
+
+      - name: Report failure on the PR
+        if: steps.merge.outputs.has_conflicts == 'true' && steps.verify.outputs.ok != 'true'
+        env:
+          REASON: ${{ steps.verify.outputs.reason }}
+        run: |
+          gh pr comment "$PR_NUMBER" --body "Tried to auto-resolve merge conflicts with \`$BASE_BRANCH\` but did not push anything. Reason: ${REASON:-the resolution step did not complete}. Manual resolution needed."
